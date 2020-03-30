@@ -1,0 +1,135 @@
+/* == COLORS == */
+
+/* == GENERAL == */
+html {
+    position: relative;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+}
+body {
+    padding-top: 5rem;
+    padding-bottom: 0;
+    /* Margin bottom by footer height */
+    margin-bottom: 80px;
+}
+
+body > .container {
+    /*padding: 60px 15px 0;*/
+    padding: 20px 15px 40px;
+}
+
+nav {
+    border-bottom: 1px solid rgba(128,128,128, 0.2);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: 0 5px 5px 1px rgba(0,0,0, 0.5);
+}
+
+.text-grey_light {
+    color: rgb(220,220,220);
+}
+
+h2 {
+    font-size: 1.7em;
+}
+
+.invitation {
+    font-size: 1.5em;
+}
+
+#quotesBox h2 {
+    margin-top: 1.5em;
+}
+
+.quotesBox {
+    padding-bottom: 2em;
+}
+
+.quote-content {
+    max-height: 454px;
+    overflow-y: auto;
+}
+
+label.list-select{
+    display: block;
+    width: 100%;
+}
+
+select {
+    height: 38px;
+}
+
+/* == Icons styles == */
+.social-icon a,
+.link-footer a {
+    color: rgb(220,220,220);
+}
+
+.social-icon ul,
+.link-footer ul {
+    list-style: none;
+}
+
+.social-icon ul li {
+    display: inline-block;
+    margin: auto 4px;
+}
+
+.link-footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.link-footer ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0.6em;
+    text-align: center;
+}
+
+.link-footer a {
+    font-weight: 200;
+    opacity: 90%;
+    padding: 0;
+}
+
+/* == Sticky footer styles == */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #6c757d;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.img-validator {
+    border: 0;
+    width: 88px;
+    height: 31px
+}
+
+/* == MEDIAS == */
+@media only screen and (max-width : 480px) {
+    body {
+        padding-top: 3.5rem;
+        padding-bottom: 0;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        display: none;
+    }
+}
