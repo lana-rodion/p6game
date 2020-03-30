@@ -12,8 +12,8 @@ As in Highlander, there can only be one left!
 
 ## Goal setting
 
-*   Build a citations generator
-*   The quotes will be constructed randomly by assembling pieces of sentence
+*   Create turn-based JS board game on-line
+*   Develop an object-oriented JavaScript application
 
 ## Specification
 
@@ -72,7 +72,7 @@ Project HTML / CSS / JavaScript code
 
 *Turn-based JS board game UI on-line* <https://p6game.lana-rodion-artdev.com/>
 
-![alt tag](https://example.png)
+Screenshots coming soon
 
 ## Sources
 
@@ -83,7 +83,4 @@ Project HTML / CSS / JavaScript code
 *   <https://openclassrooms.com/fr/courses/1631636-simplifiez-vos-developpements-javascript-avec-jquery>
 
 *   <https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/>
-
-[![Codacy Badge]() 
-[![Maintainability]()
 
