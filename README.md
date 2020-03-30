@@ -37,6 +37,7 @@ As in Highlander, there can only be one left!
 ### Step 3 - The fight
 
 *   If the players cross on adjacent squares (horizontally or vertically), a fight begins
+
 *   During a fight, the game works as follows:
     *   Each in turn attacks
     *   Damage depends on the weapon owned by the player
@@ -70,7 +71,7 @@ Project HTML / CSS / JavaScript code
 
 ## User interface
 
-*Turn-based JS board game UI on-line* <https://p6game.lana-rodion-artdev.com/>
+***Turn-based JS board game UI on-line*** <https://p6game.lana-rodion-artdev.com/>
 
 Screenshots coming soon
 
@@ -83,4 +84,3 @@ Screenshots coming soon
 *   <https://openclassrooms.com/fr/courses/1631636-simplifiez-vos-developpements-javascript-avec-jquery>
 
 *   <https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/>
-
