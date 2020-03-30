@@ -1,5 +1,7 @@
 # p6game - Project 6 "Create a turn-based JS board game"
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f9dfb98ba2384e7eaf36496d1d7e3c66)](https://app.codacy.com/manual/lana-rodion/p6game?utm_source=github.com&utm_medium=referral&utm_content=lana-rodion/p6game&utm_campaign=Badge_Grade_Dashboard)
+
 Front-end Developer Training / Openclassrooms
 
 Turn-based JS board game on-line <https://p6game.lana-rodion-artdev.com/>
