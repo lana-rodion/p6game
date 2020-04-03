@@ -1,7 +1,5 @@
 # p6game - Project 6 "Create a turn-based JS board game"
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f9dfb98ba2384e7eaf36496d1d7e3c66)](https://app.codacy.com/manual/lana-rodion/p6game?utm_source=github.com&utm_medium=referral&utm_content=lana-rodion/p6game&utm_campaign=Badge_Grade_Dashboard)
-
 Front-end Developer Training / Openclassrooms
 
 Turn-based JS board game on-line <https://p6game.lana-rodion-artdev.com/>
@@ -39,6 +37,7 @@ As in Highlander, there can only be one left!
 ### Step 3 - The fight
 
 *   If the players cross on adjacent squares (horizontally or vertically), a fight begins
+
 *   During a fight, the game works as follows:
     *   Each in turn attacks
     *   Damage depends on the weapon owned by the player
@@ -79,11 +78,7 @@ Screenshots coming soon
 ## Sources
 
 *   <https://openclassrooms.com/fr/courses/5543061-ecrivez-du-javascript-pour-le-web>
-
 *   <https://openclassrooms.com/fr/courses/3306901-creez-des-pages-web-interactives-avec-javascript>
-
 *   <https://openclassrooms.com/fr/courses/1631636-simplifiez-vos-developpements-javascript-avec-jquery>
-
 *   <https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/>
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/53793e8e75d649e0ad6cb84ba8534099)](https://www.codacy.com/manual/lana-rodion/p6game?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lana-rodion/p6game&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f9dfb98ba2384e7eaf36496d1d7e3c66)](https://app.codacy.com/manual/lana-rodion/p6game?utm_source=github.com&utm_medium=referral&utm_content=lana-rodion/p6game&utm_campaign=Badge_Grade_Dashboard)
