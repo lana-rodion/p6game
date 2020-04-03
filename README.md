@@ -81,4 +81,5 @@ Screenshots coming soon
 *   <https://openclassrooms.com/fr/courses/3306901-creez-des-pages-web-interactives-avec-javascript>
 *   <https://openclassrooms.com/fr/courses/1631636-simplifiez-vos-developpements-javascript-avec-jquery>
 *   <https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/>
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f9dfb98ba2384e7eaf36496d1d7e3c66)](https://app.codacy.com/manual/lana-rodion/p6game?utm_source=github.com&utm_medium=referral&utm_content=lana-rodion/p6game&utm_campaign=Badge_Grade_Dashboard)
