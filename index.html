@@ -76,7 +76,7 @@
     </nav>
 </header>
 
-<main class="container pb-4 pt-4">
+<main class="container-fluid pb-4 pt-4">
     <h1 class="text-light"> Combat de Géants. Jeu de plateau tour par tour en JavaScript</h1>
     <p class="text-warning ml-4 mb-4 invitation">Des challenges vous attendent&nbsp;!</p>
     <h2 class="text-primary">Les Géants</h2>
@@ -87,8 +87,12 @@
     </div>
 
     <!-- Game map -->
-    <div class="container bg-light">
-
+    <div class="container">
+        <div class="row justify-content-around">
+            <div id="scorePlayer1" class="col-12 col-sm-6 col-md-3 bg-warning p-2"></div>
+            <div id="gameGrid" class="col-auto bg-light"></div>
+            <div id="scorePlayer2" class="col-12 col-sm-6 col-md-3 bg-warning p-2"></div>
+        </div>
     </div>
 
 </main>
@@ -115,7 +119,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <!-- JS board game Script -->
-<script src=""></script>
+<script src="js/script.js"></script>
 
 </body>
 

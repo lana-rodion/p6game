@@ -39,19 +39,6 @@ h2 {
     font-size: 1.5em;
 }
 
-#quotesBox h2 {
-    margin-top: 1.5em;
-}
-
-.quotesBox {
-    padding-bottom: 2em;
-}
-
-.quote-content {
-    max-height: 454px;
-    overflow-y: auto;
-}
-
 label.list-select{
     display: block;
     width: 100%;
@@ -64,7 +51,7 @@ select {
 /* == Icons styles == */
 .social-icon a,
 .link-footer a {
-    color: rgb(220,220,220);
+    color: rgb(220, 220, 220);
 }
 
 .social-icon ul,
@@ -115,11 +102,11 @@ select {
     padding-left: 15px;
 }
 
-.img-validator {
+/*.img-validator {
     border: 0;
     width: 88px;
     height: 31px
-}
+}*/
 
 /* == MEDIAS == */
 @media only screen and (max-width : 480px) {
