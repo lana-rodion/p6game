@@ -60,7 +60,7 @@ Project HTML / CSS / JavaScript code
 
 ### Tools
 
-* WebStorm
+*   WebStorm
 *   Brackets Editor
 *   Browser console window
 *   GitKraken

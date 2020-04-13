@@ -1,3 +1,4 @@
+"use strict"
 window.onload = function() {
 	let canvasWidth = 400;
 	let canvasHeight = 400;
@@ -12,11 +13,23 @@ window.onload = function() {
 	let pointsStart;
 	let timeOut;
 
-	init();
+	function drawScore() {
+		ctx.save();
+		let centreX = canvasWidth / 2;
+		let centreY = canvasHeight / 2;
+		ctx.fillText(score.toString(), centreX, centreY); //Number du score est de type string
+		ctx.restore();
+	}
+
+	function refreshCanvas() {
+		ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+		drawScore();
+		timeOut = setTimeout(refreshCanvas, delay);
+	}
 
 	function init() {
-		let gameGrid = document.getElementById("gameGrid")
-		let canvas = document.createElement('canvas');
+		let gameGrid = document.getElementById("gameGrid");
+		let canvas = document.createElement("canvas");
 		canvas.width = canvasWidth;
 		canvas.height = canvasHeight;
 		canvas.style.border = "5px solid #6c757d";
@@ -24,16 +37,10 @@ window.onload = function() {
 		canvas.style.display = "block"; //pour centrer l'élément sur la page
 		canvas.style.backgroundColor = "#ddd";
 		gameGrid.appendChild(canvas);
-		ctx = canvas.getContext('2d');
+		ctx = canvas.getContext("2d");
 		score = 0;
 		pointsStart = 100;
 		refreshCanvas();
-	}
-
-	function refreshCanvas() {
-		ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-		drawScore();
-		timeOut = setTimeout(refreshCanvas, delay);
 	}
 
 	/*function gameOver() {
@@ -47,14 +54,6 @@ window.onload = function() {
 		ctx.fillText("Appuyer sur la touche Espace pour rejouer", centreX, centreY - 120);
 		ctx.restore();
 	}*/
-
-	function drawScore() {
-		ctx.save();
-		let centreX = canvasWidth / 2;
-		let centreY = canvasHeight / 2;
-		ctx.fillText(score.toString(), centreX, centreY); //Number du score est de type string
-		ctx.restore();
-	}
 
 	/*function player(position) {
 		this.position = position;
@@ -75,6 +74,10 @@ window.onload = function() {
 			this.position = [newX, newY];
 		};
 	}*/
+	document.addEventListener("DOMContentLoaded", (event) => {
+		console.log("DOM entièrement chargé et analysé");
+		init();
+	});
 }
 
 
