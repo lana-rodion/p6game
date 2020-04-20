@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/game.css" rel="stylesheet">
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6f7f0b14f2.js"></script>
 </head>
@@ -77,21 +78,24 @@
 </header>
 
 <main class="container-fluid pb-4 pt-4">
-    <h1 class="text-light"> Combat de Géants. Jeu de plateau tour par tour en JavaScript</h1>
-    <p class="text-warning ml-4 mb-4 invitation">Des challenges vous attendent&nbsp;!</p>
-    <h2 class="text-primary">Les Géants</h2>
-    <div>
-        <p class="text-light">Les Géants sont des personnifications mythiques de la force brutale.
-        On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
-        </p>
-    </div>
-
+    <h1 class="text-light text-center"> Combat de Géants. Jeu de plateau tour par tour en JavaScript</h1>
     <!-- Game map -->
     <div class="container">
         <div class="row justify-content-around">
-            <div id="scorePlayer1" class="col-12 col-sm-6 col-md-3 bg-warning p-2"></div>
-            <div id="gameGrid" class="col-auto bg-light"></div>
-            <div id="scorePlayer2" class="col-12 col-sm-6 col-md-3 bg-warning p-2"></div>
+            <div class="col-12 col-sm-12 ml-md-4">
+                <p class="text-warning mb-4 invitation">Des challenges vous attendent&nbsp;!</p>
+                <h2 class="text-primary">Les Géants</h2>
+                <p class="text-light">Les Géants sont des personnifications mythiques de la force brutale.
+                    On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
+                </p>
+            </div>
+
+            <div id="gameGrid" class="board col-auto m-auto bg-light"></div>
+
+            <div class="col-12 col-sm-12 col-md-6">
+                <div id="scorePlayer2" class="col-12 bg-warning p-2 align-content-between" style="height: 200px;">Score Player 2</div>
+                <div id="scorePlayer1" class="col-12 bg-info p-2 align-content-between" style="height: 200px;">Score Player 1</div>
+            </div>
         </div>
     </div>
 
@@ -117,9 +121,15 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- jQuery Latest stable version -->
+<script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
 
 <!-- JS board game Script -->
-<script src="js/script.js"></script>
+<script src='js/grid.js' type='text/javascript'></script>
+<script src='js/weapons.js' type='text/javascript'></script>
+<script src='js/player.js' type='text/javascript'></script>
+<script src='js/interface.js' type='text/javascript'></script>
+<script src='js/main.js' type='text/javascript'></script>
 
 </body>
 
