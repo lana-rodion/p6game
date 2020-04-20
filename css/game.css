@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+.board {
+    background-color: #efefef;
+}
+
+.case {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #000;
+}
+
+.case-move {
+    background-color: #5f9ea0;
+}
+
+.case-blocked {
+    background-color: #2a3237;
+}
