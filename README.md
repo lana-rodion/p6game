@@ -83,3 +83,4 @@ Screenshots coming soon
 *   <https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/>
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce1d6f882f5e4e36a1d08ae64679fa49)](https://www.codacy.com/manual/lana-rodion/p6game?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lana-rodion/p6game&amp;utm_campaign=Badge_Grade)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2a78e3aef3d726566f86/maintainability)](https://codeclimate.com/github/lana-rodion/p6game/maintainability)
