@@ -1,12 +1,37 @@
 * {
     box-sizing: border-box;
 }
-.board {
+#board {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 840px;
+    border: solid 2px black;
     background-color: #efefef;
-    padding: 2em;
+    padding: 1em;
+}
+
+/* cases */
+.obstacle {
+    width: 80px;
+    height: 80px;
+    border: solid 2px black;
+    background-color: #5D6476;
 }
 
 .case {
+    width: 80px;
+    height: 80px;
+    border: solid 2px black;
+}
+
+.movementPossible {
+    height: 80px;
+    width:80px;
+    background-color: #5f9ea0;
+}
+
+/*.case {
     display: inline-block;
     width: 2.5rem;
     height: 2.5rem;
@@ -21,4 +46,38 @@
 
 .case-blocked {
     background-color: #2a3237;
+}*/
+
+/* == Weapons == */
+.weapons_scramasaxe {
+    width: 80px;
+    height: 80px;
+    background-image: url("images/weapons_scramasaxe.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.weapons_hammer {
+    width: 80px;
+    height: 80px;
+    background-image: url("images/weapons_hammer.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* axe = hache */
+.weapons_axe {
+    width: 80px;
+    height: 80px;
+    background-image: url("images/weapons_axe.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* sword = epée */
+.weapons_sword {
+    width: 80px;
+    height: 80px;
+    background-image: url("images/weapons_sword.png");
+    background-repeat: no-repeat;
+    background-position: center;
 }
