@@ -1,9 +1,9 @@
-class Case {
+export default class Case {
     constructor(index) {
         this.index = index;
-        this.obstacle = false;
-        this.weapon = null;
-        this.player = null;
+        this._obstacle = false;
+        this._weapon = null;
+        this._player = null;
     }
 
     changeColor(color) {
@@ -11,14 +11,14 @@ class Case {
     }
 
     addObstacle() {
-        this.obstacle = true;
+        this._obstacle = true;
     }
 
     set weapon(weapon) {
-        this.weapon = weapon;
+        this._weapon = weapon;
     }
 
     set player(player) {
-        this.player = player;
+        this._player = player;
     }
 }
