@@ -60,6 +60,11 @@ select {
     height: 38px;
 }
 
+a:hover.dropdown-item {
+    color: midnightblue;
+    background-color: rgba(191, 212, 238, 0.5);
+}
+
 /* == Icons styles == */
 .social-icon a,
 .link-footer a {
