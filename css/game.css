@@ -37,11 +37,11 @@
 #board .case {
     z-index: 50;
     background: #fff;
-    box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #355166;
+    box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #38434c;
 }
 
 #board .obstacle {
-    background-color: #b6bac5;
+    background-color: #63758c;
     z-index: 100;
 }
 
