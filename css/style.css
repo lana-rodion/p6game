@@ -31,12 +31,24 @@ nav {
     color: rgb(220,220,220);
 }
 
+.text-grey_medium {
+    color: rgb(125, 126, 126);
+}
+
 h2 {
     font-size: 1.7em;
 }
 
 .invitation {
     font-size: 1.5em;
+}
+
+.text-weight-light {
+    font-weight: 300;
+}
+
+.text-smaller {
+    font-size: 0.75em;
 }
 
 label.list-select{

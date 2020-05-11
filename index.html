@@ -78,28 +78,45 @@
     </nav>
 </header>
 
-<main class="container-fluid pb-4 pt-4">
-    <h1 class="text-light text-center"> Combat de Géants. Jeu de plateau tour par tour en JavaScript</h1>
-    <!-- Game map -->
+<main class="container-fluid mt-4">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-12 ml-md-4">
-                <p class="text-warning mb-4 invitation">Des challenges vous attendent&nbsp;!</p>
-                <h2 class="text-primary">Le combat des Vikings</h2>
-                <p class="text-light">Les Vikings sont des personnifications mythiques de la force brutale.
+        <p class="text-light text-center title mb-0"> Combat de Géants</p>
+        <p class="text-weight-light text-center text-warning">Jeu de plateau tour par tour en JavaScript</p>
+        <div class="row justify-content-center m-2">
+            <div class="col-12 col-sm-12">
+                <p class="text-weight-light text-light">Les Vikings sont des personnifications mythiques de la force brutale.
                     On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
                 </p>
-            </div>
-
-            <div id="board" class="col-auto board"></div>
-
-            <div class="col-12 col-sm-12 col-md-6">
-                <div id="scorePlayer2" class="col-12 bg-warning p-2 align-content-between" style="height: 200px;">Score Player 2</div>
-                <div id="scorePlayer1" class="col-12 bg-info p-2 align-content-between" style="height: 200px;">Score Player 1</div>
             </div>
         </div>
     </div>
 
+    <!-- Game Board -->
+    <div class="row justify-content-center pl-4 pr-4 ml-auto mr-auto">
+        <!-- Players Scores -->
+        <div class="col-12 col-sm-12 col-md-5 pt-0 mt-0 mt-sm-4">
+            <div class="row p-0 h-100">
+                <div class="col-12 mb-2">
+                    <div class="pl-4 pt-2 pr-4 pb-4 bg-warning">
+                        <p>Viking 1</p>
+                        <img src="images/viking1.png" alt="viking 1" class="imgPlayer">
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <div class="pl-4 pt-2 pr-4 pb-4 bg-info">
+                        <p>Viking 2</p>
+                        <img src="images/viking2.png" alt="viking 2" class="imgPlayer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid -->
+        <div id="boardBox" class="col-12 col-sm-12 col-md-auto mb-2">
+            <div id="board"></div>
+        </div>
+        <br>
+    </div>
 </main>
 
 <!-- Footer -->
