@@ -1,4 +1,4 @@
- export default class Weapon {
+export default class Weapon {
     constructor(name, damage, skin, display) {
         this.name = name;
         this.damage = damage;

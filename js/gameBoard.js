@@ -12,17 +12,20 @@ class Board {
         this.indexBlocked = []; // indexInterdit
         this.weaponsArcenal = [
             {
-                name: "weapons_sword",
+                name: "weapon_sword",
                 damage: 20,
+                skin: "weapon_sword",
                 display: "Épée"
             },
             {
-                name: "weapons_axe",
+                name: "weapon_axe",
                 damage: 30,
+                skin: "weapon_axe",
                 display: "Hache"
             },
             {
-                name: "weapons_hammer",
+                name: "weapon_hammer",
+                skin: "weapon_hammer",
                 damage: 40,
                 display: "Marteau"
             }
@@ -80,7 +83,7 @@ class Board {
             do {
                 caseSelect = this.randomCase();
             } while (this.checkPosition(caseSelect.index));
-            let player = new Player(`Joueur ${i}`, `joueur${i}`);
+            let player = new Player(`Viking ${i}`, `player${i}`);
             this.playersList.push(player);
             player.insertPlayer(caseSelect.index);
             caseSelect.player = player;
@@ -102,7 +105,6 @@ class Board {
                     return true;
                 }
             } else return pos === index - 1 || pos === index + 1 || pos === index - 10 || pos === index + 10;
-
         }
     }
 
