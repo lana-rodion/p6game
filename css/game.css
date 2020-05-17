@@ -35,19 +35,19 @@
 }
 
 #board .case {
-    z-index: 50;
+    /*z-index: 50;*/
     background: #fff;
     box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #38434c;
 }
 
 #board .obstacle {
     background-color: #63758c;
-    z-index: 100;
+    /*z-index: 100;*/
 }
 
 #board .movementPossible {
     background-color: rgba(126, 246, 5, 0.5);
-    z-index: 100;
+    /*z-index: 100;*/
 }
 
 .case, .obstacle, .movementPossible {
@@ -64,19 +64,19 @@
     height: auto;
 }
 
-div .player1, div .player2 {
+.player1, .player2 {
     width: auto;
     height: 100%;
 }
 
-div .player1 {
-    background-image: url("../images/viking_onBoard_1.png");
+.player1 {
+    background-image: url("images/viking_onBoard_1.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 
-div .player2 {
-    background-image: url("../images/viking_onBoard_2.png");
+.player2 {
+    background-image: url("images/viking_onBoard_2.png");
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -89,23 +89,23 @@ div .player2 {
     min-height: 30px;
     /*background-size: calc(10vw - 4px);
     border-radius: 4px;*/
-    z-index: 200;
+    /*z-index: 200;*/
 }
 
 .weapon_scramasaxe {
-    background-image: url("../images/weapons_scramasaxe.png");
+    background-image: url("images/weapons_scramasaxe.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .weapon_hammer {
-    background-image: url("../images/weapons_hammer.png");
+    background-image: url("images/weapons_hammer.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 /* axe = hache */
 .weapon_axe {
-    background-image: url("../images/weapons_axe.png");
+    background-image: url("images/weapons_axe.png");
     background-repeat: no-repeat;
     background-position: center;
 }
