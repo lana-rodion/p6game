@@ -2,12 +2,10 @@ import Weapon from './weapons.js';
 
 export default class Player {
     constructor(name, skin) {
-        this.namePalyer = name;
+        this.name = name;
         this.lifePoints = 100;
-        this.weapon = new Weapon('weapons_scramasaxe', 10, 'weapons_scramasaxe', 'Scramasaxe');
+        this.weapon = new Weapon('weapon_scramasaxe', 10, 'weapon_scramasaxe', 'Scramasaxe');
         this.skin = skin;
-        //this.bouclier = false;
-        //this.victory = false;
     }
 
     insertPlayer(index) {
