@@ -6,6 +6,17 @@ export default class Weapon {
         this.display = display;
     }
 
+    set skin(skin) {
+        this._skin = skin;
+    }
+    get skin() {
+        return this._skin;
+    }
+
+    /*set damage(damage) {
+        this._damage = damage;
+    }}*/
+
     insertWeapon(index) {
         $(`#c${index}`).addClass(this.skin);
     }

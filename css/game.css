@@ -7,26 +7,28 @@
     font-size: 1.5em;
 }
 
-
+ul.rules {
+    padding-left: 20px;
+}
 
 /* == Board == */
 #boardBox {
     position: sticky;
     top: 1em;
-    width: 50vw;
-    height: 50vw;
+    width: 92vw;
+    height: 92vw;
     min-width: 300px;
     min-height: 300px;
-    max-width: calc(100vh - 2em);
-    max-height: calc(100vh - 2em);
-    overflow: hidden;
-    margin: auto;
+    max-width: calc(100vw - 0.8em);
+    max-height: calc(100vw - 0.8em);
+    /*overflow: hidden;*/
+    margin: 2em auto;
 }
 
 #board {
     display: grid;
-    grid-template-columns: repeat(10, 10%);
-    grid-template-rows: repeat(10, 10%);
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     position: absolute;
     top: 0;
     left: 0;
@@ -34,87 +36,112 @@
     height: 100%;
 }
 
-#board .case {
-    /*z-index: 50;*/
+.case {
     background: #fff;
     box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #38434c;
 }
 
-#board .obstacle {
+.obstacle {
     background-color: #63758c;
-    /*z-index: 100;*/
 }
 
-#board .movementPossible {
-    background-color: rgba(126, 246, 5, 0.5);
-    /*z-index: 100;*/
+.movementPossible {
+    background-color: rgb(5, 195, 178);
 }
 
-.case, .obstacle, .movementPossible {
+.case, .obstacle, .movementPossible, .player1, .player2, .weapon_scramasaxe, weapon_hammer, .weapon_axe, .weapon_sword {
     width: 100%;
-    height: 100%;
-    background-size: calc(10vw - 4px);
     border-radius: 4px;
 }
 
-/* == Players == */
+/* == Board Images == */
 .imgPlayer {
-    width: 60px;
+    width: 50px;
     max-width: 100px;
     height: auto;
 }
 
-.player1, .player2 {
-    width: auto;
-    height: 100%;
-}
-
-.player1 {
-    background-image: url("images/viking_onBoard_1.png");
+.case.player1, .case.player2, .case.weapon_scramasaxe, .case.weapon_hammer, .case.weapon_axe, .case.weapon_sword {
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
 }
 
-.player2 {
-    background-image: url("images/viking_onBoard_2.png");
-    background-repeat: no-repeat;
-    background-position: center;
+.case.weapon_scramasaxe, .case.weapon_hammer, .case.weapon_axe, .case.weapon_sword {
+    background-color: #b0ffef;
+}
+
+.case.player1 {
+    background-image: url("../images/viking_onBoard_1.png");
+    background-color: deeppink;
+}
+
+.case.player2 {
+    background-image: url("../images/viking_onBoard_2.png");
+    background-color: orange;
 }
 
 /* == Weapons == */
-.weapon_scramasaxe, .weapon_hammer, .weapon_axe, .weapon_sword {
-    width: 100%;
-    height: 100%;
-    min-width: 30px;
-    min-height: 30px;
-    /*background-size: calc(10vw - 4px);
-    border-radius: 4px;*/
-    /*z-index: 200;*/
+.case.weapon_scramasaxe {
+    background-image: url("../images/weapons_scramasaxe.png");
 }
 
-.weapon_scramasaxe {
-    background-image: url("images/weapons_scramasaxe.png");
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.weapon_hammer {
-    background-image: url("images/weapons_hammer.png");
-    background-repeat: no-repeat;
-    background-position: center;
+.case.weapon_hammer {
+    background-image: url("../images/weapons_hammer.png");
 }
 /* axe = hache */
-.weapon_axe {
-    background-image: url("images/weapons_axe.png");
-    background-repeat: no-repeat;
-    background-position: center;
+.case.weapon_axe {
+    background-image: url("../images/weapons_axe.png");
 }
 
 /* sword = epée */
-.weapon_sword {
+.case.weapon_sword {
     background-image: url("../images/weapons_sword.png");
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
+
 /* == MEDIA QUERIES == */
+/*@media (max-width: 362px) {
+    #board {
+        display: grid;
+        grid-template-columns: repeat(10, 32px);
+        grid-template-rows: repeat(10, 32px);
+        position: relative;
+        top: 0;
+        margin: auto;
+    }
+}
+
+@media (min-width: 575.98px) {
+    #board {
+        display: grid;
+        grid-template-columns: repeat(10, 34px);
+        grid-template-rows: repeat(10, 34px);
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}
+
+!* Small devices (landscape phones, less than 768px) *!
+@media (min-width: 767.98px) {
+    #board {
+        display: grid;
+        grid-template-columns: repeat(10, 50px);
+        grid-template-rows: repeat(10, 50px);
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}*/
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+
+}
+
+/*Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+
+}
+

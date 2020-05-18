@@ -5,10 +5,10 @@ export default class Player {
         this.name = name;
         this.lifePoints = 100;
         this.weapon = new Weapon('weapon_scramasaxe', 10, 'weapon_scramasaxe', 'Scramasaxe');
-        this.skin = skin;
+        this._skin = skin;
     }
 
     insertPlayer(index) {
-        $(`#c${index}`).addClass(this.skin);
+        $(`#c${index}`).addClass(this._skin);
     }
 }

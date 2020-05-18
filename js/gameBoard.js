@@ -3,6 +3,7 @@
 import Player from './player.js';
 import Case from './case.js';
 import Weapon from './weapons.js';
+// import Arme from './weapons.js';
 
 class Board {
     constructor() {
@@ -10,22 +11,19 @@ class Board {
         this.caseNumber = 100; // nbCase
         this.playersList = []; // listeJoueurs
         this.indexBlocked = []; // indexInterdit
-        this.weaponsArcenal = [
+        this.weaponsArcenal = [ // weaponsArcenal
             {
-                name: "weapon_sword",
-                damage: 20,
-                skin: "weapon_sword",
-                display: "Épée"
+                weapon: "weapon_sword", // name
+                damage: 20, // damage
+                display: "Épée" // display
             },
             {
-                name: "weapon_axe",
+                weapon: "weapon_axe",
                 damage: 30,
-                skin: "weapon_axe",
                 display: "Hache"
             },
             {
-                name: "weapon_hammer",
-                skin: "weapon_hammer",
+                weapon: "weapon_hammer",
                 damage: 40,
                 display: "Marteau"
             }
@@ -67,11 +65,11 @@ class Board {
     }
 
     // generateArmes
-    generateWeapons() {
+    generateWeapons() { // arme = weapon
         for (let weapon of this.weaponsArcenal) {
-            let caseSelect = this.randomCase(),
-                generation = new Weapon(`${weapon.name}`, `${weapon.damage}`, `${weapon.skin}`, `${weapon.display}`);
-            caseSelect.arme = generation;
+            let caseSelect = this.randomCase();
+            let generation = new Weapon(`${weapon.name}`, `${weapon.damage}`, `${weapon.weapon}`, `${weapon.display}`);
+            caseSelect.weapon = generation;
             generation.insertWeapon(caseSelect.index);
         }
     }
@@ -80,9 +78,11 @@ class Board {
     generatePlayer() {
         for (let i = 1; i < 3; i++) {
             let caseSelect;
+
             do {
                 caseSelect = this.randomCase();
             } while (this.checkPosition(caseSelect.index));
+
             let player = new Player(`Viking ${i}`, `player${i}`);
             this.playersList.push(player);
             player.insertPlayer(caseSelect.index);
