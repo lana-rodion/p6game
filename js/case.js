@@ -2,7 +2,7 @@ export default class Case {
     constructor(index) {
         this.index = index;
         this._obstacle = false;
-        this._weapon = null;
+        this._weapon = null; //weapon
         this._player = null;
     }
 

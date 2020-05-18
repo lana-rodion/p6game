@@ -1,4 +1,4 @@
-<!-- Step 1 - Version 0.1.01 2020/05/17 -->
+<!-- Step 1 - Version 0.1.1 2020/05/18 -->
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -77,41 +77,51 @@
     </nav>
 </header>
 
-<main class="container-fluid mt-4">
-    <div class="row justify-content-center pl-2 pr-2 ml-auto mr-auto">
-        <!-- Left Side -->
-        <div class="col-12 col-sm-12 col-md-5 pt-0 mt-0 mt-sm-4">
-            <p class="text-light text-center title mb-0"> Combat de Guerriers</p>
-            <p class="text-weight-light text-center text-warning">Jeu de plateau tour par tour en JavaScript</p>
-            <p class="text-weight-light text-light">Les Vikings sont des personnifications mythiques de la force brutale.
+<main class="container pb-4">
+    <div class="row ml-4 mr-4 mb-2">
+        <div class="col-12">
+            <p class="text-light title mb-0"> Combat de Guerriers</p>
+            <p class="text-weight-light text-warning mb-0">Jeu de plateau tour par tour en JavaScript</p>
+            <p class="text-weight-light text-light text-smaller">
+                Les Vikings sont des personnifications mythiques de la force brutale.
                 On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
             </p>
-            <p class="text-light mb-2 mt-2"><strong>Règles du jeu&nbsp;:</strong></p>
-            <ul class="text-weight-light text-light">
-                <li>Les guerriers sont placés sur le champ de combat aléatoirement.</li>
-                <li>Chacun est équipé d'une arme par défaut et peut se déplacer en faisant de 1 à 3 cases.</li>
-                <li>Ils peuvent échanger ses armes contre les armes placées sur le champ de combat.</li>
-                <li>Les armes ont des points de dégâts (puissance) différents.</li>
-                <li>Lorsque les deux joueurs sont côte à côte sur des cases adjacentes (horizontalement ou verticalement), un combat s'engage.</li>
-            </ul>
-
         </div>
-
-        <!-- Game Board -->
-        <div id="boardBox" class="col-12 col-sm-12 col-md-auto mb-2">
-            <div id="board"></div>
+        <div class="col-12">
+            <button id="rules" class="btn btn-outline-light">Règles du jeu</button>
+            <div id="game-rules" class="mt-2">
+                <!--<p class="text-light mb-2 mt-2"><strong>Règles du jeu&nbsp;:</strong></p>-->
+                <ul class="text-weight-light text-light text-smaller rules">
+                    <li>Les guerriers sont placés sur le champ de combat aléatoirement.</li>
+                    <li>Chacun est équipé d'une arme par défaut et peut se déplacer en faisant de 1 à 3 cases.</li>
+                    <li>Ils peuvent échanger ses armes contre les armes placées sur le champ de combat.</li>
+                    <li>Les armes ont des points de dégâts (puissance) différents.</li>
+                    <li>Lorsque les deux joueurs sont côte à côte sur des cases adjacentes (horizontalement ou verticalement), un combat s'engage.</li>
+                </ul>
+            </div>
         </div>
-        <br>
     </div>
-    <!-- Players Scores -->
-    <div class="row justify-content-center h-100 ml-2 mr-2 mt-2">
-        <div class="col-12 col-sm-5 ml-sm-4 mr-sm-4 ml-md-2 mr-md-2 p-4 bg-warning">
-            <p>Viking 1</p>
-            <img src="images/viking1.png" alt="viking 1" class="imgPlayer">
+
+    <!-- Game Board -->
+    <div class="row justify-content-center pl-2 pr-2 ml-auto mr-auto">
+        <div id="boardBox">
+            <div id="board">
+                <!-- Grid 10 x 10 -->
+            </div>
         </div>
-        <div class="col-12 col-sm-5 ml-sm-4 mr-sm-4 ml-md-2 mr-md-2 p-4 bg-info">
-            <p>Viking 2</p>
-            <img src="images/viking2.png" alt="viking 2" class="imgPlayer">
+    </div>
+
+    <!-- Players Scores -->
+    <div id="scoreTable">
+        <div id="stats" class="row justify-content-between h-100">
+            <div id="Player1" class="col p-4 bg-warning">
+                <img src="images/viking1.png" alt="viking 1" class="imgPlayer">
+                <p>Viking 1</p>
+            </div>
+            <div id="Player2" class="col p-4 bg-info">
+                <img src="images/viking2.png" alt="viking 2" class="imgPlayer">
+                <p>Viking 2</p>
+            </div>
         </div>
     </div>
 </main>
@@ -140,11 +150,14 @@
 <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
 
 <!-- JS board game Script -->
-<script type="module" src="js/gameBoard.js"></script>
+
 <script type="module" src="js/weapons.js"></script>
 <script type="module" src="js/player.js"></script>
 <script type="module" src="js/case.js"></script>
+<script type="module" src="js/gameBoard.js"></script>
 <script type="module" src="js/main.js"></script>
+<script type="text/javascript" src="js/interface.js"></script>
+
 
 </body>
 
