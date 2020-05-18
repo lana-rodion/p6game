@@ -31,12 +31,24 @@ nav {
     color: rgb(220,220,220);
 }
 
+.text-grey_medium {
+    color: rgb(125, 126, 126);
+}
+
 h2 {
     font-size: 1.7em;
 }
 
 .invitation {
     font-size: 1.5em;
+}
+
+.text-weight-light {
+    font-weight: 300;
+}
+
+.text-smaller {
+    font-size: 0.85em;
 }
 
 label.list-select{
@@ -46,6 +58,11 @@ label.list-select{
 
 select {
     height: 38px;
+}
+
+a:hover.dropdown-item {
+    color: midnightblue;
+    background-color: rgba(191, 212, 238, 0.5);
 }
 
 /* == Icons styles == */
@@ -113,7 +130,7 @@ select {
     body {
         padding-top: 3.5rem;
         padding-bottom: 0;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 
     footer {
