@@ -37,7 +37,9 @@ class Board {
         } while (this.indexBlocked.includes(randomNumber));
 
         this.indexBlocked.push(randomNumber); // Insert randomNumber in array of indexBlocked
-        return this.arrayCases[randomNumber]; // Return array with random index
+        // return this.arrayCases[randomNumber]; // Security Issue : Generic Object Injection Sink
+        return this.arrayCases[randomNumber]
+        // Return array with random index
     }
 
     // ajouterCase
@@ -94,8 +96,9 @@ class Board {
         for (let player of this.playersList) {
             let pos = this.arrayCases.find((c) => c._player === player).index;
 
-            console.log("liste de cases dans arrayCases : ", this.arrayCases);
-            console.log("position dans arrayCases : ", pos);
+            console.log("tableau de cases dans arrayCases : " , this.arrayCases);
+            console.log("details des objets dans arrayCases : " , this.arrayCases[index]);
+            console.log("position dans arrayCases : " , pos);
 
             // refactoring
             if (pos % 10 === 0 && (pos === index + 1 || pos === index - 10 || pos === index + 10)) {
