@@ -78,7 +78,7 @@
 </header>
 
 <main class="container pb-4">
-    <div class="row ml-4 mr-4 mb-2">
+    <div class="row p-2 mb-2">
         <div class="col-12">
             <p class="text-light title mb-0"> Combat de Guerriers</p>
             <p class="text-weight-light text-warning mb-0">Jeu de plateau tour par tour en JavaScript</p>
@@ -87,7 +87,7 @@
                 On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
             </p>
         </div>
-        <div class="col-12">
+        <div class="col-12 mb-2">
             <button id="rules" class="btn btn-outline-light">Règles du jeu</button>
             <div id="game-rules" class="mt-2">
                 <!--<p class="text-light mb-2 mt-2"><strong>Règles du jeu&nbsp;:</strong></p>-->
@@ -104,26 +104,44 @@
 
     <!-- Game Board -->
     <div class="row justify-content-center pl-2 pr-2 ml-auto mr-auto">
-        <div id="boardBox">
-            <div id="board">
-                <!-- Grid 10 x 10 -->
+        <!--<div id="boardBox" class="col-12 col-sm-12 col-md-6 p-0">
+            <div id="board" class="">
+                &lt;!&ndash; Grid 10 x 10 &ndash;&gt;
+            </div>
+        </div>-->
+
+        <div id="board" class="col-12 col-sm-12 col-md-6 p-0">
+            <!-- Grid 10 x 10 -->
+        </div>
+
+        <!-- Players Scores -->
+        <div id="scoreTable" class="col-12 col-sm-12 col-md-6">
+            <div id="stats" class="row">
+
+                <div id="Player1" class="col-12 col-sm-12 pl-0 pr-0 pb-2 ml-md-2">
+                    <div class="bg-warning pl-2 pt-2 pr-2 pb-4 mb-2">
+                        <img src="images/viking1.png" alt="viking 1" class="imgPlayer mb-2">
+                        <div>Viking 1</div>
+                        <div id="lifePoints_1">Point de vie Viking 1 : 100</div>
+                        <div id="current-weapon_1">Arme 1</div>
+                        <div id="fight_1">Combat : Défense</div>
+                    </div>
+                </div>
+
+                <div id="Player2" class="col-12 col-sm-12 pl-0 pr-0 pb-2 ml-md-2">
+                    <div class="bg-info pl-2 pt-2 pr-2 pb-4 mb-2">
+                        <img src="images/viking2.png" alt="viking 2" class="imgPlayer mb-2">
+                        <div>Viking 2</div>
+                        <div id="lifePoints_2">Point de vie Viking 2 : 100</div>
+                        <div id="current-weapon_2">Arme 2</div>
+                        <div id="fight_2">Combat : Attaque</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Players Scores -->
-    <div id="scoreTable">
-        <div id="stats" class="row justify-content-between h-100">
-            <div id="Player1" class="col p-4 bg-warning">
-                <img src="images/viking1.png" alt="viking 1" class="imgPlayer">
-                <p>Viking 1</p>
-            </div>
-            <div id="Player2" class="col p-4 bg-info">
-                <img src="images/viking2.png" alt="viking 2" class="imgPlayer">
-                <p>Viking 2</p>
-            </div>
-        </div>
-    </div>
+
 </main>
 
 <!-- Footer -->

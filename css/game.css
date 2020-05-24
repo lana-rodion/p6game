@@ -12,20 +12,20 @@ ul.rules {
 }
 
 /* == Board == */
-#boardBox {
+/*#boardBox {
     position: sticky;
     top: 1em;
-    width: 92vw;
-    height: 92vw;
-    min-width: 300px;
-    min-height: 300px;
-    max-width: calc(100vw - 0.8em);
-    max-height: calc(100vw - 0.8em);
-    /*overflow: hidden;*/
-    margin: 2em auto;
-}
+    width: 32vw;
+    height: 32vw;
+    min-width: 320px;
+    min-height: 320px;
+    max-width: calc(100vw - 2em);
+    max-height: calc(100vw - 2em);
+    overflow: hidden;
+    margin: 0 auto 1em;
+}*/
 
-#board {
+/*#board {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
@@ -34,6 +34,20 @@ ul.rules {
     left: 0;
     width: 100%;
     height: 100%;
+    max-width: 700px;
+    max-height: 700px;
+}*/
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    width: 32vw;
+    height: 32vw;
+    min-width: 320px;
+    min-height: 320px;
+    max-width: 700px;
+    max-height: 700px;
 }
 
 .case {
@@ -56,9 +70,11 @@ ul.rules {
 
 /* == Board Images == */
 .imgPlayer {
-    width: 50px;
+    width: 74px;
     max-width: 100px;
     height: auto;
+    float: left;
+    margin-right: 1em;
 }
 
 .case.player1, .case.player2, .case.weapon_scramasaxe, .case.weapon_hammer, .case.weapon_axe, .case.weapon_sword {
@@ -99,41 +115,21 @@ ul.rules {
     background-image: url("../images/weapons_sword.png");
 }
 
-
 /* == MEDIA QUERIES == */
-/*@media (max-width: 362px) {
-    #board {
-        display: grid;
-        grid-template-columns: repeat(10, 32px);
-        grid-template-rows: repeat(10, 32px);
-        position: relative;
-        top: 0;
-        margin: auto;
+@media (max-width: 362px) {
+    #stats {
+        margin-top: 1em;
     }
 }
 
 @media (min-width: 575.98px) {
-    #board {
-        display: grid;
-        grid-template-columns: repeat(10, 34px);
-        grid-template-rows: repeat(10, 34px);
-        position: relative;
-        top: 0;
-        left: 0;
-    }
+
 }
 
-!* Small devices (landscape phones, less than 768px) *!
+/*Small devices (landscape phones, less than 768px) */
 @media (min-width: 767.98px) {
-    #board {
-        display: grid;
-        grid-template-columns: repeat(10, 50px);
-        grid-template-rows: repeat(10, 50px);
-        position: relative;
-        top: 0;
-        left: 0;
-    }
-}*/
+
+}
 
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
