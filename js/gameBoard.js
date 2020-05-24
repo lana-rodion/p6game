@@ -90,11 +90,13 @@ class Board {
         }
     }
 
-    // check if 2 players are in front
+    // check 2 players position
     checkPosition(index) {
         for (let player of this.playersList) {
-            console.log(this.arrayCases);
-            const pos = this.arrayCases.find(c => c._player === player).index;
+            let pos = this.arrayCases.find(c => c._player === player).index;
+
+            console.log("liste de cases dans arrayCases : ", this.arrayCases);
+            console.log("position dans arrayCases : ", pos);
 
             if (pos % 10 === 0) { // si le J1 est sur le bord de gauche
                 if (pos === index + 1 || pos === index - 10 || pos === index + 10) {
