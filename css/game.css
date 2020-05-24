@@ -1,24 +1,142 @@
 * {
     box-sizing: border-box;
 }
-.board {
-    background-color: #efefef;
-    padding: 2em;
+
+/* == GENERAL == */
+.title {
+    font-size: 1.5em;
+}
+
+ul.rules {
+    padding-left: 20px;
+}
+
+/* == Board == */
+/*#boardBox {
+    position: sticky;
+    top: 1em;
+    width: 32vw;
+    height: 32vw;
+    min-width: 320px;
+    min-height: 320px;
+    max-width: calc(100vw - 2em);
+    max-height: calc(100vw - 2em);
+    overflow: hidden;
+    margin: 0 auto 1em;
+}*/
+
+/*#board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 700px;
+    max-height: 700px;
+}*/
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    width: 32vw;
+    height: 32vw;
+    min-width: 320px;
+    min-height: 320px;
+    max-width: 700px;
+    max-height: 700px;
 }
 
 .case {
-    display: inline-block;
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 1px solid #000;
-    margin-top: -6px;
-    background-color: #efefef;
+    background: #fff;
+    box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #38434c;
 }
 
-.case-move {
-    background-color: #5f9ea0;
+.obstacle {
+    background-color: #63758c;
 }
 
-.case-blocked {
-    background-color: #2a3237;
+.movementPossible {
+    background-color: rgb(5, 195, 178);
+}
+
+.case, .obstacle, .movementPossible, .player1, .player2, .weapon_scramasaxe, weapon_hammer, .weapon_axe, .weapon_sword {
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* == Board Images == */
+.imgPlayer {
+    width: 74px;
+    max-width: 100px;
+    height: auto;
+    float: left;
+    margin-right: 1em;
+}
+
+.case.player1, .case.player2, .case.weapon_scramasaxe, .case.weapon_hammer, .case.weapon_axe, .case.weapon_sword {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.case.weapon_scramasaxe, .case.weapon_hammer, .case.weapon_axe, .case.weapon_sword {
+    background-color: #b0ffef;
+}
+
+.case.player1 {
+    background-image: url("../images/viking_onBoard_1.png");
+    background-color: deeppink;
+}
+
+.case.player2 {
+    background-image: url("../images/viking_onBoard_2.png");
+    background-color: orange;
+}
+
+/* == Weapons == */
+.case.weapon_scramasaxe {
+    background-image: url("../images/weapons_scramasaxe.png");
+}
+
+.case.weapon_hammer {
+    background-image: url("../images/weapons_hammer.png");
+}
+/* axe = hache */
+.case.weapon_axe {
+    background-image: url("../images/weapons_axe.png");
+}
+
+/* sword = epée */
+.case.weapon_sword {
+    background-image: url("../images/weapons_sword.png");
+}
+
+/* == MEDIA QUERIES == */
+@media (max-width: 362px) {
+    #stats {
+        margin-top: 1em;
+    }
+}
+
+@media (min-width: 575.98px) {
+
+}
+
+/*Small devices (landscape phones, less than 768px) */
+@media (min-width: 767.98px) {
+
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+
+}
+
+/*Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+
 }
