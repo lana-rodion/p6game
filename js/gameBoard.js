@@ -1,8 +1,8 @@
 // To generate the game Board
 // Create the class and constructor for Board Object
-import Player from './player.js';
-import Case from './case.js';
-import Weapon from './weapons.js';
+import Player from "./player.js";
+import Case from "./case.js";
+import Weapon from "./weapons.js";
 
 class Board {
     constructor() {
@@ -92,7 +92,7 @@ class Board {
     checkPosition(index) {
         // ISSUE : loop statement doesn't loop
         for (let player of this.playersList) {
-            let pos = this.arrayCases.find(c => c._player === player).index;
+            let pos = this.arrayCases.find((c) => c._player === player).index;
 
             console.log("liste de cases dans arrayCases : ", this.arrayCases);
             console.log("position dans arrayCases : ", pos);
