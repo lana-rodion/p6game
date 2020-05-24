@@ -98,11 +98,13 @@ class Board {
             console.log("liste de cases dans arrayCases : ", this.arrayCases);
             console.log("position dans arrayCases : ", pos);
 
-            if (pos % 10 === 0) { // si le J1 est sur le bord de gauche
+            if (pos % 10 === 0) {
+                // si le J1 est sur le bord de gauche
                 if (pos === index + 1 || pos === index - 10 || pos === index + 10) {
                     return true;
                 }
-            } else if (pos % 10 === 9) { // si le J1 est sur le bord de droite
+            } else if (pos % 10 === 9) {
+                // si le J1 est sur le bord de droite
                 if (pos === index - 1 || pos === index + 10 || pos === index - 10) {
                     return true;
                 }
