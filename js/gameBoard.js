@@ -3,13 +3,12 @@
 import Player from './player.js';
 import Case from './case.js';
 import Weapon from './weapons.js';
-// import Arme from './weapons.js';
 
 class Board {
     constructor() {
-        this.arrayCases = []; // listeCases
-        this.caseNumber = 100; // nbCase
-        this.playersList = []; // listeJoueurs
+        this.arrayCases = []; // tableau de Cases
+        this.caseNumber = 100; // nombre de Case
+        this.playersList = []; // liste de Joueurs
         this.indexBlocked = []; // indexInterdit
         this.weaponsArcenal = [ // weaponsArcenal
             {
@@ -27,7 +26,7 @@ class Board {
                 damage: 40,
                 display: "Marteau"
             }
-        ]; // listeArmes
+        ];
     }
 
     // Generate random index for blocked case, stop it while indexBlocked exists
@@ -74,7 +73,7 @@ class Board {
         }
     }
 
-    // generateJoueur
+    // generate player as a new object
     generatePlayer() {
         for (let i = 1; i < 3; i++) {
             let caseSelect;
@@ -91,6 +90,7 @@ class Board {
     }
 
     checkPosition(index) {
+        // ISSUE : loop statement doesn't loop
         for (let player of this.playersList) {
             let pos = this.arrayCases.find(c => c._player === player).index;
 
@@ -128,7 +128,7 @@ class Board {
         } else return pos_player - 1 || pos_player + 1 || pos_player - 10 || pos_player + 10;
     }*/
 
-    // generationPlateau
+    // Game Board generation : case, players and weapons
     generateBoard() {
         this.generateCase();
         this.generatePlayer();
