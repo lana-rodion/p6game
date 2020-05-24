@@ -7,11 +7,11 @@ html {
   padding: 0;
   margin: 0;
 }
+
 body {
   padding-top: 5rem;
   padding-bottom: 0;
-  /* Margin bottom by footer height */
-  margin-bottom: 80px;
+  margin-bottom: 80px; /* Margin bottom by footer height */
 }
 
 body > .container {
@@ -20,15 +20,15 @@ body > .container {
 }
 
 nav {
-  border-bottom: 1px solid rgba(128,128,128, 0.2);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
   border-top: none;
   border-left: none;
   border-right: none;
-  box-shadow: 0 5px 5px 1px rgba(0,0,0, 0.5);
+  box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.5);
 }
 
 .text-grey_light {
-  color: rgb(220,220,220);
+  color: rgb(220, 220, 220);
 }
 
 .text-grey_medium {
@@ -51,7 +51,7 @@ h2 {
   font-size: 0.85em;
 }
 
-label.list-select{
+label.list-select {
   display: block;
   width: 100%;
 }
@@ -108,8 +108,7 @@ a:hover.dropdown-item {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 60px; /* Set the fixed height of the footer here */
   line-height: 60px; /* Vertically center the text there */
   background-color: #6c757d;
 }
@@ -119,14 +118,14 @@ a:hover.dropdown-item {
   padding-left: 15px;
 }
 
-/*.img-validator {
+/* .img-validator {
     border: 0;
     width: 88px;
     height: 31px
-}*/
+} */
 
 /* == MEDIAS == */
-@media only screen and (max-width : 480px) {
+@media only screen and (max-width: 480px) {
   body {
     padding-top: 3.5rem;
     padding-bottom: 0;
