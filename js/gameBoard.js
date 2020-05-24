@@ -99,7 +99,10 @@ class Board {
             console.log("tableau de cases dans arrayCases : " , this.arrayCases);
             console.log("details des objets dans arrayCases : " , this.arrayCases[index]);
             console.log("position dans arrayCases : " , pos);
+        }
+    }
 
+    /*
             // refactoring
             if (pos % 10 === 0 && (pos === index + 1 || pos === index - 10 || pos === index + 10)) {
                 // si le J1 est sur le bord de gauche
@@ -108,8 +111,7 @@ class Board {
                 // si le J1 est sur le bord de droite
                 return true;
             } else return pos === index - 1 || pos === index + 1 || pos === index - 10 || pos === index + 10;
-        }
-    }
+     */
 
     // Refactoring Test
     /*findPosition(index) {
