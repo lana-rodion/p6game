@@ -116,8 +116,106 @@ class Board {
         this.generatePlayer();
         this.generateWeapons();
     }
+
+    tours() {
+
+        let indexPlayer = this.playersList.indexOf(this.player);
+
+        if (indexPlayer === 0) {
+            this.player = this.playersList[1];
+        } else {
+            this.player = this.playersList[0];
+        }
+        this.movement();
+    }
+
+    // Check if two indexes are on the same line to take into account the board edges
+    compareLine(index1, index2) {
+        return Math.floor(index1 / 10) !== Math.floor(index2 / 10);
+    }
+
+    movement() {
+        const orientation = [-10, 1, 10, -1];
+
+        for (let j = 0; j < 4; j++) {
+            const positionOrigin = this.arrayCases.find(c => c._player === this.player).index;
+            let positionPlayer = positionOrigin;
+            let decalage = orientation[j];
+
+            for (let i = 0; i < 3; i++) {
+                positionPlayer += decalage;
+
+                let caseSelect = this.arrayCases[positionPlayer];
+
+                // si caseSelect renvoie undefined, s'il y a un obstacle ou un player, alors on ne génère plus de cases de déplacements
+                if (!caseSelect || caseSelect._obstacle || caseSelect._player) {
+                    break;
+                }
+                // s'il ne sont pas sur la même ligne donc sur un bord du plateau, ne pas faire la génération à droite et à gauche
+                if ((decalage === 1 || decalage === -1) && (this.compareLine(caseSelect.index, positionOrigin))) {
+                    break;
+                }
+                caseSelect.changeColor('movementPossible');
+            }
+        }
+        //this.updateWeapon();
+        this.movementClickable();
+        //this.stats();
+        //this.modalFight();
+    }
+
+    movementClickable() {
+
+        let player = this.player;
+
+        $('.movementPossible').on('click', (event) => {
+            const caseOrigin = this.arrayCases.find(c => c._player === this.player);
+            caseOrigin.player = null;
+
+            let newPositionPlayer = $(event.target).attr('id').substring(1);
+            player.movementPlayer(caseOrigin.index, (Number(newPositionPlayer)));
+
+            this.arrayCases[Number(newPositionPlayer)]._player = player;
+
+            const movement = $('.movementPossible');
+            movement.off();
+            movement.removeClass('movementPossible');
+            this.tours();
+        });
+    }
+
+    /*updateWeapon() {
+
+        const caseOrigin = this.playersList.find(c => c._player === this.player);
+
+        $('.movementPossible').on('click', (event) => {
+
+            let positionPlayer = caseOrigin.index; // position de base du player
+            let caseClick = this.arrayCases[$(event.target).attr('id').substring(1)].index; //position cliquée du player
+
+            let nbMovement = Math.abs(caseClick - positionPlayer); // nb de cases entre la position de départ du player et celle d'arrivée
+
+            if (nbMovement > 3) {
+                nbMovement /= 10;
+            } // si le déplacement est supérieur à 3, / par 10 (pour calculer le déplacement haut et bas)
+
+            let decalage;
+            for (let i = 1; i < nbMovement + 1; i++) {
+                decalage = Math.floor((caseClick - positionPlayer) / nbMovement); //permet de connaître la direction du player (haut -10, bas +10, gauche -1, droite +1)
+                let caseCrossed = this.arrayCases[positionPlayer + (decalage * i)]; // passe sur les cases parcourues et ressort les éléments de mon tableau arrayCases (pour vérifier les weapons)
+
+                if (caseCrossed._weapon !== null) { // s'il y a une arme sur mes cases parcourues
+                    const weaponTemp = caseCrossed._weapon;
+                    caseCrossed._weapon = this.player.weapon; // je change l'arme de mon player par celle sur ma case
+                    $(`#c${caseCrossed.index}`).removeClass(weaponTemp.skin).addClass(this.player.weapon.skin); // changement du skin de l'arme déposée
+                    this.player.weapon = weaponTemp; // mon player dépose son arme
+                }
+            }
+        });
+    }*/
+
 }
 
 const board = new Board();
 board.generateBoard();
-//board.tours();
+board.tours();
