@@ -1,5 +1,3 @@
-/* == COLORS == */
-
 /* == GENERAL == */
 html {
   position: relative;
@@ -15,7 +13,6 @@ body {
 }
 
 body > .container {
-  /*padding: 60px 15px 0;*/
   padding: 20px 15px 40px;
 }
 

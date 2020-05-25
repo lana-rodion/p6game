@@ -86,7 +86,8 @@ ul.rules {
   background-size: contain;
 }
 
-.case.weapon_scramasaxe, .case.weapon_hammer, .case.weapon_axe, .case.weapon_sword {
+.case.weapon_scramasaxe, .case.weapon_hammer,
+.case.weapon_axe, .case.weapon_sword {
   background-color: #b0ffef;
 }
 
