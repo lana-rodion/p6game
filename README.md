@@ -40,7 +40,7 @@ As in Highlander, there can only be one left!
 
 *   During a fight, the game works as follows:
     *   Each in turn attacks
-    *   Damage depends on the weapon owned by the player
+    *   damage depends on the weapon owned by the player
     *   Player can choose to attack or defend against the next hit
     *   When the player defends, he takes 50% less damage than normal
     *   As soon as a player's life points (initially 100) drop to 0, the player loses
