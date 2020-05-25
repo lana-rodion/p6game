@@ -60,8 +60,12 @@ ul.rules {
   background-color: #63758c;
 }
 
-.movementPossible {
+/*.movementPossible {
   background-color: rgb(5, 195, 178);
+}*/
+.movementPossible {
+  /*background-color: rgb(239, 174, 252);*/
+  background-color: rgb(128, 250, 246);
 }
 
 .case, .obstacle, .movementPossible, .player1, .player2,
@@ -84,11 +88,6 @@ ul.rules {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-}
-
-.case.weapon_scramasaxe, .case.weapon_hammer,
-.case.weapon_axe, .case.weapon_sword {
-  background-color: #b0ffef;
 }
 
 .case.player1 {
