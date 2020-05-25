@@ -2,6 +2,6 @@
 $(function() {
     $("#game-rules").css( "display", "none" );
     $("#rules").click(function() {
-        $("#game-rules").toggle('slow');
+        $("#game-rules").toggle("slow");
     } );
 });
