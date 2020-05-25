@@ -7,6 +7,7 @@ import Weapon from "./weapons.js";
 class Board {
     constructor() {
         this.arrayCases = []; // tableau de Cases
+        this.position = 0;
         this.caseNumber = 100; // nombre de Case
         this.playersList = []; // liste de Joueurs
         this.indexBlocked = []; // indexInterdit
@@ -93,39 +94,38 @@ class Board {
 
     checkPosition(index) {
         // ISSUE : loop statement doesn't loop
-        for (let player of this.playersList) {
-            let pos = this.arrayCases.find((c) => c._player === player).index;
+        for (let joueur of this.playersList) {
+            console.log(this.arrayCases);
+            const pos = this.arrayCases.find(c => c._joueur === joueur).index;
 
-            console.log("tableau de cases dans arrayCases : " , this.arrayCases);
-            console.log("details des objets dans arrayCases : " , this.arrayCases[index]);
-            console.log("position dans arrayCases : " , pos);
+            if (pos % 10 === 0) { // si le J1 est sur le bord de gauche
+                if (pos === index + 1 || pos === index - 10 || pos === index + 10) {
+                    return true;
+                }
+            } else if (pos % 10 === 9) { // si le J1 est sur le bord de droite
+                if (pos === index - 1 || pos === index + 10 || pos === index - 10) {
+                    return true;
+                }
+            } else return pos === index - 1 || pos === index + 1 || pos === index - 10 || pos === index + 10;
+
         }
     }
 
-    /*
-            // refactoring
-            if (pos % 10 === 0 && (pos === index + 1 || pos === index - 10 || pos === index + 10)) {
-                // si le J1 est sur le bord de gauche
-                return true;
-            } else if (pos % 10 === 9 && (pos === index - 1 || pos === index + 10 || pos === index - 10)) {
-                // si le J1 est sur le bord de droite
-                return true;
-            } else return pos === index - 1 || pos === index + 1 || pos === index - 10 || pos === index + 10;
-     */
-
     // Refactoring Test
     /*findPosition(index) {
-        let pos;
         for (let player of this.playersList) {
-            pos = this.arrayCases.find(c => c._player === player).index;
+            this.position = this.arrayCases.find(c => c._player === player).index;
+            console.log(this.position);
         }
-        return pos;
+        return this.position;
     }*/
 
     // check 2 players position
     /*checkPosition(index) {
-        let pos_modulo = pos % 10;
+        let pos_modulo = this.position % 10;
+        console.log(pos_modulo);
         let pos_player = this.findPosition(index);
+        console.log(pos_player);
         if (pos_modulo === 0 && (pos_player + 1 || pos_player - 10 || pos_player + 10)) {
             return true;
         } else if (pos_modulo === 9 && (pos_player - 1 || pos_player - 10 || pos_player + 10)) {
