@@ -90,12 +90,14 @@ class Board {
             this.position = this.arrayCases.find(c => c._player === player).index;
 
             console.log("liste de cases dans arrayCases : ", this.arrayCases);
-            console.log("position dans arrayCases : ", this.position);
             this.findPosition(index);
         }
     }
 
     findPosition(index) {
+
+        console.log("viking 1 valeur this.position : ", this.position);
+
         // si Player est sur le bord de gauche
         if (this.position % 10 === 0) {
             if (this.position === index + 1 || this.position === index - 10 || this.position === index + 10) {
