@@ -101,33 +101,47 @@
         </div>
     </div>
 
-    <!-- Game Board -->
-    <div class="row justify-content-center pl-2 pr-2 ml-auto mr-auto">
-        <div id="board" class="col-12 col-sm-12 col-md-6 p-0 mb-3">
+    <!-- Game Board V1 -->
+    <div class="row justify-content-center pl-2 pr-2 ml-auto mr-auto h-100">
+        <div id="board" class="col-12 col-sm-12 col-md-6 p-0">
             <!-- Grid 10 x 10 -->
         </div>
 
         <!-- Players Scores -->
-        <div id="scoreTable" class="col-12 col-sm-12 col-md-6 mb-2">
-            <div id="stats" class="row">
+        <div id="scoreTable" class="col-12 col-sm-12 col-md-6">
+            <div id="stats" class="row justify-content-center">
 
-                <div id="Player1" class="col-12 col-sm-12 pl-0 pr-0 pb-2 ml-md-2">
-                    <div class="bg-warning pl-2 pt-2 pr-2 pb-4 mb-2">
-                        <img src="images/viking1.png" alt="viking 1" class="imgPlayer mb-2">
-                        <div>Viking 1</div>
-                        <div id="lifePoints_1">Point de vie Viking 1 : 100</div>
-                        <div id="current-weapon_1">Arme 1</div>
-                        <div id="fight_1">Combat : Défense</div>
+                <div id="Player1" class="col-12 mb-3">
+                    <div class="row justify-content-center bg-warning p-2 p-sm-4 ml-md-2">
+                        <div class="col-4 text-center">
+                            <img src="images/viking1.png" alt="viking 1" class="imgPlayer">
+                        </div>
+                        <div class="pv_status col-8 pt-4">
+                            <p>Viking 1</p>
+                            <p>Point de vie&nbsp;: <span>X</span>/100</p>
+                            <progress class="pv_bar w-100" min="0" max="100" value="100"></progress>
+                        </div>
+                        <div class="col-md-8 offset-md-4 text-center">
+                            <input type="button" class="btn" value="Attaquer">
+                            <input type="button" class="btn" value="Défendre">
+                        </div>
                     </div>
                 </div>
 
-                <div id="Player2" class="col-12 col-sm-12 pl-0 pr-0 pb-2 ml-md-2">
-                    <div class="bg-info pl-2 pt-2 pr-2 pb-4 mb-2">
-                        <img src="images/viking2.png" alt="viking 2" class="imgPlayer mb-2">
-                        <div>Viking 2</div>
-                        <div id="lifePoints_2">Point de vie Viking 2 : 100</div>
-                        <div id="current-weapon_2">Arme 2</div>
-                        <div id="fight_2">Combat : Attaque</div>
+                <div id="Player2" class="col-12 mb-3">
+                    <div class="row justify-content-center bg-info p-2 p-sm-4 ml-md-2">
+                        <div class="col-4 text-center">
+                            <img src="images/viking2.png" alt="viking 2" class="imgPlayer">
+                        </div>
+                        <div class="pv_status col-8 pt-4">
+                            <p>Viking 1</p>
+                            <p>Point de vie&nbsp;: <span>X</span>/100</p>
+                            <progress class="pv_bar w-100" min="0" max="100" value="100"></progress>
+                        </div>
+                        <div class="col-md-8 offset-md-4 text-center">
+                            <input type="button" class="btn" value="Attaquer">
+                            <input type="button" class="btn" value="Défendre">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,8 +171,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!-- jQuery Latest stable version -->
 <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 
-<!-- JS board game Script -->
+<!-- JS game Script V1 -->
 
 <script type="module" src="js/weapons.js"></script>
 <script type="module" src="js/player.js"></script>
@@ -166,6 +181,13 @@
 <script type="module" src="js/gameBoard.js"></script>
 <script type="module" src="js/main.js"></script>
 <script type="text/javascript" src="js/interface.js"></script>
+
+<!-- JS game Script V2 -->
+<script type="module" src="js/v2_weapon.js"></script>
+<script type="module" src="js/v2_player.js"></script>
+<script type="module" src="js/v2_card.js"></script>
+<script type="module" src="js/v2_board.js"></script>
+<script type="module" src="js/v2_main.js"></script>
 
 </body>
 
