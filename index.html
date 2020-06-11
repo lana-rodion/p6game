@@ -1,4 +1,4 @@
-<!-- Step 1 - Version 0.1.2 2020/05/22 -->
+<!-- Step 1 - Version 0.1.2 2020/06/11 -->
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/game.css" rel="stylesheet">
+    <link href="css/game_v2.css" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -79,16 +79,16 @@
 
 <main class="container pb-4">
     <div class="row p-2 mb-2">
-        <div class="col-12">
+        <div class="col-12 col-sm-12 col-md-6">
             <p class="text-light title mb-0"> Combat de Guerriers</p>
             <p class="text-weight-light text-warning mb-0">Jeu de plateau tour par tour en JavaScript</p>
-            <p class="text-weight-light text-light text-smaller">
+            <p class="text-weight-light text-light text-smaller mb-1">
                 Les Vikings sont des personnifications mythiques de la force brutale.
                 On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
             </p>
         </div>
-        <div class="col-12 mb-2">
-            <button id="rules" class="btn btn-outline-light">Règles du jeu</button>
+        <div class="col-12 col-sm-12 col-md-6">
+            <button id="rules" class="btn btn-outline-light mb-1">Règles du jeu</button>
             <div id="game-rules" class="mt-2">
                 <ul class="text-weight-light text-light text-smaller rules">
                     <li>Les guerriers sont placés sur le champ de combat aléatoirement.</li>
@@ -101,33 +101,69 @@
         </div>
     </div>
 
-    <!-- Game Board -->
-    <div class="row justify-content-center pl-2 pr-2 ml-auto mr-auto">
-        <div id="board" class="col-12 col-sm-12 col-md-6 p-0 mb-3">
+    <!-- Game Board V2 -->
+    <div class="row justify-content-center pl-2 pr-2 ml-auto mr-auto h-100">
+        <div id="board" class="col-12 col-sm-12 col-md-6 p-0">
             <!-- Grid 10 x 10 -->
         </div>
 
         <!-- Players Scores -->
-        <div id="scoreTable" class="col-12 col-sm-12 col-md-6 mb-2">
-            <div id="stats" class="row">
-
-                <div id="Player1" class="col-12 col-sm-12 pl-0 pr-0 pb-2 ml-md-2">
-                    <div class="bg-warning pl-2 pt-2 pr-2 pb-4 mb-2">
-                        <img src="images/viking1.png" alt="viking 1" class="imgPlayer mb-2">
-                        <div>Viking 1</div>
-                        <div id="lifePoints_1">Point de vie Viking 1 : 100</div>
-                        <div id="current-weapon_1">Arme 1</div>
-                        <div id="fight_1">Combat : Défense</div>
+        <div id="scoreTable" class="col-12 col-sm-12 col-md-6">
+            <div id="stats" class="row justify-content-center">
+                <!-- Player 1 -->
+                <div id="Player1" class="col-12 mb-3">
+                    <div class="row justify-content-center pt-3 pb-2 bg-warning ml-md-2">
+                        <div class="col-4 text-center">
+                            <p><span id="hero1-name"></span></p>
+                            <img src="images/players/viking1.png" alt="viking 1" class="imgPlayer">
+                        </div>
+                        <div class="pv_status col-8 bg-light">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="mb-0 mt-2">Weapon&nbsp;: <span id="hero1-weapon-name"></span></p>
+                                    <p class="mb-0">
+                                        <span>Damages&nbsp;: </span><span id="hero1-weapon-infos"></span>
+                                    </p>
+                                </div>
+                                <div class="col-6 pl-4 pt-4 m-auto">
+                                    <span id="hero1-weapon-image"></span>
+                                </div>
+                            </div>
+                            <p class="">Point de vie&nbsp;: <span>X</span>/100</p>
+                            <progress class="pv_bar w-100" min="0" max="100" value="100"></progress>
+                        </div>
+                        <div class="col-md-8 offset-md-4 text-center bg-light pb-2 mb-2">
+                            <button class="hero2-attack-button fight-btn btn">Attaquer</button>
+                            <button class="hero2-defense-button fight-btn btn">Défendre</button>
+                        </div>
                     </div>
                 </div>
 
-                <div id="Player2" class="col-12 col-sm-12 pl-0 pr-0 pb-2 ml-md-2">
-                    <div class="bg-info pl-2 pt-2 pr-2 pb-4 mb-2">
-                        <img src="images/viking2.png" alt="viking 2" class="imgPlayer mb-2">
-                        <div>Viking 2</div>
-                        <div id="lifePoints_2">Point de vie Viking 2 : 100</div>
-                        <div id="current-weapon_2">Arme 2</div>
-                        <div id="fight_2">Combat : Attaque</div>
+                <div id="Player2" class="col-12 mb-3">
+                    <div class="row justify-content-center bg-info pt-3 pb-2 ml-md-2">
+                        <div class="col-4 text-center">
+                            <p><span id="hero2-name"></span></p>
+                            <img src="images/players/viking2.png" alt="viking 2" class="imgPlayer">
+                        </div>
+                        <div class="pv_status col-8 bg-light">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="mb-0 mt-2">Weapon&nbsp;: <span id="hero2-weapon-name"></span></p>
+                                    <p class="mb-0">
+                                        <span>Damages&nbsp;: </span><span id="hero2-weapon-infos"></span>
+                                    </p>
+                                </div>
+                                <div class="col-6 pl-4 pt-4 m-auto">
+                                    <span id="hero2-weapon-image" class=""></span>
+                                </div>
+                            </div>
+                            <p class="">Point de vie&nbsp;: <span>X</span>/100</p>
+                            <progress class="pv_bar w-100" min="0" max="100" value="100"></progress>
+                        </div>
+                        <div class="col-md-8 offset-md-4 text-center bg-light pb-2 mb-2">
+                            <button class="hero2-attack-button fight-btn btn">Attaquer</button>
+                            <button class="hero2-defense-button fight-btn btn">Défendre</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,14 +193,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!-- jQuery Latest stable version -->
 <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 
-<!-- JS board game Script -->
-
-<script type="module" src="js/weapons.js"></script>
-<script type="module" src="js/player.js"></script>
-<script type="module" src="js/case.js"></script>
-<script type="module" src="js/gameBoard.js"></script>
-<script type="module" src="js/main.js"></script>
+<!-- JS game Script V2 -->
+<script type="module" src="js/app.js"></script>
 <script type="text/javascript" src="js/interface.js"></script>
 
 </body>

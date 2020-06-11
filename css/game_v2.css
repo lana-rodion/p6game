@@ -1,8 +1,13 @@
-/** {
-  box-sizing: border-box;
-}*/
+/* =============================== */
+/* ======= Game V2 GENERAL ======= */
+/* =============================== */
 
-/* == GENERAL == */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .title {
   font-size: 1.5em;
 }
@@ -11,43 +16,60 @@ ul.rules {
   padding-left: 20px;
 }
 
-/* ======================= */
-/* ======= Game V1 ======= */
-/* ======================= */
+/* ======= BOARD ======= */
 
-/* == Board == */
 #board {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  width: 32vw;
-  height: 32vw;
-  min-width: 320px;
-  min-height: 320px;
-  max-width: 700px;
-  max-height: 700px;
+  grid-template-columns: repeat(10, 3.3vw);
+  grid-template-rows: repeat(10, 3.3vw);
 }
 
-.case {
+.cell {
   background: #fff;
   box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #38434c;
+  border-radius: 0.25em;
+}
+
+.card {
+  border: none;
+  background-color: inherit;
+}
+
+.accessible {
+  background-color: rgb(128, 250, 246);
+  cursor: pointer;
+  animation: zoomIn 1s 1;
 }
 
 .obstacle {
   background-color: #63758c;
 }
 
-.movementPossible {
-  background-color: rgb(128, 250, 246);
+/* ======= WEAPONS ======= */
+
+.scramasaxe {
+  background-image: url("../images/weapons/weapons_scramasaxe.png");
+  background-size: cover;
 }
 
-.case, .obstacle, .movementPossible, .player1, .player2,
-.weapon_scramasaxe, .weapon_hammer, .weapon_axe, .weapon_sword {
-  width: 100%;
-  border-radius: 4px;
+.hammer {
+  background-image: url("../images/weapons/weapons_hammer.png");
+  background-size: cover;
 }
 
-/* == Board Images == */
+.axe {
+  background-image: url("../images/weapons/weapons_axe.png");
+  background-size: cover;
+}
+
+.sword {
+  background-image: url("../images/weapons/weapons_sword.png");
+  background-size: cover;
+}
+
+/* ======= PLAYERS ======= */
+
 .imgPlayer {
   width: 80px;
   height: auto;
@@ -55,100 +77,53 @@ ul.rules {
   margin-left: auto;
 }
 
-.case.player1, .case.player2, .case.weapon_scramasaxe,
-.case.weapon_hammer, .case.weapon_axe, .case.weapon_sword {
+.hero1 {
+  background-image: url("../images/players/viking_onBoard_1.png");
+  background-color: deeppink;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.avatar1 {
+  background-image: url("../images/players/viking1.png");
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 70px;
+  height: 70px;
 }
 
-.case.player1 {
-  background-image: url("../images/players/viking_onBoard_1.png");
-  background-color: deeppink;
-}
-
-.case.player2 {
+.hero2 {
   background-image: url("../images/players/viking_onBoard_2.png");
   background-color: orange;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-/* == Weapons == */
-.case.weapon_scramasaxe {
-  background-image: url("../images/weapons/weapons_scramasaxe.png");
+.avatar2 {
+  background-image: url("../images/players/viking2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 70px;
+  height: 70px;
 }
 
-.case.weapon_hammer {
-  background-image: url("../images/weapons/weapons_hammer.png");
+.standard-size-img {
+  width: 70px;
+  height: 70px;
 }
 
-/* axe = hache */
-.case.weapon_axe {
-  background-image: url("../images/weapons/weapons_axe.png");
-}
-
-/* sword = epée */
-.case.weapon_sword {
-  background-image: url("../images/weapons/weapons_sword.png");
-}
-
-/* ======================= */
-/* ======= Game V2 ======= */
-/* ======================= */
-
-.weapon1 {
-  background-image: url("../images/weapons/weapons_scramasaxe.png");
-}
-
-.weapon2 {
-  background-image: url("../images/weapons/weapons_hammer.png");
-}
-.weapon3 {
-  background-image: url("../images/weapons/weapons_axe.png");
-}
-.weapon4 {
-  background-image: url("../images/weapons/weapons_sword.png");
-}
-
-.player1 {
-  background-image: url("../images/players/viking_onBoard_1.png");
-  background-color: deeppink;
-}
-.player2 {
-  background-image: url("../images/players/viking_onBoard_2.png");
-  background-color: orange;
-}
-
-section{
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.player_card{
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  margin: 30px auto auto;
-  border: 4px solid blue;
-  width: 350px;
-  vertical-align: middle;
-
-}
-
-.player_card div{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+/* ======= PLAYERS SCORES TABLE ======= */
 
 .pv_status{
   display: flex;
   flex-direction: column;
 }
 
-.pv_status p{
+.pv_status p {
   font-style: italic;
   font-weight: bold;
 }
@@ -165,20 +140,6 @@ section{
   transition: all 1s ease-in-out;
 }
 
-.player_card p{
-  text-align: center;
-}
-
-.player_card img{
-  border: 2px solid rgb(76, 0, 255);
-  border-radius: 10%;
-  padding: 2px;
-}
-
-.player_card h1{
-  text-align: center;
-}
-
 .pulseAnimation{
   animation: pulse 0.7s ease-in-out alternate infinite;
 }
@@ -192,10 +153,6 @@ section{
   z-index: 1000;
 }
 
-.displAllowed:hover{
-  background-color: orange;
-}
-
 .btn:active{
   transform: scale(0.9);
 }
@@ -206,22 +163,13 @@ section{
   font-weight: 500;
   color: #444;
   border: none;
-  background-image: linear-gradient(to bottom, #fff, #bbb);
+  background-image: linear-gradient(to bottom, #fff, #d1dfe5);
   border-radius: 25px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   transition-duration: 0.2s;
   outline: none;
 }
-
-/*#announcement{
-  position: absolute;
-  opacity: 0;
-  font-size: 7em;
-  color :  blue;
-  font-weight: bold;
-  text-shadow: white 0.1em 0.1em 0.2em;
-}*/
 
 /* == Animations == */
 @keyframes pulse{
@@ -267,6 +215,13 @@ section{
 
 /* == MEDIA QUERIES == */
 @media (max-width: 362px) {
+  #board {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(10, 9vw);
+    grid-template-rows: repeat(10, 9vw);
+  }
+
   #stats {
     margin-top: 1em;
   }

@@ -1,33 +1,15 @@
-export default class Weapon {
-    constructor(name, damage, skin, display) {
+export let weapons = [];
+
+class Weapon {
+    constructor(name, damage) {
         this.name = name;
         this.damage = damage;
-        this.skin = skin;
-        this.display = display;
-    }
-
-    set skin(skin) {
-        this._skin = skin;
-    }
-    get skin() {
-        return this._skin;
-    }
-
-    set name(name) {
-        this._name = name;
-    }
-    get name() {
-        return this._name;
-    }
-
-    set damage(damage) {
-        this._damage = damage;
-    }
-    get damage() {
-        return this._damage;
-    }
-
-    insertWeapon(index) {
-        $(`#c${index}`).addClass(this.skin);
     }
 }
+
+let weapon2 = new Weapon("sword", 15);
+let weapon3 = new Weapon("axe", 30);
+let weapon4 = new Weapon("hammer", 40);
+export let weapon1 = new Weapon("scramasaxe", 10);
+
+weapons.push(weapon2, weapon3, weapon4);
