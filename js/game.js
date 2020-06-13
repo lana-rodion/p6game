@@ -6,7 +6,9 @@ export default class Game {
     constructor(turnToPlay) {
         this.turnToPlay = turnToPlay;
     }
-    /* Cette méthode initialise le jeu en créant la grille de jeu et en lançant la méthode gamePlay */
+
+    // Method to initialize the game by creating the game grid and launching the gamePlay method
+
     init() {
         let height = 10;
         let width = 10;
@@ -23,7 +25,8 @@ export default class Game {
         this.gamePlay();
     }
 
-    /* Cette méthode gère les tours de jeu et lance d'autre méthode relative au bon fonctionnement du jeu */
+    // Method to manage the game turns and launch other methods relating to the good functioning of the game
+
     gamePlay() {
         let self = this;
         $("#board").on("click", ".accessible", function() {
@@ -39,7 +42,8 @@ export default class Game {
         });
     }
 
-    /* Cette méthode gère les différentes actions des joueurs */
+    // Method to manage players actions : movements, change od weapon, prepare the fight
+
     playerActions(player, boardCell, adjacentCells) {
         player.move(boardCell);
         player.changeWeapon(player);
@@ -51,7 +55,8 @@ export default class Game {
         }
     }
 
-    /* Cette méthode décrit le statut des joueurs (vie, armes..) à chaque fin de tour */
+    // Method to display players stats
+
     playersDescription(player) {
         $(`#${player.name}-name`)
             .empty()

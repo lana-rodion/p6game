@@ -25,7 +25,6 @@ class Player {
         if (this.currentCell.weapon !== null) {
             this.currentCell.element
                 .removeClass(this.currentCell.weapon.name)
-                .removeClass("weapon-effect");
             this.currentCell.element.addClass(playerWeapon.name);
             player.weapon = this.currentCell.weapon;
             this.currentCell.weapon = playerWeapon;
