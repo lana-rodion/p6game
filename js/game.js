@@ -30,29 +30,9 @@ export default class Game {
     gamePlay() {
         let self = this;
         $("#board").on("click", ".accessible", function() {
-            let adjacentCells = self.board.getAdjacentCells(
-                self.board.cells[$(this).data("x")][$(this).data("y")]
-            );
-            let boardCell = self.board.cells[$(this).data("x")][$(this).data("y")];
-            let currentPlayer = self.turnToPlay ? player1 : player2;
-            let nextPlayer = self.turnToPlay ? player2 : player1;
-            self.playerActions(currentPlayer, boardCell, adjacentCells);
             self.playersDescription(currentPlayer);
             self.board.getAccessibleCells(nextPlayer.currentCell, 3);
         });
-    }
-
-    // Method to manage players actions : movements, change od weapon, prepare the fight
-
-    playerActions(player, boardCell, adjacentCells) {
-        player.move(boardCell);
-        player.changeWeapon(player);
-        if (player.isPlayerAround(adjacentCells)) {
-            this.prepareFight();
-            player.fight(this.turnToPlay ? player2 : player1);
-        } else {
-            this.turnToPlay = !this.turnToPlay;
-        }
     }
 
     // Method to display players stats
