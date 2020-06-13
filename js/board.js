@@ -163,8 +163,7 @@ export default class Board {
             this.getAccessibleCellsInDirection(cell, nbOfAccessCell, false, -1)
         );
 
-        accessibleCells.forEach(accessiblesCell =>
-            (accessiblesCell.element.addClass("accessible"))
+        accessibleCells.forEach((accessibleCells) => (accessibleCells.element.addClass("accessible"))
         );
     }
 }

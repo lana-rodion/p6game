@@ -19,18 +19,6 @@ class Player {
         $(newCell.element).addClass(this.name);
     }
 
-    /* Cette méthode interverti l'arme d'une case avec celle du joueur. Les propriétés weapon de la case et du joueur sont ainsi modifié ainsi que le DOM */
-    changeWeapon(player) {
-        let playerWeapon = player.weapon;
-        if (this.currentCell.weapon !== null) {
-            this.currentCell.element
-                .removeClass(this.currentCell.weapon.name)
-            this.currentCell.element.addClass(playerWeapon.name);
-            player.weapon = this.currentCell.weapon;
-            this.currentCell.weapon = playerWeapon;
-        }
-    }
-
     isPlayerAround(cellsAround) {
         for (let cell of cellsAround) {
             if (cell.player !== null) {
