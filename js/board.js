@@ -54,9 +54,7 @@ export default class Board {
     randomPlayers(player) {
         let cell = this.randomCell();
         let adjacentCells = this.getAdjacentCells(cell);
-        let adjacentPlayer = adjacentCells.filter(
-            adjacentCell => (adjacentCell.player !== null)
-        );
+        let adjacentPlayer = adjacentCells.filter(adjacentCell => adjacentCell.player !== null);
         if (adjacentPlayer.length === 0 && cell.player === null) {
             cell.player = player;
             cell.element.addClass(player.name);
@@ -84,7 +82,7 @@ export default class Board {
     //This method gives the weapon property weapon.name of the cells containing them
 
     weaponsArr() {
-        this.weapons.forEach(weapon => {
+        this.weapons.forEach((weapon) => {
             let cell = this.randomFreeCell();
             cell.weapon = weapon;
             cell.element.addClass(`${weapon.name}`);
@@ -163,8 +161,6 @@ export default class Board {
             this.getAccessibleCellsInDirection(cell, nbOfAccessCell, false, -1)
         );
 
-        accessibleCells.forEach(accessiblesCell =>
-            (accessiblesCell.element.addClass("accessible"))
-        );
+        accessibleCells.forEach(accessibleCells => accessibleCells.element.addClass("accessible"));
     }
 }
