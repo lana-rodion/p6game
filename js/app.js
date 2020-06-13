@@ -1,5 +1,5 @@
 /*
-* Step 1 - Map generation
+ * Step 1 - Map generation
     Start by randomly generating the game map
     Each box can be either: empty or inaccessible (grayed background)
     On the map, a limited number of weapons (4 maximum) will be randomly placed and can be collected by players who pass over them
