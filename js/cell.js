@@ -10,6 +10,6 @@ export default class Cell {
 
     /* On verifie que la case en question n'est pas occupé par un obstacle / joueur */
     isFree() {
-        return this.player == null && !this.obstacle;
+        return this.player === null && !this.obstacle;
     }
 }

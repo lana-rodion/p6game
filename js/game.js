@@ -12,9 +12,8 @@ export default class Game {
         let width = 10;
         let players = [player1, player2];
 
-        players.forEach(player => {
-            this.playersDescription(player);
-        });
+        players.forEach(player => (
+            this.playersDescription(player)));
 
         this.board = new Board(player1, player2, weapons);
         this.board.createGrid(width, height);
