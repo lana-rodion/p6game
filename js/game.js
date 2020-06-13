@@ -20,18 +20,11 @@ export default class Game {
         this.board.createGrid(width, height);
 
         this.board.getAccessibleCells(player1.currentCell, 3);
-        this.gamePlay();
     }
 
     // Method to manage the game turns and launch other methods relating to the good functioning of the game
+    // TO DO turnToPlay()
 
-    gamePlay() {
-        let self = this;
-        $("#board").on("click", ".accessible", function() {
-            self.playersDescription(currentPlayer);
-            self.board.getAccessibleCells(nextPlayer.currentCell, 3);
-        });
-    }
 
     // Method to display players stats
 
