@@ -6,7 +6,9 @@ export default class Board {
         this.player1 = player1;
         this.player2 = player2;
     }
-    /* Méthode de création de la grille de jeux */
+
+    // Method to create the grid : define cell coordinates, to push its in columns and row with for loop
+
     createGrid(width, height) {
         this.width = width;
         this.height = height;
@@ -14,32 +16,31 @@ export default class Board {
         for (let column = 0; column < width; column++) {
             let columnArr = [];
             for (let row = 0; row < height; row++) {
-                let cellDiv = $(
-                    `<div class='cell' id='cell-c${column}-r${row}' data-x='${column}' data-y='${row}'></div>`
-                );
+                let cellDiv = $(`<div class='cell' id='cell-c${column}-r${row}' data-x='${column}' data-y='${row}'></div>`);
                 let cell = new Cell(column, row, cellDiv);
                 columnArr.push(cell);
                 $("#board").append(cellDiv);
             }
             this.cells.push(columnArr);
         }
-        /* Appel de méthodes pour la mise en places des éléments du jeux */
-        this.players();
-        this.obstacles();
-        this.weaponsArr();
+
+        this.players(); // method called to place players on the Grid
+        this.obstacles(); // method called to place obstacle on the Grid
+        this.weaponsArr(); // method called to place obstacle on the Grid
     }
 
-    /* Cette méthode pemret de générer un nombre aléatoire entre 0 et le nombre de cases en largeur/hauteur */
+    // Method to generate random integer calculated with min, max
+
     randomNumber(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    /* Cette méthode renvoie une cellule aléatoire en piochant celle ci dans le tableau cells */
+    // Method to return random cell with coordinates x and y, called randomNumber(0, this.width)
+
     randomCell() {
         let x = this.randomNumber(0, this.width);
         let y = this.randomNumber(0, this.height);
-        let cell = this.cells[x][y];
-        return cell;
+        return this.cells[x][y];
     }
 
     players() {
@@ -47,12 +48,14 @@ export default class Board {
         this.randomPlayers(this.player2);
     }
 
-    /* Cette méthode place un joueur sur la grille de jeu à la condition que les cases adjacentes et sa potentielle case ne soient pas occupés par l'autre joueur */
+    // Method to place random player in random cell doing recursive call this.randomPlayers(player) after previous verification:
+    // call the getAdjacentCells(cell) to verify if adjacent Cells and the cell of player placement are not occupied by other player
+
     randomPlayers(player) {
         let cell = this.randomCell();
         let adjacentCells = this.getAdjacentCells(cell);
         let adjacentPlayer = adjacentCells.filter(
-            adjacentCell => adjacentCell.player !== null
+            adjacentCell => (adjacentCell.player !== null)
         );
         if (adjacentPlayer.length === 0 && cell.player === null) {
             cell.player = player;
@@ -62,7 +65,10 @@ export default class Board {
             this.randomPlayers(player);
         }
     }
-    /* Cette méthode calcule le nombre moyen d'obstacles en fonction du nombre de cellule dans la grille de jeu. Elle place ensuite les obstacles dans le DOM et modifie la propriété obstacle des cellules */
+
+    // Method to calculate average number of obstacles based on the number of cells in the game grid
+    // It inserts the obstacle in random Free Cell and add class css "obstacle" to this cell
+
     obstacles() {
         let averageObstacles = Math.floor(
             (this.width * this.height) / ((this.width + this.height) / 2)
@@ -74,16 +80,19 @@ export default class Board {
         }
     }
 
-    /* Cette méthode passe en revue chaque arme du tableau weapons afin de les placer dans le DOM et de modifier les propriétées weapon des cellules les comportants */
+    // Method executed on each element of the weapons array to place the weapon in the random Free Cell
+    //This method gives the weapon property weapon.name of the cells containing them
+
     weaponsArr() {
         this.weapons.forEach(weapon => {
             let cell = this.randomFreeCell();
             cell.weapon = weapon;
-            cell.element.addClass(`${weapon.name} weapon-effect`);
+            cell.element.addClass(`${weapon.name}`);
         });
     }
 
-    /* Cette méthode renvoie une cellule libre (sans obstacle, ni arme, ni joueur) */
+    // Method to return a free cell (without obstacle, weapon, player)
+
     randomFreeCell() {
         let cell = this.randomCell();
         if (!cell.obstacle && cell.player === null && cell.weapon === null) {
@@ -92,7 +101,9 @@ export default class Board {
             return this.randomFreeCell();
         }
     }
-    /* Cette méthode renvoie toutes les cases adjacentes à une cellule */
+
+    // This method returns all the cases adjacent to a cell
+
     getAdjacentCells(cell) {
         let adjacentCells = [];
         if (cell.x + 1 < this.width) {
@@ -110,16 +121,21 @@ export default class Board {
         return adjacentCells;
     }
 
-    /* Cette méthode vérifie que la cellule existe */
+    // Method to verify with parameters (x, y) if this cell exists
+
     cellExist(x, y) {
         return x >= 0 && x < this.width && y >= 0 && y < this.height;
     }
-    /* Cette méthode renvoie un tableau des cases accessibles selon la direction indiquée en paramètre(horizontal/vertival/+1/-1)*/
+
+    // This method returns an array of the accessible cells
+    // using the direction indicated in parameter (horizontal / vertical / + 1 / -1)
+
     getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, sign) {
         let accessibleCells = [];
         for (let i = 1; i <= nbOfAccessCell; i++) {
             let x = cell.x + (horizontal ? sign * i : 0);
             let y = cell.y + (horizontal ? 0 : sign * i);
+
             if (this.cellExist(x, y) && this.cells[x][y].isFree()) {
                 accessibleCells.push(this.cells[x][y]);
             } else {
@@ -128,8 +144,10 @@ export default class Board {
         }
         return accessibleCells;
     }
-    /*La méthode getAccessibleCells de la classe Board est appelé dans l'objet game de la classe Game */
-    /* Cette méthode regroupe(concat) les tableaux renvoyés par getAccessibleCellsInDirection afin de renvoyer toutes les cases accessibles par le joueur*/
+
+    // This method is called in the game object of the Game class
+    // Method to concat accessibleCells array in order to return all the cells accessible by the player
+
     getAccessibleCells(cell, nbOfAccessCell) {
         let accessibleCells = [];
         accessibleCells = accessibleCells.concat(
@@ -146,7 +164,7 @@ export default class Board {
         );
 
         accessibleCells.forEach(accessiblesCell =>
-            accessiblesCell.element.addClass("accessible")
+            (accessiblesCell.element.addClass("accessible"))
         );
     }
 }

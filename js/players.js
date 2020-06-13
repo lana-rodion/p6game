@@ -4,9 +4,9 @@ class Player {
     constructor(name) {
         this.name = name;
         this.weapon = weapon1;
-        //this.life = 100;
+        this.life = 100;
         this.currentCell;
-        //this.defense = false;
+        this.defense = false;
     }
 
     /* Cette méthode change la propriété player de l'ancienne et de la nouvelle case et modifie aussi le DOM pour la partie visuelle */
@@ -25,7 +25,6 @@ class Player {
         if (this.currentCell.weapon !== null) {
             this.currentCell.element
                 .removeClass(this.currentCell.weapon.name)
-                .removeClass("weapon-effect");
             this.currentCell.element.addClass(playerWeapon.name);
             player.weapon = this.currentCell.weapon;
             this.currentCell.weapon = playerWeapon;

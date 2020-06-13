@@ -18,11 +18,29 @@ ul.rules {
 
 /* ======= BOARD ======= */
 
+#board-container {
+  max-width: 700px;
+  min-width: 320px;
+  margin: auto;
+}
+
 #board {
-  position: relative;
   display: grid;
-  grid-template-columns: repeat(10, 3.3vw);
-  grid-template-rows: repeat(10, 3.3vw);
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+#board::before {
+  content: '';
+  width: 0;
+  padding-bottom: 100%;
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+
+#board > *:first-child{
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
 }
 
 .cell {
@@ -215,13 +233,6 @@ ul.rules {
 
 /* == MEDIA QUERIES == */
 @media (max-width: 362px) {
-  #board {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(10, 9vw);
-    grid-template-rows: repeat(10, 9vw);
-  }
-
   #stats {
     margin-top: 1em;
   }
@@ -235,28 +246,9 @@ ul.rules {
   }
 
   .btn {
-    margin: 1.5em 1em;
+    margin: 0.75em;
     padding: 0.5em 1em;
     font-weight: 500;
     font-size: 1em;
   }
 }
-
-/*@media (min-width: 575.98px) {
-
-}*/
-
-/*Small devices (landscape phones, less than 768px) */
-/*@media (min-width: 767.98px) {
-
-}*/
-
-/* Medium devices (tablets, less than 992px) */
-/*@media (max-width: 991.98px) {
-
-}*/
-
-/*Large devices (desktops, less than 1200px) */
-/*@media (max-width: 1199.98px) {
-
-}*/

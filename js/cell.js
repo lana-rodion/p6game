@@ -8,8 +8,9 @@ export default class Cell {
         this.weapon = null;
     }
 
-    /* On verifie que la case en question n'est pas occupé par un obstacle / joueur */
+    // Method to check that this cell is not occupied by an obstacle and player
+
     isFree() {
-        return this.player == null && !this.obstacle;
+        return this.player === null && !this.obstacle;
     }
 }
