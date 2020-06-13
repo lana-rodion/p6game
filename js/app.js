@@ -12,7 +12,7 @@
 
 import Game from "./game.js";
 
-$( document ).ready(function() {
+$(document).ready(function() {
     let game = new Game(true);
     game.init();
 });
