@@ -14,9 +14,7 @@ export default class Board {
         for (let column = 0; column < width; column++) {
             let columnArr = [];
             for (let row = 0; row < height; row++) {
-                let cellDiv = $(
-                    `<div class='cell' id='cell-c${column}-r${row}' data-x='${column}' data-y='${row}'></div>`
-                );
+                let cellDiv = $(`<div class='cell' id='cell-c${column}-r${row}' data-x='${column}' data-y='${row}'></div>`);
                 let cell = new Cell(column, row, cellDiv);
                 columnArr.push(cell);
                 $("#board").append(cellDiv);
@@ -38,8 +36,7 @@ export default class Board {
     randomCell() {
         let x = this.randomNumber(0, this.width);
         let y = this.randomNumber(0, this.height);
-        let cell = this.cells[x][y];
-        return cell;
+        return this.cells[x][y];
     }
 
     players() {
@@ -52,7 +49,7 @@ export default class Board {
         let cell = this.randomCell();
         let adjacentCells = this.getAdjacentCells(cell);
         let adjacentPlayer = adjacentCells.filter(
-            adjacentCell => adjacentCell.player !== null
+            adjacentCell => (adjacentCell.player !== null)
         );
         if (adjacentPlayer.length === 0 && cell.player === null) {
             cell.player = player;
@@ -146,7 +143,7 @@ export default class Board {
         );
 
         accessibleCells.forEach(accessiblesCell =>
-            accessiblesCell.element.addClass("accessible")
+            (accessiblesCell.element.addClass("accessible"))
         );
     }
 }
