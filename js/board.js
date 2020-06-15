@@ -39,11 +39,11 @@ export default class Board {
 
     randomCell() {
         // fix security Generic Object Injection Sink
-        let x = parseInt(this.randomNumber(0, this.width));
-        let y = parseInt(this.randomNumber(0, this.height));
+        let x = this.randomNumber(0, this.width);
+        let y = this.randomNumber(0, this.height);
 
-        if (this.cells[x][y]){
-            return this.cells[x][y];
+        if (this.cells[parseInt(x)][parseInt(y)]){
+            return this.cells[parseInt(x)][parseInt(y)];
         }
     }
 
@@ -143,19 +143,21 @@ export default class Board {
             let x = 0;
             let y = 0;
             if (horizontal) {
-                x = parseInt(cell.x + sign * i);
-                y = parseInt(cell.y + 0);
+                x = cell.x + sign * i;
+                y = cell.y + 0;
             } else {
-                x = parseInt(cell.x + 0);
-                y = parseInt(cell.y + sign * i);
+                x = cell.x + 0;
+                y = cell.y + sign * i;
             }
 
-            console.log("typeof x : " + typeof x + " cell.x = row index : " + cell.x);
-            console.log("typeof y : " + typeof y + " cell.y = column index : " + cell.y);
+            //console.log("typeof x : " + typeof x + " cell.x = row index : " + cell.x);
+            //console.log("typeof y : " + typeof y + " cell.y = column index : " + cell.y);
 
-            if (this.cellExist(x, y) && this.cells[x][y].isFree()) {
-                accessibleCells.push(this.cells[x][y]);
-            } else break;
+            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
+                accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
+            } else {
+                break;
+            }
         }
         return accessibleCells;
     }
