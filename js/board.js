@@ -40,7 +40,9 @@ export default class Board {
     randomCell() {
         let x = this.randomNumber(0, this.width);
         let y = this.randomNumber(0, this.height);
-        return this.cells[x][y];
+
+        // test security activeObj[parseInt(index)]
+        return this.cells[parseInt(x)][parseInt(y)];
     }
 
     players() {
@@ -128,16 +130,22 @@ export default class Board {
     // This method returns an array of the accessible cells
     // using the direction indicated in parameter (horizontal / vertical / + 1 / -1)
 
-    getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, sign) {
+    getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, direction) {
         let accessibleCells = [];
-        for (let i = 1; i <= nbOfAccessCell; i++) {
-            let x = cell.x + (horizontal ? sign * i : 0);
-            let y = cell.y + (horizontal ? 0 : sign * i);
 
-            if (this.cellExist(x, y) && this.cells[x][y].isFree()) {
-                accessibleCells.push(this.cells[x][y]);
-            } else {
-                break;
+        let self = this;
+
+        for (let i = 1; i <= nbOfAccessCell; i++) {
+            // using ternary operator : condition ? expression_1 : expression_2
+            let dirX = horizontal ? direction * i : 0;
+            let dirY = horizontal ? 0 : direction * i;
+            let x = cell.x + dirX;
+            let y = cell.y + dirY;
+            /*let x = cell.x + (horizontal ? direction * i : 0);
+            let y = cell.y + (horizontal ? 0 : direction * i);*/
+
+            if (self.cellExist(x, y) && self.cells[parseInt(x)][parseInt(y)].isFree()) {
+                accessibleCells.push(self.cells[parseInt(x)][parseInt(y)]);
             }
         }
         return accessibleCells;
@@ -148,6 +156,7 @@ export default class Board {
 
     getAccessibleCells(cell, nbOfAccessCell) {
         let accessibleCells = [];
+
         accessibleCells = accessibleCells.concat(
             this.getAccessibleCellsInDirection(cell, nbOfAccessCell, true, 1)
         );
