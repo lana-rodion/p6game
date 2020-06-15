@@ -45,7 +45,10 @@ export default class Game {
         player.changeWeapon(player);
         if (player.isPlayerAround(adjacentCells)) {
             //this.prepareFight();
+
+            // using ternary operator : condition ? expression_1 : expression_2
             player.fight(this.turnToPlay ? player2 : player1);
+
         } else {
             this.turnToPlay = !this.turnToPlay;
         }

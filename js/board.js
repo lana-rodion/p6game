@@ -130,18 +130,24 @@ export default class Board {
     // This method returns an array of the accessible cells
     // using the direction indicated in parameter (horizontal / vertical / + 1 / -1)
 
-    getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, sign) {
+    getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, direction) {
         let accessibleCells = [];
-        for (let i = 1; i <= nbOfAccessCell; i++) {
-            let x = cell.x + (horizontal ? sign * i : 0);
-            let y = cell.y + (horizontal ? 0 : sign * i);
 
-            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
-                //accessibleCells.push(this.cells[x][y]);
+        let self = this;
+
+        for (let i = 1; i <= nbOfAccessCell; i++) {
+            // using ternary operator : condition ? expression_1 : expression_2
+            let x = cell.x + (horizontal ? direction * i : 0);
+            let y = cell.y + (horizontal ? 0 : direction * i);
+
+            if (self.cellExist(x, y) && self.cells[parseInt(x)][parseInt(y)].isFree()) {
+                accessibleCells.push(self.cells[parseInt(x)][parseInt(y)]);
+            }
+            /*if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
                 accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
             } else {
                 break;
-            }
+            }*/
         }
         return accessibleCells;
     }
@@ -151,6 +157,7 @@ export default class Board {
 
     getAccessibleCells(cell, nbOfAccessCell) {
         let accessibleCells = [];
+
         accessibleCells = accessibleCells.concat(
             this.getAccessibleCellsInDirection(cell, nbOfAccessCell, true, 1)
         );
