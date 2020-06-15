@@ -133,19 +133,15 @@ export default class Board {
     getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, direction) {
         let accessibleCells = [];
 
-        let self = this;
-
         for (let i = 1; i <= nbOfAccessCell; i++) {
             // using ternary operator : condition ? expression_1 : expression_2
             let dirX = horizontal ? direction * i : 0;
             let dirY = horizontal ? 0 : direction * i;
             let x = cell.x + dirX;
             let y = cell.y + dirY;
-            /*let x = cell.x + (horizontal ? direction * i : 0);
-            let y = cell.y + (horizontal ? 0 : direction * i);*/
 
-            if (self.cellExist(x, y) && self.cells[parseInt(x)][parseInt(y)].isFree()) {
-                accessibleCells.push(self.cells[parseInt(x)][parseInt(y)]);
+            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
+                accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
             }
         }
         return accessibleCells;
