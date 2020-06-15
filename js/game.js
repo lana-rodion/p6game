@@ -44,8 +44,11 @@ export default class Game {
         player.move(boardCell);
         player.changeWeapon(player);
         if (player.isPlayerAround(adjacentCells)) {
-            this.prepareFight();
+            //this.prepareFight();
+
+            // using ternary operator : condition ? expression_1 : expression_2
             player.fight(this.turnToPlay ? player2 : player1);
+
         } else {
             this.turnToPlay = !this.turnToPlay;
         }
@@ -59,4 +62,6 @@ export default class Game {
         $(`#${player.name}-weapon-name`).empty().append(`${player.weapon.name}`);
         $(`#${player.name}-weapon-infos`).empty().append(`${player.weapon.damage}`);
     }
+
+    // TO DO: prepareFight()
 }
