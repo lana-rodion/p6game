@@ -40,7 +40,11 @@ export default class Board {
     randomCell() {
         let x = this.randomNumber(0, this.width);
         let y = this.randomNumber(0, this.height);
-        return this.cells[x][y];
+
+        if (this.cells[x][y]){
+            return this.cells[x][y];
+        }
+        console.log("return this.cells[x][y];" + this.cells[x][y]);
     }
 
     players() {
