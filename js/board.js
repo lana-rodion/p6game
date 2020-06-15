@@ -32,6 +32,7 @@ export default class Board {
     // Method to generate random integer calculated with min, max
 
     randomNumber(min, max) {
+
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
@@ -41,10 +42,8 @@ export default class Board {
         let x = this.randomNumber(0, this.width);
         let y = this.randomNumber(0, this.height);
 
-        if (this.cells[x][y]){
-            return this.cells[x][y];
-        }
-        console.log("return this.cells[x][y];" + this.cells[x][y]);
+        // test security
+        return parseInt(this.cells[x][y]);
     }
 
     players() {
