@@ -38,11 +38,13 @@ export default class Board {
     // Method to return random cell with coordinates x and y, called randomNumber(0, this.width)
 
     randomCell() {
-        let x = this.randomNumber(0, this.width);
-        let y = this.randomNumber(0, this.height);
+        // fix security Generic Object Injection Sink
+        let x = parseInt(this.randomNumber(0, this.width));
+        let y = parseInt(this.randomNumber(0, this.height));
 
-        // test security activeObj[parseInt(index)]
-        return this.cells[parseInt(x)][parseInt(y)];
+        if (this.cells[x][y]){
+            return this.cells[x][y];
+        }
     }
 
     players() {
@@ -130,19 +132,30 @@ export default class Board {
     // This method returns an array of the accessible cells
     // using the direction indicated in parameter (horizontal / vertical / + 1 / -1)
 
-    getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, direction) {
+    getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, sign) {
         let accessibleCells = [];
 
         for (let i = 1; i <= nbOfAccessCell; i++) {
             // using ternary operator : condition ? expression_1 : expression_2
-            let dirX = horizontal ? direction * i : 0;
-            let dirY = horizontal ? 0 : direction * i;
-            let x = cell.x + dirX;
-            let y = cell.y + dirY;
-
-            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
-                accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
+            // fix security Generic Object Injection Sink
+            /*let x = parseInt(cell.x + (horizontal ? sign * i : 0));
+            let y = parseInt(cell.y + (horizontal ? 0 : sign * i));*/
+            let x = 0;
+            let y = 0;
+            if (horizontal) {
+                x = parseInt(cell.x + sign * i);
+                y = parseInt(cell.y + 0);
+            } else {
+                x = parseInt(cell.x + 0);
+                y = parseInt(cell.y + sign * i);
             }
+
+            console.log("typeof x : " + typeof x + " cell.x = row index : " + cell.x);
+            console.log("typeof y : " + typeof y + " cell.y = column index : " + cell.y);
+
+            if (this.cellExist(x, y) && this.cells[x][y].isFree()) {
+                accessibleCells.push(this.cells[x][y]);
+            } else break;
         }
         return accessibleCells;
     }
@@ -166,7 +179,7 @@ export default class Board {
             this.getAccessibleCellsInDirection(cell, nbOfAccessCell, false, -1)
         );
 
-        accessibleCells.forEach((accessibleCells) => (accessibleCells.element.addClass("accessible"))
+        accessibleCells.forEach((accessibleCells) => accessibleCells.element.addClass("accessible")
         );
     }
 }
