@@ -59,7 +59,7 @@ export default class Game {
     // Method to change the appearance of the board before the fight
     prepareClash() {
         $("#board div").not(".hero2, .hero1").css("opacity", "0.5");
-        $("[class^='cell']").not(".hero2, .hero1", "obstacle").addClass(`battle`);
+        $("[class^='cell']").not(".hero2, .hero1", "obstacle").addClass("battle");
         $("#board").off("click");
         $(".cell").addClass("accessible");
         $(".fight-btn").css("display", "block");
@@ -72,6 +72,7 @@ export default class Game {
         $(`#${player.name}-weapon-image`).empty().append(`<div class='standard-size-img ${player.weapon.name}'></div>`);
         $(`#${player.name}-weapon-name`).empty().append(`${player.weapon.name}`);
         $(`#${player.name}-weapon-infos`).empty().append(`${player.weapon.damage}`);
+
     }
 
     // TO DO: prepareFight()
