@@ -171,22 +171,52 @@ ul.rules {
   z-index: 1000;
 }
 
-.btn:active{
-  transform: scale(0.9);
+/* == Buttons == */
+
+.battle {
+  /*background-image: url(components/images/weapons/022-fist.png);
+  background-size: cover;*/
+  border: 3px solid rgb(112, 157, 165);
+  background-color: rgb(23, 162, 184);
 }
 
-.btn {
+.btn, .fight-btn {
   margin: 0.5em;
-  padding: 0.5em 1em;
   font-weight: 500;
   color: #444;
   border: none;
   background-image: linear-gradient(to bottom, #fff, #d1dfe5);
   border-radius: 25px;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   transition-duration: 0.2s;
   outline: none;
+}
+
+.btn {
+  padding: 0.5em 1em;
+  background-image: linear-gradient(to bottom, #fff, #d1dfe5);
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.fight-btn:active, .btn:active {
+  transform: scale(0.9);
+}
+
+.fight-btn:hover {
+  background-color: #FEE140;
+  background-image: linear-gradient(225deg, #FEE140 0%, #FA709A 100%);
+}
+
+.fight-btn {
+  border-style: none;
+  visibility: hidden;
+  /*display: none;*/
+}
+
+.fight-btn {
+  padding: 0.5em;
+  background-image: linear-gradient(to bottom, #fff, #d1dfe5);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* == Animations == */

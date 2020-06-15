@@ -40,11 +40,13 @@ export default class Game {
         });
     }
 
+    // Method to manage the different players actions
+
     playerActions(player, boardCell, adjacentCells) {
         player.move(boardCell);
         player.changeWeapon(player);
         if (player.isPlayerAround(adjacentCells)) {
-            //this.prepareFight();
+            this.prepareClash();
 
             // using ternary operator : condition ? expression_1 : expression_2
             player.fight(this.turnToPlay ? player2 : player1);
@@ -52,6 +54,15 @@ export default class Game {
         } else {
             this.turnToPlay = !this.turnToPlay;
         }
+    }
+
+    // Method to change the appearance of the board before the fight
+    prepareClash() {
+        $("#board div").not(".hero2, .hero1").css("opacity", "0.5");
+        $("[class^='cell']").not(".hero2, .hero1", "obstacle").addClass(`battle`);
+        $("#board").off("click");
+        $(".cell").addClass("accessible");
+        $(".fight-btn").css("display", "block");
     }
 
     // Method to display players stats

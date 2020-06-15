@@ -134,14 +134,14 @@ export default class Board {
 
     getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, sign) {
         let accessibleCells = [];
+        let x = 0;
+        let y = 0;
 
         for (let i = 1; i <= nbOfAccessCell; i++) {
             // using ternary operator : condition ? expression_1 : expression_2
-            // fix security Generic Object Injection Sink
             /*let x = parseInt(cell.x + (horizontal ? sign * i : 0));
             let y = parseInt(cell.y + (horizontal ? 0 : sign * i));*/
-            let x = 0;
-            let y = 0;
+
             if (horizontal) {
                 x = cell.x + sign * i;
                 y = cell.y + 0;
