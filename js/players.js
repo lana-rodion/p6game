@@ -69,8 +69,8 @@ class Player {
 
                 $(".modal-body").text(`${this.name} and his ${this.weapon.name} weapon win the battle of heroes!`);
                 $(".modal-body").prepend(`<div class='${this.name} standard-size-img'></div>`);
-                $(".modal-body").append(`<div class="battle standard-size-img"></div>`);
-                
+                $(".modal-body").append('<div class="battle standard-size-img"></div>');
+
                 $(".reload, .close").click(function() {
                     location.reload();
                 });
