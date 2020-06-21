@@ -34,6 +34,7 @@ export default class Game {
             let boardCell = self.board.cells[$(this).data("x")][$(this).data("y")];
             let currentPlayer = self.turnToPlay ? player1 : player2;
             let nextPlayer = self.turnToPlay ? player2 : player1;
+
             self.playerActions(currentPlayer, boardCell, adjacentCells);
             self.playersDescription(currentPlayer);
             self.board.getAccessibleCells(nextPlayer.currentCell, 3);
@@ -74,6 +75,4 @@ export default class Game {
         $(`#${player.name}-weapon-infos`).empty().append(`${player.weapon.damage}`);
 
     }
-
-    // TO DO: prepareFight()
 }

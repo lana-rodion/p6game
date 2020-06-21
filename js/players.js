@@ -1,18 +1,32 @@
 import { weapon1 } from "./weapons.js";
 
-class Player {
+export default class Player {
     constructor(name) {
         this.name = name;
         this.weapon = weapon1;
         this.life = 100;
-        this.currentCell;
+        this.currentCell = null;
         this.defense = false;
     }
+
+    // Getter
+    /*getLife() {
+        return this._life;
+    }*/
+
+    // Setter
+    /*setLife(newLifePoints) {
+        if (newLifePoints < 0) {
+            newLifePoints = 0;
+        }
+        this._life = newLifePoints;
+    }*/
 
     // Method to move player and change the previous cell property
 
     move(newCell) {
         this.currentCell.player = null;
+
         newCell.player = this;
         this.currentCell = newCell;
 
@@ -25,6 +39,7 @@ class Player {
 
     changeWeapon(player) {
         let playerWeapon = player.weapon;
+
         if (this.currentCell.weapon !== null) {
             this.currentCell.element.removeClass(this.currentCell.weapon.name);
             this.currentCell.element.addClass(playerWeapon.name);
@@ -49,41 +64,77 @@ class Player {
     */
     fight(target) {
         this.defense = false;
-
+        $(`.belt-${this.name}`).css("visibility", "hidden");
         $(`.${target.name}`).css("opacity", "0.5");
+        $(`.${target.name}-attack-button`)
+            .off("click")
+            .css({
+                visibility: "hidden",
+                "box-shadow": "none",
+                animation: "none"
+            });
         $(`.${this.name}`).css("opacity", "1");
+        $(`.${this.name}-attack-button`)
+            .css({
+                visibility: "visible",
+                "box-shadow": "0px 5px 5px #764462",
+                color: "#2c2137",
+                "background-color": "#edb4a1",
+                animation: "bounceIn 2s 1"
+            })
+            .on("click", e => {
+                let lifeRemaining = (target.life -= target.defense
+                    ? this.weapon.damage / 2
+                    : this.weapon.damage);
+                $(`.${target.name}-barre-life`).css("width", `${lifeRemaining}%`);
+                $(`.${target.name}-percentage-life`).text(`${target.life}%`);
+                if (target.life <= 0) {
+                    $(`.${target.name}`).css("visibility", "hidden");
+                    $("#endGameModal").modal({
+                        backdrop: "static",
+                        keyboard: false
+                    });
+                    $(".modal-body").text(
+                        `${this.name} and his ${
+                            this.weapon.name
+                        } weapon win the battle of heroes!`
+                    );
+                    $(".modal-body").prepend(
+                        `<div class='${this.name} standard-size-img'></div>`
+                    );
+                    $(".modal-body").append(
+                        `<div class='battle standard-size-img'></div>`
+                    );
+                    $(".reload, .close").click(function() {
+                        location.reload();
+                    });
+                }
+                target.fight(this);
+            });
 
-        $(`.${target.name}-attack-button`).off("click").css({visibility: "hidden", "box-shadow": "none", animation: "none"});
-        $(`.${this.name}-attack-button`).css({visibility: "visible", "box-shadow": "1px 3px 4px rgb(80, 114, 135)", color: "#41385d", "background-color": "rgb(161, 226, 237)", animation: "bounceIn 2s 1"});
+        $(`.${target.name}-defense-button`)
+            .off("click")
+            .css({
+                visibility: "hidden",
+                "box-shadow": "none",
+                animation: "none"
+            });
+        $(`.${this.name}-defense-button`)
+            .css({
+                "box-shadow": "0px 5px 5px #764462",
+                color: "#2c2137",
+                "background-color": "#edb4a1",
+                animation: "bounceIn 2s 1"
+            })
 
-        $(`.${this.name}-attack-button`).on("click", (e) => {
-            let lifeRemaining = (target.life -= target.defense ? this.weapon.damage / 2 : this.weapon.damage);
+            .css("visibility", "visible")
+            .on("click", e => {
+                this.defense = true;
+                $(`.belt-${this.name}`).css("visibility", "visible");
+                target.fight(this);
 
-            $(`.${target.name}-barre-life`).css("width", `${lifeRemaining}%`);
-            $(`.${target.name}-percentage-life`).text(`${target.life}%`);
-
-            if (target.life <= 0) {
-                $(`.${target.name}`).css("visibility", "hidden");
-
-                $("#endGameModal").modal({backdrop: "static", keyboard: false});
-
-                $(".modal-body").text(`${this.name} and his ${this.weapon.name} weapon win the battle of heroes!`);
-                $(".modal-body").prepend(`<div class="${this.name} standard-size-img"></div>`);
-                $(".modal-body").append(`<div class="battle standard-size-img"></div>`);
-
-                $(".reload, .close").click(function() {
-                    location.reload();
-                });
-            }
-            target.fight(this);
-        });
-
-        $(`.${target.name}-defense-button`).off("click").css({visibility: "hidden", "box-shadow": "none", animation: "none"});
-        $(`.${this.name}-defense-button`).css({"box-shadow": "1px 3px 4px rgb(80, 114, 135)", color: "#41385d", "background-color": "rgb(161, 226, 237)", animation: "bounceIn 2s 1"});
-        $(`.${this.name}-defense-button`).css("visibility", "visible").on("click", (e) => {
-            this.defense = true;
-            target.fight(this);
-        });
+                console.log("target.fight(this) : " + target.fight(this));
+            });
     }
 }
 

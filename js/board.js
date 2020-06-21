@@ -72,9 +72,7 @@ export default class Board {
     // It inserts the obstacle in random Free Cell and add class css "obstacle" to this cell
 
     obstacles() {
-        let averageObstacles = Math.floor(
-            (this.width * this.height) / ((this.width + this.height) / 2)
-        );
+        let averageObstacles = Math.floor((this.width * this.height) / ((this.width + this.height) / 2));
         for (let obstacles = 0; obstacles < averageObstacles; obstacles++) {
             let cell = this.randomFreeCell();
             cell.obstacle = true;

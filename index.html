@@ -123,7 +123,7 @@
                         <div class="pv_status col-8 bg-light">
                             <div class="row">
                                 <div class="col-6">
-                                    <p class="mb-0 mt-2">Weapon&nbsp;: <span id="hero1-weapon-name"></span></p>
+                                    <p class="mb-0 mt-2">Arme&nbsp;: <br><span id="hero1-weapon-name" class="text-secondary"></span></p>
                                     <p class="mb-0">
                                         <span>Damages&nbsp;: </span><span id="hero1-weapon-infos"></span>
                                     </p>
@@ -132,9 +132,14 @@
                                     <span id="hero1-weapon-image"></span>
                                 </div>
                             </div>
-                            <p class="mb-1">Point de vie&nbsp;: <span>X</span>/100</p>
-                            <progress class="pv_bar w-100 mb-2" min="0" max="100" value="100"></progress>
-                            <div class="row justify-content-center mb-2">
+
+                            <div class="hero1-percentage-life pb-2">100%</div>
+                            <div class="life text-center">
+                                <div class="hero-defense"></div>
+                                <div class="hero1-barre-life"></div>
+                            </div>
+
+                            <div class="row justify-content-center mb-2 mt-2">
                                 <button class="col-4 hero1-attack-button fight-btn">Attaquer</button>
                                 <button class="col-4 hero1-defense-button fight-btn">Défendre</button>
                             </div>
@@ -152,7 +157,7 @@
                         <div class="pv_status col-8 bg-light">
                             <div class="row">
                                 <div class="col-6">
-                                    <p class="mb-0 mt-2">Weapon&nbsp;: <span id="hero2-weapon-name"></span></p>
+                                    <p class="mb-0 mt-2">Arme&nbsp;: <br><span id="hero2-weapon-name" class="text-secondary"></span></p>
                                     <p class="mb-0">
                                         <span>Damages&nbsp;: </span><span id="hero2-weapon-infos"></span>
                                     </p>
@@ -161,9 +166,14 @@
                                     <span id="hero2-weapon-image" class=""></span>
                                 </div>
                             </div>
-                            <p class="">Point de vie&nbsp;: <span>X</span>/100</p>
-                            <progress class="pv_bar w-100 mb-2" min="0" max="100" value="100"></progress>
-                            <div class="row justify-content-center mb-2">
+
+                            <div class="hero2-percentage-life pb-2">100%</div>
+                            <div class="life text-center">
+                                <div class="hero-defense"></div>
+                                <div class="hero2-barre-life"></div>
+                            </div>
+
+                            <div class="row justify-content-center mb-2 mt-2">
                                 <button class="col-4 hero2-attack-button fight-btn">Attaquer</button>
                                 <button class="col-4 hero2-defense-button fight-btn">Défendre</button>
                             </div>
@@ -173,6 +183,29 @@
             </div>
         </div>
     </div>
+
+    <!-- GAME OVER Modal -->
+    <div class="modal fade" id="endGameModal" tabindex="-1" role="dialog" aria-labelledby="endGameModalTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="endGameModalLongTitle">BATTLE of HEROES</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex align-items-center">
+
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary reload">Fight Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./GAME OVER Modal -->
 </main>
 
 <!-- Footer -->
