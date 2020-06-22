@@ -34,17 +34,20 @@ export default class Game {
             let boardCell = self.board.cells[$(this).data("x")][$(this).data("y")];
             let currentPlayer = self.turnToPlay ? player1 : player2;
             let nextPlayer = self.turnToPlay ? player2 : player1;
+
             self.playerActions(currentPlayer, boardCell, adjacentCells);
             self.playersDescription(currentPlayer);
             self.board.getAccessibleCells(nextPlayer.currentCell, 3);
         });
     }
 
+    // Method to manage the different players actions
+
     playerActions(player, boardCell, adjacentCells) {
         player.move(boardCell);
         player.changeWeapon(player);
         if (player.isPlayerAround(adjacentCells)) {
-            //this.prepareFight();
+            this.prepareClash();
 
             // using ternary operator : condition ? expression_1 : expression_2
             player.fight(this.turnToPlay ? player2 : player1);
@@ -54,6 +57,15 @@ export default class Game {
         }
     }
 
+    // Method to change the appearance of the board before the fight
+    prepareClash() {
+        $("#board div").not(".hero2, .hero1").css("opacity", "0.5");
+        $("[class^='cell']").not(".hero2, .hero1", "obstacle").addClass("battle");
+        $("#board").off("click");
+        $(".cell").addClass("accessible");
+        $(".fight-btn").css("display", "block");
+    }
+
     // Method to display players stats
 
     playersDescription(player) {
@@ -61,7 +73,6 @@ export default class Game {
         $(`#${player.name}-weapon-image`).empty().append(`<div class='standard-size-img ${player.weapon.name}'></div>`);
         $(`#${player.name}-weapon-name`).empty().append(`${player.weapon.name}`);
         $(`#${player.name}-weapon-infos`).empty().append(`${player.weapon.damage}`);
-    }
 
-    // TO DO: prepareFight()
+    }
 }
