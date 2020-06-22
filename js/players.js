@@ -1,7 +1,7 @@
 import { weapon1 } from "./weapons.js";
 
-export default class Player {
-    constructor(name) {
+class Player {
+    constructor(name, life) {
         this.name = name;
         this.weapon = weapon1;
         this.life = 100;
@@ -10,17 +10,8 @@ export default class Player {
     }
 
     // Getter
-    /*getLife() {
-        return this._life;
-    }*/
 
     // Setter
-    /*setLife(newLifePoints) {
-        if (newLifePoints < 0) {
-            newLifePoints = 0;
-        }
-        this._life = newLifePoints;
-    }*/
 
     // Method to move player and change the previous cell property
 
@@ -64,77 +55,53 @@ export default class Player {
     */
     fight(target) {
         this.defense = false;
-        $(`.belt-${this.name}`).css("visibility", "hidden");
+
         $(`.${target.name}`).css("opacity", "0.5");
-        $(`.${target.name}-attack-button`)
-            .off("click")
-            .css({
-                visibility: "hidden",
-                "box-shadow": "none",
-                animation: "none"
-            });
+        $(`.${target.name}-attack-button`).off("click").css({visibility: "hidden"});
+
+        // appearance of hero which has his turn to attack
         $(`.${this.name}`).css("opacity", "1");
-        $(`.${this.name}-attack-button`)
-            .css({
-                visibility: "visible",
-                "box-shadow": "0px 5px 5px #764462",
-                color: "#2c2137",
-                "background-color": "#edb4a1",
-                animation: "bounceIn 2s 1"
-            })
-            .on("click", e => {
-                let lifeRemaining = (target.life -= target.defense
-                    ? this.weapon.damage / 2
-                    : this.weapon.damage);
-                $(`.${target.name}-barre-life`).css("width", `${lifeRemaining}%`);
-                $(`.${target.name}-percentage-life`).text(`${target.life}%`);
-                if (target.life <= 0) {
-                    $(`.${target.name}`).css("visibility", "hidden");
-                    $("#endGameModal").modal({
-                        backdrop: "static",
-                        keyboard: false
-                    });
-                    $(".modal-body").text(
-                        `${this.name} and his ${
-                            this.weapon.name
-                        } weapon win the battle of heroes!`
-                    );
-                    $(".modal-body").prepend(
-                        `<div class='${this.name} standard-size-img'></div>`
-                    );
-                    $(".modal-body").append(
-                        `<div class='battle standard-size-img'></div>`
-                    );
-                    $(".reload, .close").click(function() {
-                        location.reload();
-                    });
-                }
-                target.fight(this);
-            });
 
-        $(`.${target.name}-defense-button`)
-            .off("click")
-            .css({
-                visibility: "hidden",
-                "box-shadow": "none",
-                animation: "none"
-            });
-        $(`.${this.name}-defense-button`)
-            .css({
-                "box-shadow": "0px 5px 5px #764462",
-                color: "#2c2137",
-                "background-color": "#edb4a1",
-                animation: "bounceIn 2s 1"
-            })
+        // attack-button : counts fight damages on click
+        $(`.${this.name}-attack-button`).css({visibility: "visible"}).on("click", e => {
 
-            .css("visibility", "visible")
-            .on("click", e => {
+            // defense counts 50% damage less: this.weapon.damage / 2
+
+            let lifeRemaining = (target.life -= target.defense
+                ? this.weapon.damage / 2
+                : this.weapon.damage);
+
+            // display barre-life and percentage-life
+
+            $(`.${target.name}-barre-life`).css("width", `${lifeRemaining}%`);
+            $(`.${target.name}-percentage-life`).text(`${target.life}%`);
+
+            if (target.life <= 0) {
+                $(`.${target.name}-percentage-life`).text(`${target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
+                $(`.${target.name}`).css("visibility", "hidden");
+
+                // Display modal Winner and game over
+                $("#endGameModal").modal(`show`);
+                $(`.modal-body`).text(`${this.name} and his ${this.weapon.name} weapon win the battle of heroes!`);
+                $(`.modal-body`).prepend(`<div class='${this.name} standard-size-img'></div>`);
+                $(`.modal-body`).append(`<div class='battle standard-size-img'></div>`);
+                $(`.reload, .close`).click(function() {
+                    location.reload();
+                });
+            }
+            target.fight(this);
+        });
+
+        // The .off() method removes event handlers that were attached with .on()
+
+        $(`.${target.name}-defense-button`).off("click").css({visibility: "hidden"});
+
+        $(`.${this.name}-defense-button`).css("visibility", "visible").on("click", e => {
                 this.defense = true;
-                $(`.belt-${this.name}`).css("visibility", "visible");
                 target.fight(this);
 
                 console.log("target.fight(this) : " + target.fight(this));
-            });
+        });
     }
 }
 

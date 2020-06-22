@@ -55,9 +55,8 @@ ul.rules {
 }
 
 .accessible {
-  background-color: rgb(128, 250, 246);
+  background-color: rgb(160, 255, 255);
   cursor: pointer;
-  animation: zoomIn 1s 1;
 }
 
 .obstacle {
@@ -97,7 +96,7 @@ ul.rules {
 
 .hero1 {
   background-image: url("../images/players/viking_onBoard_1.png");
-  background-color: deeppink;
+  background-color: #ffc107;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -114,10 +113,14 @@ ul.rules {
 
 .hero2 {
   background-image: url("../images/players/viking_onBoard_2.png");
-  background-color: orange;
+  background-color: #3bcfff;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.hero2_bg {
+  background-color: #3bcfff;
 }
 
 .avatar2 {
@@ -199,21 +202,25 @@ ul.rules {
   transform: scale(0.9);
 }
 
-.fight-btn:hover {
-  background-color: #FEE140;
-  background-image: linear-gradient(225deg, #FEE140 0%, #FA709A 100%);
+.fight-btn_attack:hover {
+ background-color: #FF3469;
+  background-image: linear-gradient(to top, #ff1671, #ff6c5d, #ffa560, #ffd581, #ffffb7);
+}
+.fight-btn_defence:hover {
+  background-color: #B4ECFF;
+  background-image: linear-gradient(to top, #4083ff, #46a5ff, #70c2ff, #a5ddff, #def5ff);
 }
 
-.fight-btn {
+.fight-btn, .fight-btn_attack,  .fight-btn_defence {
   border-style: none;
   visibility: hidden;
-  /*display: none;*/
-}
-
-.fight-btn {
   padding: 0.5em;
   background-image: linear-gradient(to bottom, #fff, #d1dfe5);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: #2c2137 !important;
 }
 
 .reload {
