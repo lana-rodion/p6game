@@ -220,12 +220,11 @@ ul.rules {
 }
 
 .modal-content {
-  background: #2c2137 !important;
+  background: #aef1fc;
 }
 
 .reload {
-  background: #edb4a1 !important;
-  color: #2c2137 !important;
+  background: #8fe2f1;
 }
 
 /* == Animations == */

@@ -100,7 +100,7 @@ class Player {
                 this.defense = true;
                 target.fight(this);
 
-                console.log("target.fight(this) : " + target.fight(this));
+                //console.log("target.fight(this) : " + target.fight(this));
         });
     }
 }
