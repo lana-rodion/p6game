@@ -72,9 +72,7 @@ export default class Board {
     // It inserts the obstacle in random Free Cell and add class css "obstacle" to this cell
 
     obstacles() {
-        let averageObstacles = Math.floor(
-            (this.width * this.height) / ((this.width + this.height) / 2)
-        );
+        let averageObstacles = Math.floor((this.width * this.height) / ((this.width + this.height) / 2));
         for (let obstacles = 0; obstacles < averageObstacles; obstacles++) {
             let cell = this.randomFreeCell();
             cell.obstacle = true;
@@ -129,19 +127,13 @@ export default class Board {
         return x >= 0 && x < this.width && y >= 0 && y < this.height;
     }
 
-    // This method returns an array of the accessible cells
-    // using the direction indicated in parameter (horizontal / vertical / + 1 / -1)
-
-    getAccessibleCellsInDirection(cell, nbOfAccessCell, horizontal, sign) {
+    /*checkAccessCells(cell, nbOfAccessCell, horizontal, sign) {
         let accessibleCells = [];
+        let x = 0;
+        let y = 0;
 
         for (let i = 1; i <= nbOfAccessCell; i++) {
-            // using ternary operator : condition ? expression_1 : expression_2
-            // fix security Generic Object Injection Sink
-            /*let x = parseInt(cell.x + (horizontal ? sign * i : 0));
-            let y = parseInt(cell.y + (horizontal ? 0 : sign * i));*/
-            let x = 0;
-            let y = 0;
+
             if (horizontal) {
                 x = cell.x + sign * i;
                 y = cell.y + 0;
@@ -149,9 +141,44 @@ export default class Board {
                 x = cell.x + 0;
                 y = cell.y + sign * i;
             }
+        }
+        return accessibleCells;
+    }
 
-            //console.log("typeof x : " + typeof x + " cell.x = row index : " + cell.x);
-            //console.log("typeof y : " + typeof y + " cell.y = column index : " + cell.y);
+    displayAccessCells(nbOfAccessCell, x, y) {
+        let accessibleCells = [];
+        //let x = 0;
+        //let y = 0;
+
+        for (let i = 1; i <= nbOfAccessCell; i++) {
+
+            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
+                accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
+            } else {
+                break;
+            }
+        }
+        return accessibleCells;
+    }
+
+    getAccessCells() {
+        this.checkAccessCells(); // method called to define access direction
+        this.displayAccessCells(); // method called to display access direction
+    }*/
+
+    // This method returns an array of the accessible cells
+    // using the direction indicated in parameter (horizontal / vertical / + 1 / -1)
+
+    getAccessCells(cell, nbOfAccessCell, horizontal, sign) {
+        let accessibleCells = [];
+
+        for (let i = 1; i <= nbOfAccessCell; i++) {
+            // using ternary operator : condition ? expression_1 : expression_2
+            let x = parseInt(cell.x + (horizontal ? sign * i : 0));
+            let y = parseInt(cell.y + (horizontal ? 0 : sign * i));
+
+            console.log("cell.x = row index : " + cell.x + " / cell.y = column index : " +  cell.y);
+            //console.log("typeof x : " + typeof x + " typeof y : " + typeof y);
 
             if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
                 accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
@@ -169,16 +196,16 @@ export default class Board {
         let accessibleCells = [];
 
         accessibleCells = accessibleCells.concat(
-            this.getAccessibleCellsInDirection(cell, nbOfAccessCell, true, 1)
+            this.getAccessCells(cell, nbOfAccessCell, true, 1)
         );
         accessibleCells = accessibleCells.concat(
-            this.getAccessibleCellsInDirection(cell, nbOfAccessCell, true, -1)
+            this.getAccessCells(cell, nbOfAccessCell, true, -1)
         );
         accessibleCells = accessibleCells.concat(
-            this.getAccessibleCellsInDirection(cell, nbOfAccessCell, false, 1)
+            this.getAccessCells(cell, nbOfAccessCell, false, 1)
         );
         accessibleCells = accessibleCells.concat(
-            this.getAccessibleCellsInDirection(cell, nbOfAccessCell, false, -1)
+            this.getAccessCells(cell, nbOfAccessCell, false, -1)
         );
 
         accessibleCells.forEach((accessibleCells) => accessibleCells.element.addClass("accessible")
