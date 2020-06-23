@@ -147,6 +147,9 @@ export default class Board {
             let x = parseInt(cell.x + (horizontal ? sign * i : 0));
             let y = parseInt(cell.y + (horizontal ? 0 : sign * i));
 
+            console.log("cell.x = row index : " + cell.x + " / cell.y = column index : " +  cell.y);
+            //console.log("typeof x : " + typeof x + " typeof y : " + typeof y);
+
             if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
                 accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
             } else {
