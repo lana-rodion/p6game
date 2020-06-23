@@ -1,7 +1,7 @@
 import { weapon1 } from "./weapons.js";
 
 class Player {
-    constructor(name, life) {
+    constructor(name) {
         this.name = name;
         this.weapon = weapon1;
         this.life = 100;
@@ -53,55 +53,61 @@ class Player {
     * No player can escape, so the function remembers itself by reversing attacker
     * and target and those until the life of one of the players is less than or equal to 0
     */
-    fight(target) {
-        this.defense = false;
+
+    heroTarget(target) {
 
         $(`.${target.name}`).css("opacity", "0.5");
         $(`.${target.name}-attack-button`).off("click").css({visibility: "hidden"});
+    }
 
-        // appearance of hero which has his turn to attack
-        $(`.${this.name}`).css("opacity", "1");
-
-        // attack-button : counts fight damages on click
-        $(`.${this.name}-attack-button`).css({visibility: "visible"}).on("click", e => {
-
-            // defense counts 50% damage less: this.weapon.damage / 2
-
-            let lifeRemaining = (target.life -= target.defense
-                ? this.weapon.damage / 2
-                : this.weapon.damage);
-
-            // display barre-life and percentage-life
-
-            $(`.${target.name}-barre-life`).css("width", `${lifeRemaining}%`);
-            $(`.${target.name}-percentage-life`).text(`${target.life}%`);
-
-            if (target.life <= 0) {
-                $(`.${target.name}-percentage-life`).text(`${target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
-                $(`.${target.name}`).css("visibility", "hidden");
-
-                // Display modal Winner and game over
-                $("#endGameModal").modal(`show`);
-                $(`.modal-body`).text(`${this.name} and his ${this.weapon.name} weapon win the battle of heroes!`);
-                $(`.modal-body`).prepend(`<div class='${this.name} standard-size-img'></div>`);
-                $(`.modal-body`).append(`<div class='battle standard-size-img'></div>`);
-                $(`.reload, .close`).click(function() {
-                    location.reload();
-                });
-            }
-            target.fight(this);
-        });
-
-        // The .off() method removes event handlers that were attached with .on()
+    heroDefense(target) {
+        this.defense = false;
 
         $(`.${target.name}-defense-button`).off("click").css({visibility: "hidden"});
 
-        $(`.${this.name}-defense-button`).css("visibility", "visible").on("click", e => {
-                this.defense = true;
-                target.fight(this);
-
-                //console.log("target.fight(this) : " + target.fight(this));
+        $(`.${this.name}-defense-button`).css("visibility", "visible").on("click", (e) => {
+            this.defense = true;
+            target.fight(this);
         });
+    }
+
+    //$(`.fight-btn, .fight-btn_attack, .fight-btn_defence`).css("visibility", "hidden");
+
+    // TO DO: Game over Modal
+
+    scoreLife(target) {
+
+        this.life = 100;
+        // defense counts 50% damage less: this.weapon.damage / 2
+        let lifeRemaining = (target.life -= target.defense ? this.weapon.damage / 2 : this.weapon.damage);
+
+        // display barre-life and percentage-life
+        $(`.${target.name}-barre-life`).css("width", `${lifeRemaining}%`);
+
+        if (target.life <= 0) {
+            $(`.${target.name}-percentage-life`).text(`${target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
+            $(`.${target.name}`).css("visibility", "hidden");
+            $(`.${target.name}-defense-button, .${target.name}-attack-button`).css({visibility: "hidden"});
+
+            // TO PLACE HERE: Game over Modal
+        } else {
+            $(`.${target.name}-percentage-life`).text(`${target.life}%`);
+        }
+        target.fight(this);
+    }
+
+    fight(target) {
+        this.defense = false;
+
+        this.heroTarget(target);
+
+        $(`.${this.name}`).css("opacity", "1");
+        // attack-button : counts fight damages on click
+        $(`.${this.name}-attack-button`).css({visibility: "visible"}).on("click", (e) => {
+            this.scoreLife(target);
+        });
+
+        this.heroDefense(target);
     }
 }
 
