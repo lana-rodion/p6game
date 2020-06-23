@@ -87,7 +87,7 @@ class Player {
         if (target.life <= 0) {
             $(`.${target.name}-percentage-life`).text(`${target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
             $(`.${target.name}`).css("visibility", "hidden");
-            $(`.button-action`).hide();
+            $(".button-action").hide();
 
             // TO PLACE HERE: Game over Modal
         } else {
