@@ -127,43 +127,11 @@ export default class Board {
         return x >= 0 && x < this.width && y >= 0 && y < this.height;
     }
 
-    /*checkAccessCells(cell, nbOfAccessCell, horizontal, sign) {
-        let accessibleCells = [];
-        let x = 0;
-        let y = 0;
-
+    /*accessDirection(cell, nbOfAccessCell, horizontal, sign) {
         for (let i = 1; i <= nbOfAccessCell; i++) {
-
-            if (horizontal) {
-                x = cell.x + sign * i;
-                y = cell.y + 0;
-            } else {
-                x = cell.x + 0;
-                y = cell.y + sign * i;
-            }
+            this.x = parseInt(cell.x + (horizontal ? sign * i : 0));
+            this.y = parseInt(cell.y + (horizontal ? 0 : sign * i));
         }
-        return accessibleCells;
-    }
-
-    displayAccessCells(nbOfAccessCell, x, y) {
-        let accessibleCells = [];
-        //let x = 0;
-        //let y = 0;
-
-        for (let i = 1; i <= nbOfAccessCell; i++) {
-
-            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
-                accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
-            } else {
-                break;
-            }
-        }
-        return accessibleCells;
-    }
-
-    getAccessCells() {
-        this.checkAccessCells(); // method called to define access direction
-        this.displayAccessCells(); // method called to display access direction
     }*/
 
     // This method returns an array of the accessible cells
@@ -173,15 +141,19 @@ export default class Board {
         let accessibleCells = [];
 
         for (let i = 1; i <= nbOfAccessCell; i++) {
+
+            //this.accessDirection();
             // using ternary operator : condition ? expression_1 : expression_2
             let x = parseInt(cell.x + (horizontal ? sign * i : 0));
             let y = parseInt(cell.y + (horizontal ? 0 : sign * i));
 
-            console.log("cell.x = row index : " + cell.x + " / cell.y = column index : " +  cell.y);
-            //console.log("typeof x : " + typeof x + " typeof y : " + typeof y);
-
-            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
+            /*if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
                 accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
+            } else {
+                break;
+            }*/
+            if (this.cellExist(x, y) && this.cells[x][y].isFree()) {
+                accessibleCells.push(this.cells[x][y]);
             } else {
                 break;
             }
