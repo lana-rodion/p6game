@@ -72,12 +72,12 @@ class Player {
     }
 
     //$(`.fight-btn, .fight-btn_attack, .fight-btn_defence`).css("visibility", "hidden");
+    // hero1-button-action hero2-button-action
 
     // TO DO: Game over Modal
 
     scoreLife(target) {
 
-        this.life = 100;
         // defense counts 50% damage less: this.weapon.damage / 2
         let lifeRemaining = (target.life -= target.defense ? this.weapon.damage / 2 : this.weapon.damage);
 
@@ -87,7 +87,7 @@ class Player {
         if (target.life <= 0) {
             $(`.${target.name}-percentage-life`).text(`${target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
             $(`.${target.name}`).css("visibility", "hidden");
-            $(`.${target.name}-defense-button, .${target.name}-attack-button`).css({visibility: "hidden"});
+            $(`.button-action`).hide();
 
             // TO PLACE HERE: Game over Modal
         } else {

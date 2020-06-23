@@ -147,13 +147,8 @@ export default class Board {
             let x = parseInt(cell.x + (horizontal ? sign * i : 0));
             let y = parseInt(cell.y + (horizontal ? 0 : sign * i));
 
-            /*if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
+            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
                 accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
-            } else {
-                break;
-            }*/
-            if (this.cellExist(x, y) && this.cells[x][y].isFree()) {
-                accessibleCells.push(this.cells[x][y]);
             } else {
                 break;
             }
