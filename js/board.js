@@ -105,7 +105,9 @@ export default class Board {
     // This method returns all the cases adjacent to a cell
 
     getAdjacentCells(cell) {
+
         let adjacentCells = [];
+
         if (cell.x + 1 < this.width) {
             adjacentCells.push(this.cells[cell.x + 1][cell.y]);
         }
@@ -124,40 +126,47 @@ export default class Board {
     // Method to verify with parameters (x, y) if this cell exists
 
     cellExist(x, y) {
-        return x >= 0 && x < this.width && y >= 0 && y < this.height;
+        this.x = x;
+        this.y = y;
+        return this.x >= 0 && this.x < this.width && this.y >= 0 && this.y < this.height;
     }
-
-    /*accessDirection(cell, nbOfAccessCell, horizontal, sign) {
-        for (let i = 1; i <= nbOfAccessCell; i++) {
-            this.x = parseInt(cell.x + (horizontal ? sign * i : 0));
-            this.y = parseInt(cell.y + (horizontal ? 0 : sign * i));
-        }
-    }*/
 
     // This method returns an array of the accessible cells
     // using the direction indicated in parameter (horizontal / vertical / + 1 / -1)
 
     getAccessCells(cell, nbOfAccessCell, horizontal, sign) {
+
         let accessibleCells = [];
+        this.cell = cell;
+        this.nbOfAccessCell = nbOfAccessCell;
 
-        for (let i = 1; i <= nbOfAccessCell; i++) {
-
+        for (let i = 1; i <= this.nbOfAccessCell; i++) {
+            this.x = this.cell.x + (horizontal ? sign * i : 0);
+            this.y = this.cell.y + (horizontal ? 0 : sign * i);
             //this.accessDirection();
-            // using ternary operator : condition ? expression_1 : expression_2
-            let x = parseInt(cell.x + (horizontal ? sign * i : 0));
-            let y = parseInt(cell.y + (horizontal ? 0 : sign * i));
 
-            console.log("cell.x = row index : " + cell.x + " / cell.y = column index : " +  cell.y);
-            //console.log("typeof x : " + typeof x + " typeof y : " + typeof y);
-
-            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
-                accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
+            if (this.cellExist(this.x, this.y) && this.cells[this.x][this.y].isFree()) {
+                accessibleCells.push(this.cells[this.x][this.y]);
             } else {
                 break;
             }
         }
         return accessibleCells;
     }
+
+    /*accessDirection(cell, horizontal, sign) {
+
+        this.cell = cell;
+        console.log("accessibleCells : " + this.cell);
+
+        for (let i = 1; i <= this.nbOfAccessCell; i++) {
+            this.x = this.cell.x + (horizontal ? sign * i : 0);
+            this.y = this.cell.y + (horizontal ? 0 : sign * i);
+
+            console.log("this.x : " + this.y + "this.y : " + this.y);
+        }
+
+    }*/
 
     // This method is called in the game object of the Game class
     // Method to concat accessibleCells array in order to return all the cells accessible by the player
