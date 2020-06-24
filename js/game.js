@@ -69,10 +69,18 @@ export default class Game {
     // Method to display players stats
 
     playersDescription(player) {
-        $(`#${player.name}-name`).empty().append(`${player.name}`);
-        $(`#${player.name}-weapon-image`).empty().append(`<div class='standard-size-img ${player.weapon.name}'></div>`);
+        /*$(`#${player.name}-name`).empty().append(`${player.name}`);
+        $(`#${player.name}-weapon-image`).empty().append(`<div class="standard-size-img ${player.weapon.name}"></div>`);
         $(`#${player.name}-weapon-name`).empty().append(`${player.weapon.name}`);
-        $(`#${player.name}-weapon-infos`).empty().append(`${player.weapon.damage}`);
+        $(`#${player.name}-weapon-infos`).empty().append(`${player.weapon.damage}`);*/
+
+        this.hero = player.name;
+
+        $(`#${this.hero}-name, #${this.hero}-weapon-image, #${this.hero}-weapon-name, #${this.hero}-weapon-infos`).empty();
+        $(`#${this.hero}-name`).append(`${this.hero}`);
+        $(`#${this.hero}-weapon-image`).append(`<div class="standard-size-img ${player.weapon.name}"></div>`);
+        $(`#${this.hero}-weapon-name`).append(`${player.weapon.name}`);
+        $(`#${this.hero}-weapon-infos`).append(`${player.weapon.damage}`);
 
     }
 }
