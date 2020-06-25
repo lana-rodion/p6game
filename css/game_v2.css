@@ -49,10 +49,10 @@ ul.rules {
   border-radius: 0.25em;
 }
 
-.card {
+/*.card {
   border: none;
   background-color: inherit;
-}
+}*/
 
 .accessible {
   background-color: rgb(160, 255, 255);
@@ -155,6 +155,7 @@ ul.rules {
 .btn, .fight-btn {
   margin: 0.5em;
   font-weight: 500;
+  font-size: 0.9em;
   color: #444;
   border: none;
   background-image: linear-gradient(to bottom, #fff, #d1dfe5);
@@ -237,18 +238,28 @@ ul.rules {
     margin-top: 1em;
   }
 
+  body > .container {
+    padding: 0.35em 1em;
+  }
+
   .imgPlayer {
-    width: 70px;
+    width: 60px;
     height: auto;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 1em;
+    margin-top: 0.5em;
   }
 
-  .btn {
+  .btn, .fight-btn, .fight-btn_attack,  .fight-btn_defence {
     margin: 0.75em;
-    padding: 0.5em 1em;
+    padding: 0.35em 0.9em;
     font-weight: 500;
-    font-size: 1em;
+    font-size: 0.9em;
+  }
+
+  .pv_status {
+    font-size: 0.8em;
+    padding-bottom: 0.25em;
+    padding-top: 0.25em;
   }
 }

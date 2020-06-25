@@ -9,10 +9,6 @@ class Player {
         this.defense = false;
     }
 
-    // Getter
-
-    // Setter
-
     // Method to move player and change the previous cell property
 
     move(newCell) {
@@ -55,45 +51,50 @@ class Player {
     */
 
     heroTarget(target) {
+        this.target = target;
 
-        $(`.${target.name}`).css("opacity", "0.5");
-        $(`.${target.name}-attack-button`).off("click").css({visibility: "hidden"});
+        $(`.${this.target.name}`).css("opacity", "0.5");
+        $(`.${this.target.name}-attack-button`).off("click").css({visibility: "hidden"});
     }
 
-    heroDefense(target) {
+    heroDefense() {
         this.defense = false;
 
-        $(`.${target.name}-defense-button`).off("click").css({visibility: "hidden"});
+        $(`.${this.target.name}-defense-button`).off("click").css({visibility: "hidden"});
 
         $(`.${this.name}-defense-button`).css("visibility", "visible").on("click", (e) => {
             this.defense = true;
-            target.fight(this);
+            this.target.fight(this);
         });
     }
 
-    //$(`.fight-btn, .fight-btn_attack, .fight-btn_defence`).css("visibility", "hidden");
-    // hero1-button-action hero2-button-action
+    // Game over Message
 
-    // TO DO: Game over Modal
+    gameOver () {
+        if (this.target.life <= 0) {
+            $(`.${this.target.name}-percentage-life`).text(`${this.target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
+            $(`.${this.target.name}`).css("visibility", "hidden");
+            $(".button-action").hide();
+            alert(`${this.name} a gagné !\n\nRafraîchissez la page pour jouer une nouvelle partie !`);
+            //$("$endGameModal").toggle();
+        }
+    }
 
-    scoreLife(target) {
+    scoreLife() {
 
         // defense counts 50% damage less: this.weapon.damage / 2
-        let lifeRemaining = (target.life -= target.defense ? this.weapon.damage / 2 : this.weapon.damage);
+        let lifeRemaining = (this.target.life -= this.target.defense ? this.weapon.damage / 2 : this.weapon.damage);
 
         // display barre-life and percentage-life
-        $(`.${target.name}-barre-life`).css("width", `${lifeRemaining}%`);
+        $(`.${this.target.name}-barre-life`).css("width", `${lifeRemaining}%`);
 
-        if (target.life <= 0) {
-            $(`.${target.name}-percentage-life`).text(`${target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
-            $(`.${target.name}`).css("visibility", "hidden");
-            $(".button-action").hide();
-
-            // TO PLACE HERE: Game over Modal
+        if (this.target.life <= 0) {
+            // Game over Message
+            this.gameOver();
         } else {
-            $(`.${target.name}-percentage-life`).text(`${target.life}%`);
+            $(`.${this.target.name}-percentage-life`).text(`${this.target.life}%`);
         }
-        target.fight(this);
+        this.target.fight(this);
     }
 
     fight(target) {
