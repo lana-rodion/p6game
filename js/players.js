@@ -56,13 +56,11 @@ export default class Player {
         this.target = target;
 
         $(`.${this.target.name}`).css("opacity", "0.5");
-        $(`.${this.target.name}-attack-button`).off("click").css({visibility: "hidden"});
+        $(`.${this.target.name}-attack-button, .${this.target.name}-defense-button`).off("click").css({visibility: "hidden"});
     }
 
     heroDefense() {
         this.defense = false;
-
-        $(`.${this.target.name}-defense-button`).off("click").css({visibility: "hidden"});
 
         $(`.${this.name}-defense-button`).css("visibility", "visible").on("click", (e) => {
             this.defense = true;
@@ -71,14 +69,21 @@ export default class Player {
     }
 
     // Game over Message
+    //TO DO: $("$endGameModal").toggle();
 
-    gameOver () {
-        $(`.${this.target.name}-percentage-life`).text(`${this.target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
-        $(`.${this.target.name}`).css("visibility", "hidden");
-        $(".button-action").hide();
-        alert(`${this.name} a gagné !\n\nRafraîchissez la page pour jouer une nouvelle partie !`);
+    gameOver() {
+        let player_percentage_life = "." + this.target.name + "-percentage-life";
 
-        //$("$endGameModal").toggle();
+        if (this.target.life <= 0) {
+            $(player_percentage_life).text(`${this.target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
+
+            $(`.${this.target.name}`).css("visibility", "hidden");
+            $(".button-action").hide();
+            alert(`${this.name} a gagné !\n\nRafraîchissez la page pour jouer une nouvelle partie !`);
+
+        } else {
+            $(player_percentage_life).text(`${this.target.life}%`);
+        }
     }
 
     scoreLife() {
@@ -89,12 +94,7 @@ export default class Player {
         // display barre-life and percentage-life
         $(`.${this.target.name}-barre-life`).css("width", `${lifeRemaining}%`);
 
-        if (this.target.life <= 0) {
-            // Game over Message
-            this.gameOver();
-        } else {
-            $(`.${this.target.name}-percentage-life`).text(`${this.target.life}%`);
-        }
+        this.gameOver();
         this.target.fight(this);
     }
 
