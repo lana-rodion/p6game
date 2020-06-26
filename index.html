@@ -80,9 +80,18 @@
 <main class="container pb-1">
     <!-- Game Rules -->
     <div class="row p-2 mb-2">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <p class="text-light title mb-0"> Combat de Guerriers</p>
+            <p class="text-weight-light text-warning mb-0">Jeu de plateau tour par tour en JavaScript</p>
+        </div>
+
         <div class="col-12 col-sm-12 col-md-6">
-            <button id="rules" class="btn btn-outline-light mb-1">Règles du jeu</button>
+            <button id="rules" class="btn btn-outline-light ml-0 mb-1">Règles du jeu</button>
             <div id="game-rules" class="mt-2">
+                <p class="text-weight-light text-light text-smaller mb-2">
+                    Les Vikings sont des personnifications mythiques de la force brutale.
+                    On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
+                </p>
                 <ul class="text-weight-light text-light text-smaller rules">
                     <li>Les guerriers sont placés sur le champ de combat aléatoirement.</li>
                     <li>Chacun est équipé d'une arme par défaut et peut se déplacer en faisant de 1 à 3 cases.</li>
@@ -92,19 +101,11 @@
                 </ul>
             </div>
         </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-            <p class="text-light title mb-0"> Combat de Guerriers</p>
-            <p class="text-weight-light text-warning mb-0">Jeu de plateau tour par tour en JavaScript</p>
-            <p class="text-weight-light text-light text-smaller mb-1">
-                Les Vikings sont des personnifications mythiques de la force brutale.
-                On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
-            </p>
-        </div>
     </div>
 
     <!-- Game Board V2 -->
     <div class="row">
-        <div id="board-container" class="col-12 col-sm-12 col-md-12 col-lg-6 mb-2">
+        <div id="board-container" class="col-12 col-sm-12 col-md-12 col-lg-6 mb-sm-2">
             <div id="board">
                 <!-- Grid 10 x 10 -->
             </div>
@@ -112,81 +113,87 @@
 
         <!-- Players Stats -->
         <div id="scoreTable" class="col-12 col-sm-12 col-md-12 col-lg-6">
-            <div id="stats" class="row">
+            <div id="stats" class="row pl-md-4 pr-md-4 pl-lg-0 pr-lg-0">
+
                 <!-- Player 1 -->
-                <div id="Player1" class="col-12 mb-2">
-                    <div class="row justify-content-center bg-warning">
-                        <div class="col-4 text-center mt-2 mb-2">
-                            <p><span id="hero1-name"></span></p>
-                            <img src="images/players/viking1.png" alt="viking 1" class="imgPlayer mb-2">
+                <div id="Player1" class="col-12 mb-2 mb-md-3">
+                    <div class="row justify-content-center h-100">
+                        <div class="col-3 text-center bg-warning pb-2 pb-sm-3">
+                            <p class="mt-2 mb-0 mb-md-2"><span id="hero1-name"></span></p>
+                            <img src="images/players/viking1.png" alt="viking 1" class="imgPlayer">
                         </div>
-                        <div class="pv_status col-8 bg-light">
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="mb-0 mt-2">Arme&nbsp;: <br><span id="hero1-weapon-name" class="text-secondary"></span></p>
+
+                        <div class="pv_status col-9 bg-light">
+                            <div class="row pt-2 mb-2">
+                                <div class="col-3 text-center m-auto">
+                                    <span id="hero1-weapon-image"></span>
+                                </div>
+                                <div class="offset-1 col-8">
+                                    <p class="mb-0 mt-sm-2">Arme&nbsp;: <span id="hero1-weapon-name" class="text-secondary"></span></p>
                                     <p class="mb-0">
                                         <span>Damages&nbsp;: </span><span id="hero1-weapon-infos"></span>
                                     </p>
-                                </div>
-                                <div class="col-6 pl-4 pt-4 m-auto">
-                                    <span id="hero1-weapon-image"></span>
+                                    <div class="hero1-percentage-life mt-2 mb-2">100%</div>
+                                    <div class="life">
+                                        <div class="hero-defense"></div>
+                                        <div class="hero1-barre-life"></div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="hero1-percentage-life pb-2">100%</div>
-                            <div class="life text-center">
-                                <div class="hero-defense"></div>
-                                <div class="hero1-barre-life"></div>
-                            </div>
-
-                            <div class="row justify-content-center mb-2 mt-2 button-action">
+                            <div class="row justify-content-center button-action mb-2">
                                 <button class="col-4 hero1-attack-button fight-btn fight-btn_attack">Attaquer</button>
                                 <button class="col-4 hero1-defense-button fight-btn fight-btn_defence">Défendre</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
+                <!-- ./Player 1 -->
 
                 <!-- Player 2 -->
-                <div id="Player2" class="col-12">
-                    <div class="row justify-content-center hero2_bg">
-                        <div class="col-4 text-center mt-2 mb-2">
-                            <p><span id="hero2-name"></span></p>
-                            <img src="images/players/viking2.png" alt="viking 2" class="imgPlayer mb-2">
+
+                <div id="Player2" class="col-12 ">
+                    <div class="row justify-content-center h-100">
+                        <div class="col-3 text-center hero2_bg pb-2 pb-sm-3">
+                            <p class="mt-2 mb-0 mb-md-2"><span id="hero2-name"></span></p>
+                            <img src="images/players/viking2.png" alt="viking 2" class="imgPlayer">
                         </div>
-                        <div class="pv_status col-8 bg-light">
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="mb-0 mt-2">Arme&nbsp;: <br><span id="hero2-weapon-name" class="text-secondary"></span></p>
+
+                        <div class="pv_status col-9 bg-light">
+                            <div class="row pt-2 mb-2">
+                                <div class="col-3 text-center m-auto">
+                                    <span id="hero2-weapon-image"></span>
+                                </div>
+                                <div class="offset-1 col-8">
+                                    <p class="mb-0 mt-sm-2">Arme&nbsp;: <span id="hero2-weapon-name" class="text-secondary"></span></p>
                                     <p class="mb-0">
                                         <span>Damages&nbsp;: </span><span id="hero2-weapon-infos"></span>
                                     </p>
-                                </div>
-                                <div class="col-6 pl-4 pt-4 m-auto">
-                                    <span id="hero2-weapon-image" class=""></span>
+                                    <div class="hero2-percentage-life mt-2 mb-2">100%</div>
+                                    <div class="life">
+                                        <div class="hero-defense"></div>
+                                        <div class="hero2-barre-life"></div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="hero2-percentage-life pb-2">100%</div>
-                            <div class="life text-center">
-                                <div class="hero-defense"></div>
-                                <div class="hero2-barre-life"></div>
-                            </div>
-
-                            <div class="row justify-content-center mb-2 mt-2 button-action">
+                            <div class="row justify-content-center button-action mb-2">
                                 <button class="col-4 hero2-attack-button fight-btn fight-btn_attack">Attaquer</button>
                                 <button class="col-4 hero2-defense-button fight-btn fight-btn_defence">Défendre</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
+                <!-- ./Player 2 -->
+
             </div>
         </div>
     </div>
 
     <!-- GAME OVER Modal -->
-    <div class="modal fade" id="endGameModal" tabindex="-1" role="dialog" aria-labelledby="endGameModalTitle"
-         aria-hidden="true">
+    <div class="modal fade" id="endGameModal" tabindex="-1" role="dialog" aria-labelledby="endGameModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -226,7 +233,7 @@
 
 <!-- Scripts for Bootstrap 4 -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!-- jQuery Latest stable version -->
 <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
