@@ -1,6 +1,6 @@
 import { weapon1 } from "./weapons.js";
 
-class Player {
+export default class Player {
     constructor(name) {
         this.name = name;
         this.weapon = weapon1;
@@ -25,12 +25,14 @@ class Player {
     // Method to exchange the player weapon for the cell weapon
 
     changeWeapon(player) {
-        let playerWeapon = player.weapon;
+
+        this.player = player;
+        let playerWeapon = this.player.weapon;
 
         if (this.currentCell.weapon !== null) {
             this.currentCell.element.removeClass(this.currentCell.weapon.name);
             this.currentCell.element.addClass(playerWeapon.name);
-            player.weapon = this.currentCell.weapon;
+            this.player.weapon = this.currentCell.weapon;
             this.currentCell.weapon = playerWeapon;
         }
     }
@@ -71,13 +73,12 @@ class Player {
     // Game over Message
 
     gameOver () {
-        if (this.target.life <= 0) {
-            $(`.${this.target.name}-percentage-life`).text(`${this.target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
-            $(`.${this.target.name}`).css("visibility", "hidden");
-            $(".button-action").hide();
-            alert(`${this.name} a gagné !\n\nRafraîchissez la page pour jouer une nouvelle partie !`);
-            //$("$endGameModal").toggle();
-        }
+        $(`.${this.target.name}-percentage-life`).text(`${this.target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
+        $(`.${this.target.name}`).css("visibility", "hidden");
+        $(".button-action").hide();
+        alert(`${this.name} a gagné !\n\nRafraîchissez la page pour jouer une nouvelle partie !`);
+
+        //$("$endGameModal").toggle();
     }
 
     scoreLife() {

@@ -114,81 +114,104 @@
         <!-- Players Stats -->
         <div id="scoreTable" class="col-12 col-sm-12 col-md-12 col-lg-6">
             <div id="stats" class="row pl-md-4 pr-md-4 pl-lg-0 pr-lg-0">
+
                 <!-- Player 1 -->
-                <div id="Player1" class="col-12 mb-2">
-                    <div class="row justify-content-center bg-warning">
-                        <div class="col-3 col-sm-4 text-center">
-                            <p class="mt-2 mb-0"><span id="hero1-name"></span></p>
-                            <img src="images/players/viking1.png" alt="viking 1" class="imgPlayer mb-2">
+                <div id="Player1" class="col-12 mb-2 mb-md-3">
+                    <div class="row justify-content-center h-100">
+                        <div class="col-3 text-center bg-warning pb-2 pb-sm-3">
+                            <p class="mt-2 mb-0 mb-md-2"><span id="hero1-name"></span></p>
+                            <img src="images/players/viking1.png" alt="viking 1" class="imgPlayer">
                         </div>
-                        <div class="pv_status col-9 col-sm-8 bg-light">
-                            <div class="row pt-2">
-                                <div class="col-7 col-sm-6">
-                                    <p class="mb-0 mt-2">Arme&nbsp;: <span id="hero1-weapon-name" class="text-secondary"></span></p>
+
+                        <div class="pv_status col-9 bg-light">
+                            <div class="row pt-2 mb-2">
+                                <div class="col-3 text-center m-auto">
+                                    <span id="hero1-weapon-image"></span>
+                                </div>
+                                <div class="offset-1 col-8">
+                                    <p class="mb-0 mt-sm-2">Arme&nbsp;: <span id="hero1-weapon-name" class="text-secondary"></span></p>
                                     <p class="mb-0">
                                         <span>Damages&nbsp;: </span><span id="hero1-weapon-infos"></span>
                                     </p>
                                     <div class="hero1-percentage-life mt-2 mb-2">100%</div>
-                                </div>
-                                <div class="col-5 col-sm-6 m-sm-auto">
-                                    <span id="hero1-weapon-image"></span>
+                                    <div class="life">
+                                        <div class="hero-defense"></div>
+                                        <div class="hero1-barre-life"></div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="life text-center">
-                                <div class="hero-defense"></div>
-                                <div class="hero1-barre-life"></div>
-                            </div>
-
-                            <div class="row justify-content-center button-action mb-lg-2 mt-lg-2">
+                            <div class="row justify-content-center button-action mb-2">
                                 <button class="col-4 hero1-attack-button fight-btn fight-btn_attack">Attaquer</button>
                                 <button class="col-4 hero1-defense-button fight-btn fight-btn_defence">Défendre</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- ./Player 1 -->
 
                 <!-- Player 2 -->
-                <div id="Player2" class="col-12 mb-2">
-                    <div class="row justify-content-center hero2_bg">
-                        <div class="col-3 col-sm-4 text-center">
-                            <p class="mt-2 mb-0"><span id="hero2-name"></span></p>
-                            <img src="images/players/viking2.png" alt="viking 2" class="imgPlayer mb-2">
+
+                <div id="Player2" class="col-12 ">
+                    <div class="row justify-content-center h-100">
+                        <div class="col-3 text-center hero2_bg pb-2 pb-sm-3">
+                            <p class="mt-2 mb-0 mb-md-2"><span id="hero2-name"></span></p>
+                            <img src="images/players/viking2.png" alt="viking 2" class="imgPlayer">
                         </div>
-                        <div class="pv_status col-9 col-sm-8 bg-light">
-                            <div class="row pt-2">
-                                <div class="col-7 col-sm-6">
-                                    <p class="mb-0 mt-2">Arme&nbsp;: <span id="hero2-weapon-name" class="text-secondary"></span></p>
+
+                        <div class="pv_status col-9 bg-light">
+                            <div class="row pt-2 mb-2">
+                                <div class="col-3 text-center m-auto">
+                                    <span id="hero2-weapon-image"></span>
+                                </div>
+                                <div class="offset-1 col-8">
+                                    <p class="mb-0 mt-sm-2">Arme&nbsp;: <span id="hero2-weapon-name" class="text-secondary"></span></p>
                                     <p class="mb-0">
                                         <span>Damages&nbsp;: </span><span id="hero2-weapon-infos"></span>
                                     </p>
                                     <div class="hero2-percentage-life mt-2 mb-2">100%</div>
-                                </div>
-                                <div class="col-5 col-sm-6 m-auto">
-                                    <span id="hero2-weapon-image"></span>
+                                    <div class="life">
+                                        <div class="hero-defense"></div>
+                                        <div class="hero2-barre-life"></div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="life text-center">
-                                <div class="hero-defense"></div>
-                                <div class="hero2-barre-life"></div>
-                            </div>
-
-                            <div class="row justify-content-center button-action mb-lg-2 mt-lg-2">
+                            <div class="row justify-content-center button-action mb-2">
                                 <button class="col-4 hero2-attack-button fight-btn fight-btn_attack">Attaquer</button>
                                 <button class="col-4 hero2-defense-button fight-btn fight-btn_defence">Défendre</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- ./Player 2 -->
+
             </div>
         </div>
     </div>
 
     <!-- GAME OVER Modal -->
+    <div class="modal fade" id="endGameModal" tabindex="-1" role="dialog" aria-labelledby="endGameModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="endGameModalLongTitle">BATTLE of HEROES</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex align-items-center">
 
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary reload">Fight Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ./GAME OVER Modal -->
 </main>
 

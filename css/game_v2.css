@@ -49,11 +49,6 @@ ul.rules {
   border-radius: 0.25em;
 }
 
-/*.card {
-  border: none;
-  background-color: inherit;
-}*/
-
 .accessible {
   background-color: rgb(160, 255, 255);
   cursor: pointer;
@@ -102,15 +97,6 @@ ul.rules {
   background-position: center;
 }
 
-.avatar1 {
-  background-image: url("../images/players/viking1.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 70px;
-  height: 70px;
-}
-
 .hero2 {
   background-image: url("../images/players/viking_onBoard_2.png");
   background-color: #3bcfff;
@@ -123,18 +109,9 @@ ul.rules {
   background-color: #3bcfff;
 }
 
-.avatar2 {
-  background-image: url("../images/players/viking2.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 70px;
-  height: 70px;
-}
-
 .standard-size-img {
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
 }
 
 /* ======= PLAYERS SCORES TABLE ======= */
@@ -248,6 +225,11 @@ ul.rules {
     margin-right: auto;
     margin-left: auto;
     margin-top: 0.5em;
+  }
+
+  .standard-size-img {
+    width: 70px;
+    height: 70px;
   }
 
   .btn, .fight-btn, .fight-btn_attack,  .fight-btn_defence {
