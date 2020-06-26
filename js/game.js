@@ -70,14 +70,14 @@ export default class Game {
 
     playersDescription(player) {
 
-        let player_name = "#" + player.name + "-name";
-        let player_weapon_image = "#" + player.name + "-weapon-image";
-        let player_weapon_name = "#" + player.name + "-weapon-name";
-        let player_weapon_infos = "#" + player.name + "-weapon-infos";
+        let playerName = "#" + player.name + "-name";
+        let playerWeaponImage = "#" + player.name + "-weapon-image";
+        let playerWeaponName = "#" + player.name + "-weapon-name";
+        let playerWeaponInfos = "#" + player.name + "-weapon-infos";
 
-        $(player_name).empty().append(`${player.name}`);
-        $(player_weapon_image).empty().append(`<div class="standard-size-img ${player.weapon.name}"></div>`);
-        $(player_weapon_name).empty().append(`${player.weapon.name}`);
-        $(player_weapon_infos).empty().append(`${player.weapon.damage}`);
+        $(playerName).empty().append(`${player.name}`);
+        $(playerWeaponImage).empty().append(`<div class="standard-size-img ${player.weapon.name}"></div>`);
+        $(playerWeaponName).empty().append(`${player.weapon.name}`);
+        $(playerWeaponInfos).empty().append(`${player.weapon.damage}`);
     }
 }
