@@ -72,17 +72,17 @@ export default class Player {
     //TO DO: $("$endGameModal").toggle();
 
     gameOver() {
-        let player_percentage_life = "." + this.target.name + "-percentage-life";
+        let playerPercentageLife = "." + this.target.name + "-percentage-life";
 
         if (this.target.life <= 0) {
-            $(player_percentage_life).text(`${this.target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
+            $(playerPercentageLife).text(`${this.target.name} a perdu le combat`).css({color: "red", fontWeight: "600"});
 
             $(`.${this.target.name}`).css("visibility", "hidden");
             $(".button-action").hide();
             alert(`${this.name} a gagné !\n\nRafraîchissez la page pour jouer une nouvelle partie !`);
 
         } else {
-            $(player_percentage_life).text(`${this.target.life}%`);
+            $(playerPercentageLife).text(`${this.target.life}%`);
         }
     }
 
