@@ -124,9 +124,9 @@ class Player {
     }
 
     restart() { //replay the battle
-        $('.restart, .close').on('click', () => {
+        $(".restart, .close").on("click", () => {
             location.reload();
-        })
+        });
     }
 }
 
