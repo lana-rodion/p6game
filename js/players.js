@@ -1,6 +1,6 @@
 import { weapon1 } from "./weapons.js";
 
-export default class Player {
+class Player {
     constructor(name) {
         this.name = name;
         this.weapon = weapon1;
@@ -68,8 +68,16 @@ export default class Player {
         });
     }
 
-    // Game over Message
-    //TO DO: $("$endGameModal").toggle();
+    // Game over Modal
+
+    endGameModal() {
+
+        $("main").css({opacity: "0.15"}).addClass("fade");
+        $(".modal-body").prepend(`<div class='${this.name}-avatar'></div>`);
+
+        $("#gameOverMessage").addClass("victory").text(`Le guerrier ${this.name} a gangé le Combat !`);
+        $("#endGameModal").show();
+    }
 
     gameOver() {
         let playerPercentageLife = "." + this.target.name + "-percentage-life";
@@ -79,8 +87,9 @@ export default class Player {
 
             $(`.${this.target.name}`).css("visibility", "hidden");
             $(".button-action").hide();
-            alert(`${this.name} a gagné !\n\nRafraîchissez la page pour jouer une nouvelle partie !`);
 
+
+            this.endGameModal();
         } else {
             $(playerPercentageLife).text(`${this.target.life}%`);
         }
@@ -104,12 +113,20 @@ export default class Player {
         this.heroTarget(target);
 
         $(`.${this.name}`).css("opacity", "1");
+
         // attack-button : counts fight damages on click
         $(`.${this.name}-attack-button`).css({visibility: "visible"}).on("click", (e) => {
             this.scoreLife(target);
         });
 
         this.heroDefense(target);
+        this.restart();
+    }
+
+    restart() { //replay the battle
+        $(".restart, .close").on("click", () => {
+            location.reload();
+        });
     }
 }
 
