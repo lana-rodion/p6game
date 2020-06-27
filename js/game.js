@@ -59,6 +59,7 @@ export default class Game {
 
     // Method to change the appearance of the board before the fight
     prepareClash() {
+
         $("#board div").not(".hero2, .hero1").css("opacity", "0.5");
         $("[class^='cell']").not(".hero2, .hero1", "obstacle").addClass("battle");
         $("#board").off("click");

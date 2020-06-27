@@ -165,7 +165,17 @@ export default class Board {
 
             console.log("this.x : " + this.y + "this.y : " + this.y);
         }
+    }*/
 
+    /*displayDirection(nbOfAccessCell) {
+
+        for (let i = 1; i <= this.nbOfAccessCell; i++) {
+            if (this.cellExist(this.x, this.y) && this.cells[this.x][this.y].isFree()) {
+                accessibleCells.push(this.cells[this.x][this.y]);
+            } else {
+                break;
+            }
+        }
     }*/
 
     // This method is called in the game object of the Game class
