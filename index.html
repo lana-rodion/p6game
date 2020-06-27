@@ -43,205 +43,218 @@
 
 <body class="bg-dark">
 
-<!-- Fixed navbar -->
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Sve ArtDev</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="https://p6game.lana-rodion-artdev.com/">Projet P6 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/lana-rodion" target="_blank"><i class="fab fa-github"></i>&nbsp;GitHub</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Autres projets
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="https://sveartdev.pb.design/">Portfolio</a>
-                        <a class="dropdown-item" href="https://p5quotes.lana-rodion-artdev.com/">Générateur de citations aléatoires</a>
-                        <a class="dropdown-item" href="https://www.p2chalets.lana-rodion-artdev.com/">Chalets & Caviar / WordPress</a>
-                        <a class="dropdown-item" href="https://p3films.lana-rodion-artdev.com/">Films de plein air</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://sveartdev.pb.design/contact" target="_blank">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-
-<main class="container pb-1">
-    <!-- Game Rules -->
-    <div class="row p-2 mb-2">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-            <p class="text-light title mb-0"> Combat de Guerriers</p>
-            <p class="text-weight-light text-warning mb-0">Jeu de plateau tour par tour en JavaScript</p>
-        </div>
-
-        <div class="col-12 col-sm-12 col-md-6">
-            <button id="rules" class="btn btn-outline-light ml-0 mb-1">Règles du jeu</button>
-            <div id="game-rules" class="mt-2">
-                <p class="text-weight-light text-light text-smaller mb-2">
-                    Les Vikings sont des personnifications mythiques de la force brutale.
-                    On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
-                </p>
-                <ul class="text-weight-light text-light text-smaller rules">
-                    <li>Les guerriers sont placés sur le champ de combat aléatoirement.</li>
-                    <li>Chacun est équipé d'une arme par défaut et peut se déplacer en faisant de 1 à 3 cases.</li>
-                    <li>Ils peuvent échanger ses armes contre les armes placées sur le champ de combat.</li>
-                    <li>Les armes ont des points de dégâts (puissance) différents.</li>
-                    <li>Lorsque les deux Players sont côte à côte sur des cases adjacentes (horizontalement ou verticalement), un combat s'engage.</li>
+    <!-- Fixed navbar -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Sve ArtDev</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://p6game.lana-rodion-artdev.com/">Projet P6 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/lana-rodion" target="_blank"><i class="fab fa-github"></i>&nbsp;GitHub</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Autres projets
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="https://sveartdev.pb.design/">Portfolio</a>
+                            <a class="dropdown-item" href="https://p5quotes.lana-rodion-artdev.com/">Générateur de citations aléatoires</a>
+                            <a class="dropdown-item" href="https://www.p2chalets.lana-rodion-artdev.com/">Chalets & Caviar / WordPress</a>
+                            <a class="dropdown-item" href="https://p3films.lana-rodion-artdev.com/">Films de plein air</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://sveartdev.pb.design/contact" target="_blank">Contact</a>
+                    </li>
                 </ul>
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
 
-    <!-- Game Board V2 -->
-    <div class="row">
-        <div id="board-container" class="col-12 col-sm-12 col-md-12 col-lg-6 mb-sm-2">
-            <div id="board">
-                <!-- Grid 10 x 10 -->
+    <main class="container pb-1">
+        <!-- Game Rules -->
+        <div class="row p-2 mb-2">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                <p><span class="text-light title mb-0">Combat de Guerriers</span>
+                    <button id="volumeUp" class="btn-song float-right mt-2"><i class="fas fa-volume-up"></i></button>
+                    <button id="volumeMute" class="btn-song float-right mt-2" style="display: none;"><i class="fas fa-volume-mute"></i></button>
+                </p>
+                <p class="text-weight-light text-warning mb-0">Jeu de plateau tour par tour en JavaScript</p>
+
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6">
+                <button id="rules" class="btn btn-outline-light ml-0 mb-1">Règles du jeu</button>
+
+                <div id="game-rules" class="mt-2">
+                    <p class="text-weight-light text-light text-smaller mb-2">
+                        Les Vikings sont des personnifications mythiques de la force brutale.
+                        On les trouve mêlés à toutes les inventions par lesquelles l'imagination cherche à se rendre compte du jeu des éléments dans le monde.
+                    </p>
+                    <ul class="text-weight-light text-light text-smaller rules">
+                        <li>Les guerriers sont placés sur le champ de combat aléatoirement.</li>
+                        <li>Chacun est équipé d'une arme par défaut et peut se déplacer en faisant de 1 à 3 cases.</li>
+                        <li>Ils peuvent échanger ses armes contre les armes placées sur le champ de combat.</li>
+                        <li>Les armes ont des points de dégâts (puissance) différents.</li>
+                        <li>Lorsque les deux Players sont côte à côte sur des cases adjacentes (horizontalement ou verticalement), un combat s'engage.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <!-- Players Stats -->
-        <div id="scoreTable" class="col-12 col-sm-12 col-md-12 col-lg-6">
-            <div id="stats" class="row pl-md-4 pr-md-4 pl-lg-0 pr-lg-0">
+        <!-- Game Board V2 -->
+        <div class="row">
+            <div id="board-container" class="col-12 col-sm-12 col-md-12 col-lg-6 mb-sm-2">
+                <div id="board">
+                    <!-- Grid 10 x 10 -->
+                </div>
+            </div>
 
-                <!-- Player 1 -->
-                <div id="Player1" class="col-12 mb-2 mb-md-3">
-                    <div class="row justify-content-center h-100">
-                        <div class="col-3 text-center bg-warning pb-2 pb-sm-3">
-                            <p class="mt-2 mb-0 mb-md-2"><span id="hero1-name"></span></p>
-                            <img src="images/players/viking1.png" alt="viking 1" class="imgPlayer">
-                        </div>
+            <!-- Players Stats -->
+            <div id="scoreTable" class="col-12 col-sm-12 col-md-12 col-lg-6">
+                <div id="stats" class="row pl-md-4 pr-md-4 pl-lg-0 pr-lg-0">
 
-                        <div class="pv_status col-9 bg-light">
-                            <div class="row pt-2 mb-2">
-                                <div class="col-3 text-center m-auto">
-                                    <span id="hero1-weapon-image"></span>
-                                </div>
-                                <div class="offset-1 col-8">
-                                    <p class="mb-0 mt-sm-2">Arme&nbsp;: <span id="hero1-weapon-name" class="text-secondary"></span></p>
-                                    <p class="mb-0">
-                                        <span>Damages&nbsp;: </span><span id="hero1-weapon-infos"></span>
-                                    </p>
-                                    <div class="hero1-percentage-life mt-2 mb-2">100%</div>
-                                    <div class="life">
-                                        <div class="hero-defense"></div>
-                                        <div class="hero1-barre-life"></div>
+                    <!-- Player 1 -->
+                    <div id="Player1" class="col-12 mb-2 mb-md-3">
+                        <div class="row justify-content-center h-100">
+                            <div class="col-3 text-center bg-warning pb-2 pb-sm-3">
+                                <p class="mt-2 mb-0 mb-md-2"><span id="hero1-name"></span></p>
+                                <img src="images/players/viking1.png" alt="viking 1" class="imgPlayer">
+                            </div>
+
+                            <div class="pv_status col-9 bg-light">
+                                <div class="row pt-2 mb-2">
+                                    <div class="col-3 text-center m-auto">
+                                        <span id="hero1-weapon-image"></span>
+                                    </div>
+                                    <div class="offset-1 col-8">
+                                        <p class="mb-0 mt-sm-2">Arme&nbsp;: <span id="hero1-weapon-name" class="text-secondary"></span></p>
+                                        <p class="mb-0">
+                                            <span>Damages&nbsp;: </span><span id="hero1-weapon-infos"></span>
+                                        </p>
+                                        <div class="hero1-percentage-life mt-2 mb-2">100%</div>
+                                        <div class="life">
+                                            <div class="hero-defense"></div>
+                                            <div class="hero1-barre-life"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row justify-content-center button-action mb-2">
-                                <button class="col-4 hero1-attack-button fight-btn fight-btn_attack">Attaquer</button>
-                                <button class="col-4 hero1-defense-button fight-btn fight-btn_defence">Défendre</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- ./Player 1 -->
-
-                <!-- Player 2 -->
-
-                <div id="Player2" class="col-12 ">
-                    <div class="row justify-content-center h-100">
-                        <div class="col-3 text-center hero2_bg pb-2 pb-sm-3">
-                            <p class="mt-2 mb-0 mb-md-2"><span id="hero2-name"></span></p>
-                            <img src="images/players/viking2.png" alt="viking 2" class="imgPlayer">
-                        </div>
-
-                        <div class="pv_status col-9 bg-light">
-                            <div class="row pt-2 mb-2">
-                                <div class="col-3 text-center m-auto">
-                                    <span id="hero2-weapon-image"></span>
+                                <div class="row justify-content-center button-action mb-2">
+                                    <button class="col-4 hero1-attack-button fight-btn fight-btn_attack">Attaquer</button>
+                                    <button class="col-4 hero1-defense-button fight-btn fight-btn_defence">Défendre</button>
                                 </div>
-                                <div class="offset-1 col-8">
-                                    <p class="mb-0 mt-sm-2">Arme&nbsp;: <span id="hero2-weapon-name" class="text-secondary"></span></p>
-                                    <p class="mb-0">
-                                        <span>Damages&nbsp;: </span><span id="hero2-weapon-infos"></span>
-                                    </p>
-                                    <div class="hero2-percentage-life mt-2 mb-2">100%</div>
-                                    <div class="life">
-                                        <div class="hero-defense"></div>
-                                        <div class="hero2-barre-life"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- ./Player 1 -->
+
+                    <!-- Player 2 -->
+
+                    <div id="Player2" class="col-12 ">
+                        <div class="row justify-content-center h-100">
+                            <div class="col-3 text-center hero2_bg pb-2 pb-sm-3">
+                                <p class="mt-2 mb-0 mb-md-2"><span id="hero2-name"></span></p>
+                                <img src="images/players/viking2.png" alt="viking 2" class="imgPlayer">
+                            </div>
+
+                            <div class="pv_status col-9 bg-light">
+                                <div class="row pt-2 mb-2">
+                                    <div class="col-3 text-center m-auto">
+                                        <span id="hero2-weapon-image"></span>
+                                    </div>
+                                    <div class="offset-1 col-8">
+                                        <p class="mb-0 mt-sm-2">Arme&nbsp;: <span id="hero2-weapon-name" class="text-secondary"></span></p>
+                                        <p class="mb-0">
+                                            <span>Damages&nbsp;: </span><span id="hero2-weapon-infos"></span>
+                                        </p>
+                                        <div class="hero2-percentage-life mt-2 mb-2">100%</div>
+                                        <div class="life">
+                                            <div class="hero-defense"></div>
+                                            <div class="hero2-barre-life"></div>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="row justify-content-center button-action mb-2">
+                                    <button class="col-4 hero2-attack-button fight-btn fight-btn_attack">Attaquer</button>
+                                    <button class="col-4 hero2-defense-button fight-btn fight-btn_defence">Défendre</button>
+                                </div>
                             </div>
 
-                            <div class="row justify-content-center button-action mb-2">
-                                <button class="col-4 hero2-attack-button fight-btn fight-btn_attack">Attaquer</button>
-                                <button class="col-4 hero2-defense-button fight-btn fight-btn_defence">Défendre</button>
-                            </div>
                         </div>
-
                     </div>
-                </div>
-                <!-- ./Player 2 -->
+                    <!-- ./Player 2 -->
 
+                </div>
             </div>
         </div>
-    </div>
-
+    </main>
     <!-- GAME OVER Modal -->
-    <div class="modal fade" id="endGameModal" tabindex="-1" role="dialog" aria-labelledby="endGameModalTitle" aria-hidden="true">
+    <div class="modal fade show" id="endGameModal" tabindex="-1" role="dialog" aria-labelledby="endGameModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="endGameModalLongTitle">BATTLE of HEROES</h5>
+                    <h5 class="modal-title" id="endGameModalLongTitle">Combat de Guerriers</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body d-flex align-items-center">
-
+                <div class="modal-body">
+                    <div class="row justify-content-center">
+                        <div id="gameOverMessage" class="p-2"></div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn btn-primary reload">Fight Again</button>
+                    <button type="button" class="restart">Rejouer</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- ./GAME OVER Modal -->
-</main>
 
-<!-- Footer -->
-<footer class="footer bg-secondary text-center">
-    <div class="container">
-        <div class="link-footer text-center">
-            <ul class="list-inline social-icon">
-                <li><a href="https://sveartdev.pb.design/contact">©&nbsp;Sve&nbsp;ArtDev&nbsp;2020</a></li>
-                <li><a href="https://www.linkedin.com/in/lana-rodionova/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="https://github.com/lana-rodion" target="_blank"><i class="fab fa-github"></i></a></li>
-                <li><a href="https://twitter.com/LanaRodion"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="https://sveartdev.pb.design/">Portfolio</a></li>
-                <li><a href="https://sveartdev.pb.design/contact" target="_blank">Contact</a></li>
-            </ul>
+    <!-- Footer -->
+    <footer class="footer bg-secondary text-center">
+        <div class="container">
+            <div class="link-footer text-center">
+                <ul class="list-inline social-icon">
+                    <li><a href="https://sveartdev.pb.design/contact">©&nbsp;Sve&nbsp;ArtDev&nbsp;2020</a></li>
+                    <li><a href="https://www.linkedin.com/in/lana-rodionova/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://github.com/lana-rodion" target="_blank"><i class="fab fa-github"></i></a></li>
+                    <li><a href="https://twitter.com/LanaRodion"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://sveartdev.pb.design/">Portfolio</a></li>
+                    <li><a href="https://sveartdev.pb.design/contact" target="_blank">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- Scripts for Bootstrap 4 -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<!-- jQuery Latest stable version -->
-<script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <!--<audio preload="auto" id="musiqueFond" autoplay="autoplay" loop="loop">
+        <source src="audio/RM.mp3" type="audio/mp3">
+    </audio>
+    <audio preload="auto" id="gong">
+        <source src="audio/gong.mp3" type="audio/mp3">
+    </audio>-->
 
-<!-- JS game Script V2 -->
-<script type="module" src="js/app.js"></script>
-<script type="text/javascript" src="js/interface.js"></script>
+
+    <!-- Scripts for Bootstrap 4 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- jQuery Latest stable version -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- JS game Script V2 -->
+    <script type="module" src="js/app.js"></script>
+    <script type="text/javascript" src="js/interface.js"></script>
 
 </body>
 
