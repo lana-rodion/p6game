@@ -81,7 +81,7 @@ class Player {
 
     finishGameSound() {
         // sound of finish
-        let audioEnd = new Audio('audio/gong.mp3');
+        let audioEnd = new Audio("audio/gong.mp3");
         audioEnd.play();
     }
 
