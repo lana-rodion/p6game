@@ -79,6 +79,12 @@ class Player {
         $("#endGameModal").show();
     }
 
+    finishGameSound() {
+        // sound of finish
+        let audioEnd = new Audio("audio/gong.mp3");
+        audioEnd.play();
+    }
+
     gameOver() {
         let playerPercentageLife = "." + this.target.name + "-percentage-life";
 
@@ -88,7 +94,7 @@ class Player {
             $(`.${this.target.name}`).css("visibility", "hidden");
             $(".button-action").hide();
 
-
+            this.finishGameSound();
             this.endGameModal();
         } else {
             $(playerPercentageLife).text(`${this.target.life}%`);
