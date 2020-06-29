@@ -28,6 +28,7 @@ export default class Game {
     gamePlay() {
         let self = this;
 
+        //The .on() method attaches event handlers to the currently selected set of elements in the jQuery object.
         $("#board").on("click", ".accessible", function() {
 
             let adjacentCells = self.board.getAdjacentCells(self.board.cells[$(this).data("x")][$(this).data("y")]);

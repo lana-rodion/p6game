@@ -137,24 +137,20 @@ export default class Board {
     // Method to verify with parameters (x, y) if this cell exists
 
     cellExist(x, y) {
-        this.x = x;
-        this.y = y;
-        return this.x >= 0 && this.x < this.width && this.y >= 0 && this.y < this.height;
+        return x >= 0 && x < this.width && y >= 0 && y < this.height;
     }
 
     // This method returns an array of the accessible cells
     // using the direction indicated in parameter (horizontal / vertical / + 1 / -1)
 
-    getAccessCells(cell, nbOfAccessCell, horizontal, sign) {
-
+    getAccessCellsDirection(cell, nbOfAccessCell, horizontal, sign) {
         let accessibleCells = [];
 
         for (let i = 1; i <= nbOfAccessCell; i++) {
             let x = cell.x + (horizontal ? sign * i : 0);
             let y = cell.y + (horizontal ? 0 : sign * i);
-            //this.accessDirection();
 
-            if (this.cellExist(x, y) && this.cells[x][y].isFree()) {
+            if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
                 accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
             } else {
                 break;
@@ -170,16 +166,16 @@ export default class Board {
         let accessibleCells = [];
 
         accessibleCells = accessibleCells.concat(
-            this.getAccessCells(cell, nbOfAccessCell, true, 1)
+            this.getAccessCellsDirection(cell, nbOfAccessCell, true, 1)
         );
         accessibleCells = accessibleCells.concat(
-            this.getAccessCells(cell, nbOfAccessCell, true, -1)
+            this.getAccessCellsDirection(cell, nbOfAccessCell, true, -1)
         );
         accessibleCells = accessibleCells.concat(
-            this.getAccessCells(cell, nbOfAccessCell, false, 1)
+            this.getAccessCellsDirection(cell, nbOfAccessCell, false, 1)
         );
         accessibleCells = accessibleCells.concat(
-            this.getAccessCells(cell, nbOfAccessCell, false, -1)
+            this.getAccessCellsDirection(cell, nbOfAccessCell, false, -1)
         );
 
         accessibleCells.forEach((accessibleCells) => accessibleCells.element.addClass("accessible")
