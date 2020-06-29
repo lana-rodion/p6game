@@ -5,6 +5,12 @@ export default class Board {
         this.weapons = weapons;
         this.player1 = player1;
         this.player2 = player2;
+
+        this.width =  null;
+        this.height = null;
+        this.cells = [];
+        this.cellRandom = [];
+        this.cellRandomFree = [];
     }
 
     // Method to create the grid : define cell coordinates, to push its in columns and row with for loop
@@ -12,10 +18,10 @@ export default class Board {
     createGrid(width, height) {
         this.width = width;
         this.height = height;
-        this.cells = [];
-        for (let column = 0; column < width; column++) {
+
+        for (let column = 0; column < this.width; column++) {
             let columnArr = [];
-            for (let row = 0; row < height; row++) {
+            for (let row = 0; row < this.height; row++) {
                 let cellDiv = $(`<div class='cell' id='cell-c${column}-r${row}' data-x='${column}' data-y='${row}'></div>`);
                 let cell = new Cell(column, row, cellDiv);
                 columnArr.push(cell);
@@ -38,13 +44,11 @@ export default class Board {
     // Method to return random cell with coordinates x and y, called randomNumber(0, this.width)
 
     randomCell() {
-        // fix security Generic Object Injection Sink
         let x = this.randomNumber(0, this.width);
         let y = this.randomNumber(0, this.height);
 
-        if (this.cells[parseInt(x)][parseInt(y)]){
-            return this.cells[parseInt(x)][parseInt(y)];
-        }
+        // fix security Generic Object Injection Sink
+        return this.cells[parseInt(x)][parseInt(y)];
     }
 
     players() {
@@ -56,13 +60,15 @@ export default class Board {
     // call the getAdjacentCells(cell) to verify if adjacent Cells and the cell of player placement are not occupied by other player
 
     randomPlayers(player) {
-        let cell = this.randomCell();
-        let adjacentCells = this.getAdjacentCells(cell);
+        //let cell = this.randomCell();
+        this.cellRandom = this.randomCell();
+        let adjacentCells = this.getAdjacentCells(this.cellRandom);
         let adjacentPlayer = adjacentCells.filter((adjacentCell) => adjacentCell.player !== null);
-        if (adjacentPlayer.length === 0 && cell.player === null) {
-            cell.player = player;
-            cell.element.addClass(player.name);
-            player.currentCell = cell;
+
+        if (adjacentPlayer.length === 0 && this.cellRandom.player === null) {
+            this.cellRandom.player = player;
+            this.cellRandom.element.addClass(player.name);
+            player.currentCell = this.cellRandom;
         } else {
             this.randomPlayers(player);
         }
@@ -73,10 +79,12 @@ export default class Board {
 
     obstacles() {
         let averageObstacles = Math.floor((this.width * this.height) / ((this.width + this.height) / 2));
+
         for (let obstacles = 0; obstacles < averageObstacles; obstacles++) {
-            let cell = this.randomFreeCell();
-            cell.obstacle = true;
-            cell.element.addClass("obstacle");
+            this.cellRandomFree = this.randomFreeCell();
+            //let cell = this.randomFreeCell();
+            this.cellRandomFree.obstacle = true;
+            this.cellRandomFree.element.addClass("obstacle");
         }
     }
 
@@ -85,20 +93,23 @@ export default class Board {
 
     weaponsArr() {
         this.weapons.forEach((weapon) => {
-            let cell = this.randomFreeCell();
-            cell.weapon = weapon;
-            cell.element.addClass(`${weapon.name}`);
+            this.cellRandomFree = this.randomFreeCell();
+            //let cell = this.randomFreeCell();
+            this.cellRandomFree.weapon = weapon;
+            this.cellRandomFree.element.addClass(`${weapon.name}`);
         });
     }
 
     // Method to return a free cell (without obstacle, weapon, player)
 
     randomFreeCell() {
-        let cell = this.randomCell();
-        if (!cell.obstacle && cell.player === null && cell.weapon === null) {
-            return cell;
+        this.cellRandom = this.randomCell();
+        //let cell = this.randomCell();
+        if (!this.cellRandom.obstacle && this.cellRandom.player === null && this.cellRandom.weapon === null) {
+            return this.cellRandom;
         } else {
-            return this.randomFreeCell();
+            //return this.randomFreeCell();
+            return this.cellRandomFree;
         }
     }
 
@@ -137,16 +148,14 @@ export default class Board {
     getAccessCells(cell, nbOfAccessCell, horizontal, sign) {
 
         let accessibleCells = [];
-        this.cell = cell;
-        this.nbOfAccessCell = nbOfAccessCell;
 
-        for (let i = 1; i <= this.nbOfAccessCell; i++) {
-            this.x = this.cell.x + (horizontal ? sign * i : 0);
-            this.y = this.cell.y + (horizontal ? 0 : sign * i);
+        for (let i = 1; i <= nbOfAccessCell; i++) {
+            let x = cell.x + (horizontal ? sign * i : 0);
+            let y = cell.y + (horizontal ? 0 : sign * i);
             //this.accessDirection();
 
-            if (this.cellExist(this.x, this.y) && this.cells[this.x][this.y].isFree()) {
-                accessibleCells.push(this.cells[this.x][this.y]);
+            if (this.cellExist(x, y) && this.cells[x][y].isFree()) {
+                accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
             } else {
                 break;
             }

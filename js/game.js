@@ -27,10 +27,11 @@ export default class Game {
 
     gamePlay() {
         let self = this;
+
         $("#board").on("click", ".accessible", function() {
-            let adjacentCells = self.board.getAdjacentCells(
-                self.board.cells[$(this).data("x")][$(this).data("y")]
-            );
+
+            let adjacentCells = self.board.getAdjacentCells(self.board.cells[$(this).data("x")][$(this).data("y")]);
+
             let boardCell = self.board.cells[$(this).data("x")][$(this).data("y")];
             let currentPlayer = self.turnToPlay ? player1 : player2;
             let nextPlayer = self.turnToPlay ? player2 : player1;
@@ -58,6 +59,7 @@ export default class Game {
     }
 
     // Method to change the appearance of the board before the fight
+
     prepareClash() {
 
         $("#board div").not(".hero2, .hero1").css("opacity", "0.5");
