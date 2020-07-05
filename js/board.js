@@ -9,8 +9,6 @@ export default class Board {
         this.width =  null;
         this.height = null;
         this.cells = [];
-        this.cellRandom = [];
-        this.cellRandomFree = [];
     }
 
     // Method to create the grid : define cell coordinates, to push its in columns and row with for loop
@@ -60,15 +58,14 @@ export default class Board {
     // call the getAdjacentCells(cell) to verify if adjacent Cells and the cell of player placement are not occupied by other player
 
     randomPlayers(player) {
-        //let cell = this.randomCell();
-        this.cellRandom = this.randomCell();
-        let adjacentCells = this.getAdjacentCells(this.cellRandom);
+        let cell = this.randomCell();
+        let adjacentCells = this.getAdjacentCells(cell);
         let adjacentPlayer = adjacentCells.filter((adjacentCell) => adjacentCell.player !== null);
 
-        if (adjacentPlayer.length === 0 && this.cellRandom.player === null) {
-            this.cellRandom.player = player;
-            this.cellRandom.element.addClass(player.name);
-            player.currentCell = this.cellRandom;
+        if (adjacentPlayer.length === 0 && cell.player === null) {
+            cell.player = player;
+            cell.element.addClass(player.name);
+            player.currentCell = cell;
         } else {
             this.randomPlayers(player);
         }
@@ -79,12 +76,10 @@ export default class Board {
 
     obstacles() {
         let averageObstacles = Math.floor((this.width * this.height) / ((this.width + this.height) / 2));
-
         for (let obstacles = 0; obstacles < averageObstacles; obstacles++) {
-            this.cellRandomFree = this.randomFreeCell();
-            //let cell = this.randomFreeCell();
-            this.cellRandomFree.obstacle = true;
-            this.cellRandomFree.element.addClass("obstacle");
+            let cell = this.randomFreeCell();
+            cell.obstacle = true;
+            cell.element.addClass("obstacle");
         }
     }
 
@@ -93,23 +88,20 @@ export default class Board {
 
     weaponsArr() {
         this.weapons.forEach((weapon) => {
-            this.cellRandomFree = this.randomFreeCell();
-            //let cell = this.randomFreeCell();
-            this.cellRandomFree.weapon = weapon;
-            this.cellRandomFree.element.addClass(`${weapon.name}`);
+            let cell = this.randomFreeCell();
+            cell.weapon = weapon;
+            cell.element.addClass(`${weapon.name}`);
         });
     }
 
     // Method to return a free cell (without obstacle, weapon, player)
 
     randomFreeCell() {
-        this.cellRandom = this.randomCell();
-        //let cell = this.randomCell();
-        if (!this.cellRandom.obstacle && this.cellRandom.player === null && this.cellRandom.weapon === null) {
-            return this.cellRandom;
+        let cell = this.randomCell();
+        if (!cell.obstacle && cell.player === null && cell.weapon === null) {
+            return cell;
         } else {
-            //return this.randomFreeCell();
-            return this.cellRandomFree;
+            return this.randomFreeCell();
         }
     }
 

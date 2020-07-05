@@ -3,8 +3,15 @@ import { player1, player2 } from "./players.js";
 import { weapons } from "./weapons.js";
 
 export default class Game {
-    constructor(turnToPlay) {
+    constructor(turnToPlay, board) {
         this.turnToPlay = turnToPlay;
+        this.board = board;
+
+        /*this.currentPlayer = null;
+        this.boardCell = null;
+        this.adjacentCells = null;
+        this.nextPlayer = null;
+        */
     }
 
     // Method to initialize the game by creating the game grid and launching the gamePlay method
@@ -41,6 +48,19 @@ export default class Game {
             self.playersDescription(currentPlayer);
             self.board.getAccessibleCells(nextPlayer.currentCell, 3);
         });
+
+        /*let boardGame = document.getElementById("board");
+
+        boardGame.addEventListener("click", function() {
+
+            this.boardCell = this.board.cells[$(this).data("x")][$(this).data("y")];
+            this.currentPlayer = this.turnToPlay ? player1 : player2;
+            this.nextPlayer = this.turnToPlay ? player2 : player1;
+
+            this.board.playerActions(this.currentPlayer, this.boardCell, this.adjacentCells);
+            this.board.playersDescription(this.currentPlayer);
+            this.board.getAccessibleCells(this.nextPlayer.currentCell, 3);
+        }).bind(this);*/
     }
 
     // Method to manage the different players actions
