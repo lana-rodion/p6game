@@ -169,7 +169,7 @@ export default class Board {
         accessibleCells = accessibleCells.concat(
             this.getAccessCellsDirection(cell, nbOfAccessCell, false, -1)
         );
-
+        // For each each accessible cell-element in array accessibleCells add accessible class
         accessibleCells.forEach((accessibleCells) => accessibleCells.element.addClass("accessible")
         );
     }
