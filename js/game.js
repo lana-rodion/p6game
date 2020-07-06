@@ -3,8 +3,9 @@ import { player1, player2 } from "./players.js";
 import { weapons } from "./weapons.js";
 
 export default class Game {
-    constructor(turnToPlay) {
+    constructor(turnToPlay, board) {
         this.turnToPlay = turnToPlay;
+        this.board = board;
     }
 
     // Method to initialize the game by creating the game grid and launching the gamePlay method
@@ -27,10 +28,12 @@ export default class Game {
 
     gamePlay() {
         let self = this;
+
+        //The .on() method attaches event handlers to the currently selected set of elements in the jQuery object.
         $("#board").on("click", ".accessible", function() {
-            let adjacentCells = self.board.getAdjacentCells(
-                self.board.cells[$(this).data("x")][$(this).data("y")]
-            );
+
+            let adjacentCells = self.board.getAdjacentCells(self.board.cells[$(this).data("x")][$(this).data("y")]);
+
             let boardCell = self.board.cells[$(this).data("x")][$(this).data("y")];
             let currentPlayer = self.turnToPlay ? player1 : player2;
             let nextPlayer = self.turnToPlay ? player2 : player1;
@@ -58,6 +61,7 @@ export default class Game {
     }
 
     // Method to change the appearance of the board before the fight
+
     prepareClash() {
 
         $("#board div").not(".hero2, .hero1").css("opacity", "0.5");
